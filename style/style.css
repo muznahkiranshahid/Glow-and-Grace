@@ -1,0 +1,179 @@
+body {
+    background-color: #fff5f0;
+    color: #2e2e2e;
+  }
+
+  .navbar {
+    background-color: #ffe1d6;
+  }
+
+  .navbar-brand,
+  .nav-link {
+    color: #7a4e2f !important;
+    font-weight: bold;
+  }
+
+      /* Peach Theme Base */
+      :root {
+        --peach: #ff9966;         /* stronger peach */
+        --peach-dark: #cc7a4e;    /* darker peach */
+        --peach-light: #ffd6b3;   /* light peach */
+        --bg-light: #ffe6cc;      /* warm pastel peach background */
+        --text-dark: #4a4a4a;
+        --text-muted: #6b4a3e;
+      }
+
+      /* Global Reset */
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+     
+
+      /* Page Header */
+      .page-header-section {
+        background: linear-gradient(to right, var(--peach), var(--peach-dark));
+        padding: 60px 0;
+        text-align: center;
+        color: var(--bg-light);
+      }
+      .page-header-section h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+      }
+      .breadcrumb {
+        background: transparent;
+        justify-content: center;
+      }
+      .breadcrumb-item a {
+        color: var(--bg-light);
+      }
+      .breadcrumb-item.active {
+        color: var(--bg-light);
+      }
+
+      /* Register Card */
+      .register-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(204, 122, 78, 0.25);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .register-card h2 {
+        color: var(--peach-dark);
+        margin-bottom: 10px;
+      }
+      .register-card .small-text {
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+      .register-card input.form-control {
+        background-color: var(--peach-light);
+        border: 1px solid var(--peach);
+        color: var(--text-dark);
+        border-radius: 10px;
+      }
+      .register-card input.form-control::placeholder {
+        color: var(--text-muted);
+      }
+      .btn-register {
+        background-color: var(--peach);
+        color: var(--bg-light);
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px 0;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      .btn-register:hover {
+        background-color: var(--peach-dark);
+        color: var(--bg-light);
+      }
+      .login-link {
+        text-align: center;
+        margin-top: 15px;
+      }
+      .login-link a {
+        color: var(--peach-dark);
+        text-decoration: none;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Why Register */
+      .why-register-section {
+        background-color: var(--peach-light);
+        color: var(--text-dark);
+        text-align: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: var(--peach-dark);
+      }
+      .why-register-feature {
+        background-color: #fff3e6;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(204, 122, 78, 0.15);
+        transition: transform 0.3s ease;
+      }
+      .why-register-feature:hover {
+        transform: translateY(-5px);
+      }
+      .why-register-feature .icon {
+        font-size: 2rem;
+        color: var(--peach-dark);
+        margin-bottom: 10px;
+      }
+      .why-register-feature h5 {
+        color: var(--peach-dark);
+        margin-bottom: 10px;
+      }
+
+      /* Animations */
+      .animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+      }
+      .animate.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .footer {
+        background-color: #7a4e2f;
+        color: #ffffff;
+      }
+  
+      .footer-item a {
+        color: #ffffff;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+      }
+  
+      .footer-item a:hover {
+        color: #ffd4c3;
+      }
+  
+      .form-control:focus {
+        box-shadow: none;
+      }
+  
+      .btn-primary {
+        background-color: #ff8c7a;
+        border: none;
+      }
+  
+      .btn-primary:hover {
+        background-color: #e67e6d;
+      }
