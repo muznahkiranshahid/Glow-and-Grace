@@ -177,3 +177,128 @@ body {
       .btn-primary:hover {
         background-color: #e67e6d;
       }
+
+      /* Animations */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Register/Login card style */
+.register-card {
+  background-color: #1c1c1c;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  max-width: 500px;
+  margin: auto;
+}
+.btn-register {
+  background: linear-gradient(to right, #ff9a8b, #ff6a88, #ff99ac);
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  transition: transform 0.3s;
+}
+.btn-register:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ff6a88, #ff9a8b);
+}
+
+/* Optional: Breadcrumb & Header */
+.page-header-section {
+  background: #111;
+  padding: 60px 0;
+  color: #fff;
+  text-align: center;
+}
+.breadcrumb a {
+  color: #ff9a8b;
+}
+
+
+
+/* Common Style for Sidebar and Cards */
+.common-panel {
+  background-color: #2b2b2b;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 105, 135, 0.15);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.common-panel:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 105, 135, 0.3);
+}
+
+/* Sidebar buttons */
+.sidebar button {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #ff6a88;
+  color: #fff;
+}
+
+/* Card enhancements */
+.card {
+  background-color: inherit;
+  border: none;
+  border-radius: 12px;
+}
+
+.card .card-body {
+  padding: 15px;
+  color: #fff;
+}
+
+.card-img-top {
+  border-radius: 12px 12px 0 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-img-top.secondary {
+  display: none;
+}
+
+.card:hover .card-img-top.primary {
+  display: none;
+}
+
+.card:hover .card-img-top.secondary {
+  display: block;
+}
+
+.btn-cart {
+  background: linear-gradient(to right, #ff9a8b, #ff6a88, #ff99ac);
+  border: none;
+  color: #fff;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn-cart:hover {
+  background: linear-gradient(to right, #ff6a88, #ff9a8b);
+  transform: scale(1.05);
+}
