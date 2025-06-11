@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Velvet Matte Lipstick",
+    "brand": "Luxe Beauty",
+    "category": "Lipstick",
+    "price": "Rs. 799",
+    "image1": "images/lipstick1a.jpg",
+    "image2": "images/lipstick1b.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Perfect Match Foundation",
+    "brand": "GlowUp",
+    "category": "Foundation",
+    "price": "Rs. 1199",
+    "image1": "images/foundation1a.jpg",
+    "image2": "images/foundation1b.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Soft Touch Face Powder",
+    "brand": "Elegance",
+    "category": "Face Powder",
+    "price": "Rs. 650",
+    "image1": "images/facepowder1a.jpg",
+    "image2": "images/facepowder1b.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Jet Black Eyeliner",
+    "brand": "EyeArt",
+    "category": "Eyeliner",
+    "price": "Rs. 450",
+    "image1": "images/eyeliner1a.jpg",
+    "image2": "images/eyeliner1b.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mega Lash Mascara",
+    "brand": "LashQueen",
+    "category": "Mascara",
+    "price": "Rs. 799",
+    "image1": "images/mascara1a.jpg",
+    "image2": "images/mascara1b.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Rosy Blush",
+    "brand": "BlushBloom",
+    "category": "Blush",
+    "price": "Rs. 599",
+    "image1": "images/blush1a.jpg",
+    "image2": "images/blush1b.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Shimmer Glow Highlighter",
+    "brand": "Radiance",
+    "category": "Highlighter",
+    "price": "Rs. 899",
+    "image1": "images/highlighter1a.jpg",
+    "image2": "images/highlighter1b.jpg"
+  }
+]
