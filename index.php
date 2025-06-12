@@ -29,6 +29,7 @@
         font-family: 'Montserrat', sans-serif;
         background: var(--peach-light);
         color: var(--text-dark);
+        scroll-behavior: smooth;
       }
 
       .navbar {
@@ -68,7 +69,7 @@
 
       .hero-section {
         background: #f8d9c5;
-        padding: 80px 20px;
+        padding: 100px 20px;
         font-family: 'Segoe UI', sans-serif;
         color: #111;
       }
@@ -156,7 +157,6 @@
         position: relative;
         overflow: hidden;
         border-radius: 10px;
-        border: 2px solid #000;
       }
       .hover-image-container img {
         width: 100%;
@@ -195,7 +195,7 @@
 
       .card {
         background-color: var(--peach-light);
-        border: 2px solid var(--text-dark);
+        border: none;
         border-radius: 16px;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -212,6 +212,42 @@
         color: var(--text-dark);
       }
 
+      /* Testimonials Section */
+      .testimonials-section {
+        background: rgba(255, 216, 177, 0.3);
+        padding: 80px 0;
+      }
+      .testimonial-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        margin: 15px;
+      }
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+      .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+      .author-info h5 {
+        margin-bottom: 0;
+      }
+      .author-info p {
+        color: var(--peach-dark);
+        margin-bottom: 0;
+        font-size: 0.9rem;
+      }
+
       section.text-center h2 {
         color: var(--text-dark);
       }
@@ -223,10 +259,9 @@
 
       /* Transparent Footer */
       #footer {
-        background: rgba(255, 216, 177, 0.7); /* Peach base with transparency */
+        background: rgba(255, 216, 177, 0.5);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(255, 124, 77, 0.3); /* Peach dark border */
         padding: 3rem 0;
         color: var(--text-dark);
       }
@@ -303,6 +338,7 @@
           <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="#about" data-aos="fade-down" data-aos-delay="100">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#services" data-aos="fade-down" data-aos-delay="200">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials" data-aos="fade-down" data-aos-delay="250">Testimonials</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact" data-aos="fade-down" data-aos-delay="300">Contact</a></li>
           </ul>
         </div>
@@ -310,7 +346,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" id="home">
       <div class="container">
         <div class="hero-content" data-aos="fade-right" data-aos-duration="800">
           <h1>Discover Beauty Cosmetics<br>That Your Skin Loves</h1>
@@ -332,7 +368,7 @@
     </section>
 
     <!-- Hover Products -->
-    <section>
+    <section id="products">
       <div class="container mt-5">
         <h1 data-aos="fade-up">Our Products</h1>
         <div class="row">
@@ -365,7 +401,7 @@
     </section>
 
     <!-- Product Cards -->
-    <section class="py-5">
+    <section class="py-5" id="featured">
       <div class="container">
         <h1 data-aos="fade-up">Our Best Products</h1>
         <div class="row g-4 justify-content-center">
@@ -400,8 +436,59 @@
       </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section py-5" id="testimonials">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">What Our Customers Say</h2>
+        <div class="row">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-card">
+              <div class="testimonial-text">
+                "The lipstick shades are absolutely stunning and long-lasting. I've never received so many compliments!"
+              </div>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah J.">
+                <div class="author-info">
+                  <h5>Sarah J.</h5>
+                  <p>Beauty Blogger</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-card">
+              <div class="testimonial-text">
+                "The pearl necklace is my go-to accessory for every occasion. The quality is exceptional for the price."
+              </div>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily R.">
+                <div class="author-info">
+                  <h5>Emily R.</h5>
+                  <p>Fashion Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-card">
+              <div class="testimonial-text">
+                "I love how the eyeshadow palette blends so easily. The colors are perfect for my skin tone!"
+              </div>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Michelle T.">
+                <div class="author-info">
+                  <h5>Michelle T.</h5>
+                  <p>Makeup Artist</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- About -->
-    <section class="py-5 text-center">
+    <section class="py-5 text-center" id="about">
       <div class="container">
         <h2 class="mb-4" data-aos="fade-up">Why Choose Glow & Grace?</h2>
         <p class="lead" data-aos="fade-up" data-aos-delay="100">We bring you handpicked collections of high-quality cosmetics and elegant jewelry that accentuate your beauty and style. From luxurious lipsticks to timeless gold pieces – indulge in affordable luxury with us.</p>
@@ -466,17 +553,15 @@
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS  -->
+     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+     <script>
+       AOS.init({
+         once: false // Ensures animations trigger every time you scroll back
+       });
+     </script>
     
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     
-    <!-- Initialize AOS -->
-    <script>
-      AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true
-      });
     </script>
   </body>
 </html>
