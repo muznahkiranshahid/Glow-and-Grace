@@ -1,65 +1,120 @@
 [
   {
     "id": 1,
-    "name": "Velvet Matte Lipstick",
-    "brand": "Luxe Beauty",
-    "category": "Lipstick",
+    "name": "Dior couleurs",
+    "brand": "Dior",
+    "category": "Highlighter",
     "price": "Rs. 799",
-    "image1": "images/lipstick1a.jpg",
-    "image2": "images/lipstick1b.jpg"
+    "image1": "images/cosmetics/dior/dior couleurs.webp",
+    "image2": "images/cosmetics/dior/dior couleurs detail.jpg"
   },
   {
     "id": 2,
     "name": "Perfect Match Foundation",
-    "brand": "GlowUp",
+    "brand": "Dior",
     "category": "Foundation",
     "price": "Rs. 1199",
-    "image1": "images/foundation1a.jpg",
-    "image2": "images/foundation1b.jpg"
+    "image1": "images/cosmetics/dior/Dior Backstage Face & Body Foundation.webp",
+    "image2": "images/cosmetics/dior/Dior Backstage Face & Body Foundation details.jpg"
   },
   {
     "id": 3,
-    "name": "Soft Touch Face Powder",
-    "brand": "Elegance",
+    "name": "Dior Touch Face Powder",
+    "brand": "Dior",
     "category": "Face Powder",
     "price": "Rs. 650",
-    "image1": "images/facepowder1a.jpg",
-    "image2": "images/facepowder1b.jpg"
+    "image1": "images/cosmetics/dior/dior facepowder.jpg",
+    "image2": "images/cosmetics/dior/dior facepowder detail.jpg"
   },
   {
     "id": 4,
-    "name": "Jet Black Eyeliner",
-    "brand": "EyeArt",
-    "category": "Eyeliner",
+    "name": "",
+    "brand": "Dior",
+    "category": "Lipstick",
     "price": "Rs. 450",
-    "image1": "images/eyeliner1a.jpg",
-    "image2": "images/eyeliner1b.jpg"
+    "image1": "images/cosmetics/dior/rouge dior.webp",
+    "image2": "images/cosmetics/dior/rouge dior detail.webp"
   },
   {
     "id": 5,
     "name": "Mega Lash Mascara",
-    "brand": "LashQueen",
-    "category": "Mascara",
+    "brand": "Dior",
+    "category": "Lipstick",
     "price": "Rs. 799",
-    "image1": "images/mascara1a.jpg",
-    "image2": "images/mascara1b.jpg"
+    "image1": "images/cosmetics/dior/dior lip glow.webp",
+    "image2": "images/cosmetics/dior/dior lip glow detail.jpg"
   },
   {
     "id": 6,
     "name": "Rosy Blush",
-    "brand": "BlushBloom",
-    "category": "Blush",
+    "brand": "Dior",
+    "category": "Mascara",
     "price": "Rs. 599",
-    "image1": "images/blush1a.jpg",
-    "image2": "images/blush1b.jpg"
+    "image1": "images/cosmetics/dior/dior mascara.jpg",
+    "image2": "images/cosmetics/dior/dior mascara detail.jpg"
   },
   {
     "id": 7,
     "name": "Shimmer Glow Highlighter",
-    "brand": "Radiance",
+    "brand": "Dior",
+    "category": "Eyeliner",
+    "price": "Rs. 899",
+    "image1": "images/cosmetics/dior/dior eyeliner.jpg",
+    "image2": "images/cosmetics/dior/dior eyeliner detail.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Shimmer Glow Highlighter",
+    "brand": "Dior",
     "category": "Highlighter",
     "price": "Rs. 899",
-    "image1": "images/highlighter1a.jpg",
-    "image2": "images/highlighter1b.jpg"
+    "image1": "images/cosmetics/dior/dior blush.jpg",
+    "image2": "images/cosmetics/dior/dior blush detail.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Lumi-Matte Foundation makeup",
+    "brand": "Dior",
+    "category": "Foundation",
+    "price": "Rs. 899",
+    "image1": "images/cosmetics/maybelline/maybelline-lumi-matte-foundation-128-upc.jpg",
+    "image2": "images/cosmetics/maybelline/maybelline-lumi-matte-foundation-128-upc-t.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Lifter Plump™ Lip Plumping Gloss Makeup",
+    "brand": "Dior",
+    "category": "Lipstick",
+    "price": "Rs. 799",
+    "image1": "images/cosmetics/maybelline/maybelline-lipstick.jpg",
+    "image2": "images/cosmetics/maybelline/maybelline-lipstick detail.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Maybelline Nikkie Tutorials MasterChrome Metallic Highlighter",
+    "brand": "Dior",
+    "category": "Highlighter",
+    "price": "Rs. 899",
+    "image1": "images/cosmetics/maybelline/highlighter.jpg",
+    "image2": "images/cosmetics/maybelline/highlighter detail.jpg"
+  },
+  
+  {
+    "id": 12,
+    "name": "Easy Bake Loose Baking & Setting Powder - HUDA BEAUTY",
+    "brand": "Dior",
+    "category": "Face Powder",
+    "price": "Rs. 650",
+    "image1": "images/cosmetics/huda/face powder.jpg",
+    "image2": "images/cosmetics/huda/face powder detail.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Easy Bake Loose Baking & Setting Powder - HUDA BEAUTY",
+    "brand": "Dior",
+    "category": "Face Powder",
+    "price": "Rs. 650",
+    "image1": "images/cosmetics/huda/face powder.jpg",
+    "image2": "images/cosmetics/huda/face powder detail.jpg"
   }
 ]

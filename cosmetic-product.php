@@ -195,7 +195,6 @@
         <button class="btn btn-outline-dark" onclick="filterProducts('Face Powder')">Face Powder</button>
         <button class="btn btn-outline-dark" onclick="filterProducts('Eyeliner')">Eyeliner</button>
         <button class="btn btn-outline-dark" onclick="filterProducts('Mascara')">Mascara</button>
-        <button class="btn btn-outline-dark" onclick="filterProducts('Blush')">Blush</button>
         <button class="btn btn-outline-dark" onclick="filterProducts('Highlighter')">Highlighter</button>
       </div>
     </div>
