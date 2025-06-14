@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  $isLoggedIn = isset($_SESSION['user']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +15,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./style/style.css" />
 
@@ -161,34 +167,19 @@
       padding: 0.5rem 1.5rem;
       font-weight: 600;
       text-transform: uppercase;
+      background-color: var(--peach-dark);
+      color: var(--black);
+      border: 2px solid var(--peach-dark);
       transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 124, 77, 0.2);
     }
 
     .btn-cart:hover {
-      background-color: var(--peach-dark);
+      background-color: var(--text-highlight);
       color: #fff;
       border-color: var(--text-highlight);
+      box-shadow: 0 6px 16px rgba(92, 64, 51, 0.3);
     }
-
-   .btn-cart {
-  border-radius: 50px;
-  padding: 0.5rem 1.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  background-color: var(--peach-dark);
-  color: var(--black);
-  border: 2px solid var(--peach-dark);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 124, 77, 0.2);
-}
-
-.btn-cart:hover {
-  background-color: var(--text-highlight);
-  color: #fff;
-  border-color: var(--text-highlight);
-  box-shadow: 0 6px 16px rgba(92, 64, 51, 0.3);
-}
-
 
     footer {
       background-color: var(--peach-dark);
@@ -207,34 +198,40 @@
       background-color: var(--black);
       border-radius: 4px;
     }
+
     .category-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(255, 124, 77, 0.2);
     }
-   .category-card {
-  min-width: 140px;
-  background-color: white;
-  border-radius: 20px;
-  padding: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  flex-shrink: 0;
-}
 
-.category-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-}
+    .category-card {
+      min-width: 140px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .category-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+
     .category-card h5 {
       color: var(--text-dark);
     }
-
   </style>
 </head>
 <body>
+  <script>
+    const isLoggedIn = <?= $isLoggedIn ? 'true' : 'false' ?>;
+  </script>
+
   <header id="header"></header>
 
   <section class="page-header-section">
@@ -249,44 +246,42 @@
     </div>
   </section>
 
-
   <section class="py-4 text-center">
-  <div class="container" data-aos="zoom-in">
-    <h2 class="mb-4">Shop by Category</h2>
-   <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-3" style="scrollbar-width: none;">
-  <div class="category-card text-center btn" onclick="filterProducts('all')">
-    <img src="images/cosmetics/img3.jpg" alt="All">
-    <h5 class="mt-2 text-uppercase">All</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Lipstick')">
-    <img src="images/cosmetics/img6.jpg" alt="Lipstick">
-    <h5 class="mt-2 text-uppercase">Lipstick</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Foundation')">
-    <img src="images/cosmetics/img5.jpg" alt="Foundation">
-    <h5 class="mt-2 text-uppercase">Foundation</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Face Powder')">
-    <img src="images/cosmetics/img4.jpg" alt="Face Powder">
-    <h5 class="mt-2 text-uppercase">Face Powder</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Eyeliner')">
-    <img src="images/cosmetics/img7.jpg" alt="Eyeliner">
-    <h5 class="mt-2 text-uppercase">Eyeliner</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Mascara')">
-    <img src="images/cosmetics/img8.jpg" alt="Mascara">
-    <h5 class="mt-2 text-uppercase">Mascara</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Highlighter')">
-    <img src="images/cosmetics/img9.jpg" alt="Highlighter">
-    <h5 class="mt-2 text-uppercase">Highlighter</h5>
-  </div>
-</div>
-
-  </div>
-</section>
-
+    <div class="container" data-aos="zoom-in">
+      <h2 class="mb-4">Shop by Category</h2>
+      <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-3" style="scrollbar-width: none;">
+        <!-- Category Cards -->
+        <div class="category-card text-center btn" onclick="filterProducts('all')">
+          <img src="images/cosmetics/img3.jpg" alt="All">
+          <h5 class="mt-2 text-uppercase">All</h5>
+        </div>
+        <div class="category-card text-center btn" onclick="filterProducts('Lipstick')">
+          <img src="images/cosmetics/img6.jpg" alt="Lipstick">
+          <h5 class="mt-2 text-uppercase">Lipstick</h5>
+        </div>
+        <div class="category-card text-center btn" onclick="filterProducts('Foundation')">
+          <img src="images/cosmetics/img5.jpg" alt="Foundation">
+          <h5 class="mt-2 text-uppercase">Foundation</h5>
+        </div>
+        <div class="category-card text-center btn" onclick="filterProducts('Face Powder')">
+          <img src="images/cosmetics/img4.jpg" alt="Face Powder">
+          <h5 class="mt-2 text-uppercase">Face Powder</h5>
+        </div>
+        <div class="category-card text-center btn" onclick="filterProducts('Eyeliner')">
+          <img src="images/cosmetics/img7.jpg" alt="Eyeliner">
+          <h5 class="mt-2 text-uppercase">Eyeliner</h5>
+        </div>
+        <div class="category-card text-center btn" onclick="filterProducts('Mascara')">
+          <img src="images/cosmetics/img8.jpg" alt="Mascara">
+          <h5 class="mt-2 text-uppercase">Mascara</h5>
+        </div>
+        <div class="category-card text-center btn" onclick="filterProducts('Highlighter')">
+          <img src="images/cosmetics/img9.jpg" alt="Highlighter">
+          <h5 class="mt-2 text-uppercase">Highlighter</h5>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="container py-4">
     <div class="row" id="productGrid"></div>
@@ -294,8 +289,8 @@
 
   <footer id="footer"></footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <!-- Scripts -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -317,7 +312,7 @@
 
     const grid = document.getElementById('productGrid');
 
-     function renderProducts(products) {
+    function renderProducts(products) {
       grid.innerHTML = '';
       products.forEach((p, index) => {
         grid.innerHTML += `
@@ -331,9 +326,9 @@
               <div class="card-body">
                 <h5 class="card-title">${p.name}</h5>
                 <p class="card-text"><strong>Brand:</strong> ${p.brand}<br><strong>Price:</strong> ${p.price}</p>
-<a href="cosmetic-details.php?id=${p.id}" class="btn btn-cart">
-  <i class="fas fa-cart-plus me-1"></i> Add to Cart
-</a>
+                <button class="btn btn-cart" onclick="handleAddToCart(${p.id})">
+                  <i class="fas fa-cart-plus me-1"></i> Add to Cart
+                </button>
               </div>
             </div>
           </div>
@@ -344,6 +339,33 @@
     function filterProducts(category) {
       const filtered = category === 'all' ? productData : productData.filter(p => p.category === category);
       renderProducts(filtered);
+    }
+
+    function handleAddToCart(productId) {
+      // Fake login check for demo (replace with real check like PHP session)
+      const isLoggedIn = false; // Assume user is not logged in
+
+      if (!isLoggedIn) {
+        Swal.fire({
+          title: 'Please login to continue',
+          text: 'You need to login or register before adding to cart.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Login',
+          cancelButtonText: 'Register',
+          confirmButtonColor: '#ff7c4d',
+          cancelButtonColor: '#ffd8b1'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = 'login.php';
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            window.location.href = 'registeration.php';
+          }
+        });
+      } else {
+        // Proceed to cart logic here
+        console.log('Adding to cart: ', productId);
+      }
     }
   </script>
 </body>

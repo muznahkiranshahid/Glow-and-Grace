@@ -44,7 +44,7 @@ document.getElementById(
               <p class="text-white">Stay updated on offers, trends, and beauty tips. Join our newsletter now!</p>
               <div class="position-relative mx-auto rounded-pill">
                 <input class="form-control rounded-pill border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
-                <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                <button type="button" class="btn footer-btn rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
               </div>
             </div>
           </div>

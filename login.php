@@ -1,21 +1,22 @@
-<!doctype html>
+<?php session_start(); ?>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Glow & Grace</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="UTF-8" />
+  <title>Glow & Grace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <link rel="stylesheet" href="./style/style.css" />
 </head>
@@ -38,14 +39,14 @@
 
   <!-- Login Form Section -->
   <section class="py-5">
-    <div class="container">
-      <div class="register-card animate">
+    <div class="container-fluid">
+      <div class="register-card wider-card animate">
         <h2>Login Form</h2>
         <p class="small-text">Welcome back! Please login to continue.</p>
 
         <?php
         include 'conn.php';
-        session_start();
+
         if (isset($_POST['btnlogin'])) {
             $name = $_POST['name'];
             $password = $_POST['password'];
@@ -56,16 +57,26 @@
                 exit();
             }
 
-            $query = "SELECT * FROM crud WHERE name='$name' AND password='$password'";
-            $result = mysqli_query($connection, $query);
+            $query = "SELECT * FROM users WHERE username = ?";
+            $stmt = $connection->prepare($query);
+            $stmt->bind_param("s", $name);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-            if (mysqli_num_rows($result) == 1) {
-                $_SESSION['username'] = $name;
-                header("Location: index.php");
-                exit();
+            if ($result->num_rows === 1) {
+                $row = $result->fetch_assoc();
+                if (password_verify($password, $row['password'])) {
+                    $_SESSION['username'] = $name;
+                    header("Location: index.php");
+                    exit();
+                } else {
+                    echo "<div class='alert alert-danger text-center'>❌ Invalid password.</div>";
+                }
             } else {
-                echo "<div class='alert alert-danger text-center'>❌ Invalid credentials</div>";
+                echo "<div class='alert alert-danger text-center'>❌ Username not found.</div>";
             }
+
+            $stmt->close();
         }
         ?>
 
@@ -84,7 +95,7 @@
     </div>
   </section>
 
-  <!-- Benefits of Logging In (Optional) -->
+  <!-- Why Login Section -->
   <section class="why-register-section py-5">
     <div class="container">
       <h2 class="section-title animate">Why Login to MakeHub?</h2>
