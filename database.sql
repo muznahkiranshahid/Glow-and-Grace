@@ -15,4 +15,16 @@ CREATE TABLE contact_messages (
   message TEXT,
   submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  brand VARCHAR(255),
+  category VARCHAR(255),
+  price VARCHAR(50),
+  image1 VARCHAR(255),
+  image2 VARCHAR(255),
+  image3 VARCHAR(255),
+  description TEXT
+);
+
 

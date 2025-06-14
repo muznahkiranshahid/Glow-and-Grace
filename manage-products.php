@@ -1,8 +1,18 @@
-<?php
-// manage-products.php
+<?php  
 session_start();
-// include 'db.php'; // Your database connection
+include 'conn.php'; // database connection
+$json = file_get_contents('./json/cosmetics.json'); 
+
+$category = $_GET['category'] ?? 'cosmetics';
+$categoryName = $category === 'jewelery' ? 'Jewelry' : 'Cosmetics';
+$categoryId = $category === 'jewelery' ? 2 : 1;
 ?>
+<?php
+$category = $_GET['category'] ?? 'cosmetics';
+$jsonPath = $category === 'jewelery' ? './json/jewelery.json' : './json/cosmetics.json';
+$data = json_decode(file_get_contents($jsonPath), true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +91,8 @@ session_start();
   <div class="sidebar d-flex flex-column">
     <h4 class="text-center mb-4">Admin Panel</h4>
     <a href="admin-dashboard.php">Dashboard</a>
-    <a href="manage-products.php">Manage Products</a>
+    <a href="manage-products.php?category=cosmetics">Cosmetics</a>
+    <a href="manage-products.php?category=jewelery">Jewelry</a>
     <a href="#">Manage Categories</a>
     <a href="#">Manage Users</a>
     <a href="#">Orders</a>
@@ -92,13 +103,13 @@ session_start();
 
   <!-- Main Content -->
   <div class="main-content">
-    <h2 class="mb-4">Manage Products</h2>
+    <h2 class="mb-4">Manage <?= $categoryName ?> Products</h2>
 
     <!-- Add Product Form -->
     <div class="card mb-5">
       <div class="card-header">Add New Product</div>
       <div class="card-body">
-        <form action="add-product.php" method="POST" enctype="multipart/form-data">
+        <form action="add-product.php?category=<?= $category ?>" method="POST" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label">Product Name</label>
@@ -107,14 +118,6 @@ session_start();
             <div class="col-md-6">
               <label class="form-label">Brand</label>
               <input type="text" name="brand" class="form-control" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Category</label>
-              <select name="category_id" class="form-select" required>
-                <option value="">Select</option>
-                <option value="1">Cosmetics</option>
-                <option value="2">Jewelry</option>
-              </select>
             </div>
             <div class="col-md-6">
               <label class="form-label">Price</label>
@@ -129,6 +132,7 @@ session_start();
               <input type="file" name="image" class="form-control" required>
             </div>
           </div>
+          <input type="hidden" name="category_id" value="<?= $categoryId ?>">
           <button type="submit" class="btn mt-3" style="background-color: var(--peach-dark); color: white;">Add Product</button>
         </form>
       </div>
@@ -151,20 +155,28 @@ session_start();
             </tr>
           </thead>
           <tbody>
-            <!-- Sample row (replace with dynamic PHP loop) -->
-            <tr>
-              <td>1</td>
-              <td><img src="../img/sample.jpg" width="50"></td>
-              <td>Glow Lipstick</td>
-              <td>L'Oréal</td>
-              <td>Cosmetics</td>
-              <td>$25.00</td>
-              <td>
-                <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-              </td>
-            </tr>
-            <!-- Loop ends -->
+            <?php
+              $query = "SELECT * FROM products WHERE category_id = $categoryId ORDER BY id DESC";
+              $result = mysqli_query($connection, $query);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<tr>";
+                  echo "<td>{$row['id']}</td>";
+                  echo "<td><img src='../img/products/{$row['image']}' width='50'></td>";
+                  echo "<td>{$row['name']}</td>";
+                  echo "<td>{$row['brand']}</td>";
+                  echo "<td>" . ($row['category_id'] == 1 ? 'Cosmetics' : 'Jewelry') . "</td>";
+                  echo "<td>$" . number_format($row['price'], 2) . "</td>";
+                  echo "<td>
+                          <a href='edit-product.php?id={$row['id']}&category={$category}' class='btn btn-sm btn-warning'>Edit</a>
+                          <a href='delete-product.php?id={$row['id']}&category={$category}' class='btn btn-sm btn-danger' onclick=\"return confirm('Delete this product?')\">Delete</a>
+                        </td>";
+                  echo "</tr>";
+                }
+              } else {
+                echo "<tr><td colspan='7'>No products found.</td></tr>";
+              }
+            ?>
           </tbody>
         </table>
       </div>
