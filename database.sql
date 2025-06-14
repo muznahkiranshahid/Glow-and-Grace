@@ -7,3 +7,12 @@ CREATE TABLE users (
     email VARCHAR(150) UNIQUE,
     password VARCHAR(255)
 );
+CREATE TABLE contact_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100),
+  subject VARCHAR(255),
+  message TEXT,
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

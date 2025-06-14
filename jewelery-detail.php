@@ -129,7 +129,7 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="cosmetics.php">Cosmetics</a></li>
+            <li class="nav-item"><a class="nav-link" href="jewelery.php">Jewelery</a></li>
             <li class="nav-item">
               <a href="cart.php" class="btn btn-outline-dark">🛒</a>
 
@@ -146,7 +146,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-center">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="cosmetics.php">Cosmetics</a></li>
+          <li class="breadcrumb-item"><a href="jewelery.php">Jewelery</a></li>
           <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
       </nav>
@@ -156,7 +156,7 @@
   <div class="container py-5">
     <?php
       $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-      $jsonData = file_get_contents('json/cosmetics.json');
+      $jsonData = file_get_contents('json/jewelery.json');
       $products = json_decode($jsonData, true);
       $found = false;
 
@@ -194,7 +194,7 @@
   </div>
 
   <footer>
-    <p>&copy; <?php echo date("Y"); ?> MakeHub Cosmetics. All rights reserved.</p>
+    <p>&copy; <?php echo date("Y"); ?> MakeHub jewelery. All rights reserved.</p>
   </footer>
 
   <!-- Cart Modal -->

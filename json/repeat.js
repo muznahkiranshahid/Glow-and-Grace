@@ -2,25 +2,38 @@ document.getElementById(
     "header"
   ).innerHTML = `  
               <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Glow & Grace</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Cosmetics</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Jewelry</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand" href="#" data-aos="fade-down">Glow & Grace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="cosmetic-product.php">Cosmetics</a></li>
+        <li class="nav-item"><a class="nav-link" href="jewelery.php">Jewelery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.php">Contact us</a></li>
+      </ul>
     </div>
-  </nav>
-          `;
-      
-  
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+    <div class="nav-icons d-flex align-items-center">
+      <a href="profile.php"><i class="fas fa-user"></i></a>
+      <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+</div>
+`;
+
   // FOOTER
   document.getElementById("footer").innerHTML = `<div class="container-fluid footer py-5">
       <div class="container py-5">

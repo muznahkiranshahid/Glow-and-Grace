@@ -7,6 +7,135 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./style/style.css" />
+  <style>
+      /* Register Card */
+      .register-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(204, 122, 78, 0.25);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .register-card h2 {
+        color: var(--peach-dark);
+        margin-bottom: 10px;
+      }
+      .register-card .small-text {
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+      .register-card input.form-control {
+        background-color: var(--peach-light);
+        border: 1px solid var(--peach);
+        color: var(--text-dark);
+        border-radius: 10px;
+      }
+      .register-card input.form-control::placeholder {
+        color: var(--text-muted);
+      }
+      .btn-register {
+        background-color: var(--peach);
+        color: var(--bg-light);
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px 0;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      .btn-register:hover {
+        background-color: var(--peach-dark);
+        color: var(--bg-light);
+      }
+      .login-link {
+        text-align: center;
+        margin-top: 15px;
+      }
+      .login-link a {
+        color: var(--peach-dark);
+        text-decoration: none;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Why Register */
+      .why-register-section {
+        background-color: var(--peach-light);
+        color: var(--text-dark);
+        text-align: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: var(--peach-dark);
+      }
+      .why-register-feature {
+        background-color: #fff3e6;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(204, 122, 78, 0.15);
+        transition: transform 0.3s ease;
+      }
+      .why-register-feature:hover {
+        transform: translateY(-5px);
+      }
+      .why-register-feature .icon {
+        font-size: 2rem;
+        color: var(--peach-dark);
+        margin-bottom: 10px;
+      }
+      .why-register-feature h5 {
+        color: var(--peach-dark);
+        margin-bottom: 10px;
+      }
+
+      /* Animations */
+      .animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+      }
+      .animate.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+/* Register/Login card style */
+.register-card {
+  background-color: #1c1c1c;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  max-width: 500px;
+  margin: auto;
+}
+.btn-register {
+  background: linear-gradient(to right, #ff9a8b, #ff6a88, #ff99ac);
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  transition: transform 0.3s;
+}
+.btn-register:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ff6a88, #ff9a8b);
+}
+
+
+
+.sidebar button:hover {
+  background-color: #ff6a88;
+  color: #fff;
+}
+  </style>
+
 </head>
 <body>
   <!-- Navbar -->

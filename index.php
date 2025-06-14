@@ -39,7 +39,7 @@
       .navbar-brand {
         font-family: 'Great Vibes', cursive;
         font-size: 2.2rem;
-        color: var(--peach-dark) !important;
+        color: black !important;
       }
       .navbar-nav .nav-link {
         color: var(--text-dark) !important;
@@ -186,7 +186,7 @@
         transition: opacity 0.4s ease;
         font-weight: bold;
         background-color: rgba(255, 255, 255, 0.75);
-        padding: 10px 15px;
+        padding: 5px 10px;
         border-radius: 10px;
       }
       .hover-image-container:hover .hover-text {
@@ -336,14 +336,33 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#about" data-aos="fade-down" data-aos-delay="100">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#services" data-aos="fade-down" data-aos-delay="200">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="#testimonials" data-aos="fade-down" data-aos-delay="250">Testimonials</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact" data-aos="fade-down" data-aos-delay="300">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.php" data-aos="fade-down" data-aos-delay="100">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="cosmetic-product.php" data-aos="fade-down" data-aos-delay="200">Cosmetics</a></li>
+            <li class="nav-item"><a class="nav-link" href="jewelery.php" data-aos="fade-down" data-aos-delay="250">Jewelery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.php" data-aos="fade-down" data-aos-delay="300">Contact us</a></li>
           </ul>
         </div>
       </div>
     </nav>
+    <!-- Breadcrumb and Icons Bar -->
+<div class="breadcrumb-bar">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+
+    <!-- Icons Nav -->
+    <div class="nav-icons d-flex align-items-center">
+      <a href="profile.php" aria-label="Profile"><i class="fas fa-user"></i></a>
+      <a href="cart.php" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+</div>
+
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
