@@ -1,20 +1,29 @@
 <?php
-// delete-product.php
 session_start();
-include '../includes/db.php';
 
-if (isset($_GET['id'])) {
-  $id = (int)$_GET['id'];
+$category = $_GET['category'] ?? 'jewelery';
+$id = $_GET['id'] ?? null;
 
-  // Optional: fetch image and delete file
-  $getImg = mysqli_query($conn, "SELECT image FROM products WHERE id=$id");
-  if ($getImg && mysqli_num_rows($getImg)) {
-    $img = mysqli_fetch_assoc($getImg)['image'];
-    unlink("../img/products/$img"); // delete image
-  }
-
-  mysqli_query($conn, "DELETE FROM products WHERE id=$id");
+if (!$id) {
+  die("Product ID is missing.");
 }
-header("Location: manage-products.php");
-exit();
+
+$filePath = $category === 'cosmetics' ? './json/cosmetics.json' : './json/jewelery.json';
+
+$data = json_decode(file_get_contents($filePath), true);
+
+// Filter out product with the given ID
+$updatedData = array_filter($data, function ($item) use ($id) {
+  return $item['id'] != $id;
+});
+
+// Reindex array to preserve proper structure
+$updatedData = array_values($updatedData);
+
+// Save updated data back to JSON
+file_put_contents($filePath, json_encode($updatedData, JSON_PRETTY_PRINT));
+
+// Redirect back to dashboard
+header("Location: admin-dashboard.php?category=$category");
+exit;
 ?>

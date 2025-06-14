@@ -331,7 +331,7 @@
               <div class="card-body">
                 <h5 class="card-title">${p.name}</h5>
                 <p class="card-text"><strong>Brand:</strong> ${p.brand}<br><strong>Price:</strong> ${p.price}</p>
-<a href="jewelery-detail.php?id=${p.id}" class="btn btn-cart">
+<a href="cosmetic-details.php?id=${p.id}" class="btn btn-cart">
   <i class="fas fa-cart-plus me-1"></i> Add to Cart
 </a>
               </div>

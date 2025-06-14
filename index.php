@@ -21,7 +21,7 @@
       :root {
         --peach-light: #fff5f0;
         --peach-base: #ffd8b1;
-        --peach-dark: #ff7c4d;
+        --peach-dark:rgb(248, 156, 123);
         --text-dark: #2e2e2e;
       }
 
@@ -134,12 +134,6 @@
         height: auto;
         border-radius: 10px;
       }
-      @media (max-width: 768px) {
-        .container {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
       
       .btn-cta {
         background: var(--peach-dark);
@@ -192,7 +186,6 @@
       .hover-image-container:hover .hover-text {
         opacity: 1;
       }
-
       .card {
         background-color: var(--peach-light);
         border: none;
@@ -211,7 +204,6 @@
       .card-text {
         color: var(--text-dark);
       }
-
       /* Testimonials Section */
       .testimonials-section {
         background: rgba(255, 216, 177, 0.3);
@@ -322,6 +314,12 @@
       ::-webkit-scrollbar-thumb {
         background-color: var(--peach-dark);
         border-radius: 4px;
+      }
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -516,59 +514,68 @@
 
     <!-- Footer -->
     <footer id="footer">
-      <div class="container-fluid py-5">
-        <div class="container py-4">
-          <div class="row g-5">
-            <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up">
-              <div class="footer-item">
-                <h4 class="mb-4">Newsletter</h4>
-                <p>Stay updated on offers, trends, and beauty tips. Join our newsletter now!</p>
-                <div class="position-relative">
-                  <input class="form-control rounded-pill footer-input py-3 ps-4 pe-5 mb-3" type="text" placeholder="Enter your email">
-                  <button type="button" class="btn footer-btn rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="footer-item d-flex flex-column">
-                <h4 class="mb-4">Our Services</h4>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Facials</a>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Waxing</a>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Massage</a>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Mineral Baths</a>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Body Treatments</a>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Aroma Therapy</a>
-                <a href="#"><i class="fas fa-angle-right me-2"></i> Stone Spa</a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
-              <div class="footer-item d-flex flex-column">
-                <h4 class="mb-4">Schedule</h4>
-                <p class="mb-2">Monday: <span>09:00 am – 10:00 pm</span></p>
-                <p class="mb-2">Saturday: <span>09:00 am – 08:00 pm</span></p>
-                <p class="mb-3">Sunday: <span>09:00 am – 05:00 pm</span></p>
-                <h4 class="my-3">Address</h4>
-                <p><i class="fas fa-map-marker-alt me-2"></i> 123 Ranking Street, New York, USA</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
-              <div class="footer-item d-flex flex-column">
-                <h4 class="mb-4">Follow Us</h4>
-                <a href="#"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
-                <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
-                <a href="#"><i class="fab fa-twitter me-2"></i> Twitter</a>
-                <h4 class="my-3">Contact Us</h4>
-                <p><i class="fas fa-envelope me-2"></i> info@example.com</p>
-                <p><i class="fas fa-phone me-2"></i> (+012) 3456 7890 123</p>
-              </div>
+  <div class="container-fluid py-5">
+    <div class="container py-4">
+      <div class="row g-5">
+        <!-- Newsletter -->
+        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up">
+          <div class="footer-item">
+            <h4 class="mb-4">Newsletter</h4>
+            <p>Be the first to hear about new arrivals, exclusive deals, and beauty tips!</p>
+            <div class="position-relative">
+            <a href="login.php">
+              <button type="button" class="btn footer-btn rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">Sign Up</button></a>
             </div>
           </div>
-          <div class="text-center mt-5 pt-3" data-aos="fade-up">
-            <p class="mb-0">&copy; 2023 Glow & Grace. All rights reserved.</p>
+        </div>
+
+        <!-- Services -->
+        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-item d-flex flex-column">
+            <h4 class="mb-4">Shop Categories</h4>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Skincare Products</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Makeup Kits</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Hair Care</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Necklaces</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Earrings</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Rings</a>
+            <a href="#"><i class="fas fa-angle-right me-2"></i> Bridal Collection</a>
+          </div>
+        </div>
+
+        <!-- Hours & Address -->
+        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="footer-item d-flex flex-column">
+            <h4 class="mb-4">Store Hours</h4>
+            <p class="mb-2">Monday - Friday: <span>10:00 am – 08:00 pm</span></p>
+            <p class="mb-2">Saturday: <span>10:00 am – 06:00 pm</span></p>
+            <p class="mb-3">Sunday: <span>Closed</span></p>
+            <h4 class="my-3">Location</h4>
+            <p><i class="fas fa-map-marker-alt me-2"></i> Glow & Grace, Main Street, Lahore, Pakistan</p>
+          </div>
+        </div>
+
+        <!-- Social & Contact -->
+        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="footer-item d-flex flex-column">
+            <h4 class="mb-4">Connect with Us</h4>
+            <a href="#"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
+            <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
+            <a href="#"><i class="fab fa-pinterest me-2"></i> Pinterest</a>
+            <h4 class="my-3">Contact Us</h4>
+            <p><i class="fas fa-envelope me-2"></i> support@glowandgrace.com</p>
+            <p><i class="fas fa-phone me-2"></i> (+92) 300 123 4567</p>
           </div>
         </div>
       </div>
-    </footer>
+
+      <!-- Footer Bottom -->
+      <div class="text-center mt-5 pt-3" data-aos="fade-up">
+        <p class="mb-0">&copy; 2025 Glow & Grace. All rights reserved. Crafted with ❤️ for beauty lovers.</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

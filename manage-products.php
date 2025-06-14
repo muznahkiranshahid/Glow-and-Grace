@@ -1,26 +1,17 @@
-<?php  
-session_start();
-include 'conn.php'; // database connection
-$json = file_get_contents('./json/cosmetics.json'); 
-
-$category = $_GET['category'] ?? 'cosmetics';
-$categoryName = $category === 'jewelery' ? 'Jewelry' : 'Cosmetics';
-$categoryId = $category === 'jewelery' ? 2 : 1;
-?>
+<?php session_start(); ?>
 <?php
 $category = $_GET['category'] ?? 'cosmetics';
 $jsonPath = $category === 'jewelery' ? './json/jewelery.json' : './json/cosmetics.json';
 $data = json_decode(file_get_contents($jsonPath), true);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Manage Products - Glow & Grace</title>
+  <title>Manage <?= ucfirst($category) ?> Products</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     :root {
       --peach-light: #fff5f0;
@@ -63,126 +54,109 @@ $data = json_decode(file_get_contents($jsonPath), true);
       padding: 2rem;
     }
 
-    .card {
+    .admin-header {
+      background: linear-gradient(135deg, var(--peach-base), #fff);
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
     }
 
-    .card-header {
+    .table thead {
       background-color: var(--peach-dark);
       color: white;
-      font-weight: 600;
     }
 
-    table {
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
+    .btn-edit, .btn-delete {
+      border-radius: 30px;
+      padding: 5px 12px;
+      font-size: 0.9rem;
     }
 
-    th {
+    .btn-edit {
+      background: var(--peach-dark);
+      color: black;
+    }
+
+    .btn-delete {
+      background: #dc3545;
+      color: white;
+    }
+
+    footer {
       background-color: var(--peach-base);
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar d-flex flex-column">
-    <h4 class="text-center mb-4">Admin Panel</h4>
-    <a href="admin-dashboard.php">Dashboard</a>
-    <a href="manage-products.php?category=cosmetics">Cosmetics</a>
-    <a href="manage-products.php?category=jewelery">Jewelry</a>
-    <a href="#">Manage Categories</a>
-    <a href="#">Manage Users</a>
-    <a href="#">Orders</a>
-    <a href="#">Reports</a>
-    <a href="#">Backup</a>
-    <a href="#">Logout</a>
+<!-- Sidebar -->
+<div class="sidebar d-flex flex-column">
+  <h4 class="text-center mb-4">Admin Panel</h4>
+  <a href="admin-dashboard.php?category=cosmetics">Cosmetics Dashboard</a>
+  <a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>
+  <a href="manage-products.php?category=cosmetics">Manage Cosmetics</a>
+  <a href="manage-products.php?category=jewelery">Manage Jewelry</a>
+  <a href="#">Manage Categories</a>
+  <a href="#">Manage Users</a>
+  <a href="#">Orders</a>
+  <a href="#">Reports</a>
+  <a href="#">Backup</a>
+  <a href="#">Logout</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="admin-header">
+    <h1>Manage <?= ucfirst($category) ?> Products</h1>
   </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <h2 class="mb-4">Manage <?= $categoryName ?> Products</h2>
-
-    <!-- Add Product Form -->
-    <div class="card mb-5">
-      <div class="card-header">Add New Product</div>
-      <div class="card-body">
-        <form action="add-product.php?category=<?= $category ?>" method="POST" enctype="multipart/form-data">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label">Product Name</label>
-              <input type="text" name="name" class="form-control" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Brand</label>
-              <input type="text" name="brand" class="form-control" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Price</label>
-              <input type="number" step="0.01" name="price" class="form-control" required>
-            </div>
-            <div class="col-md-12">
-              <label class="form-label">Description</label>
-              <textarea name="description" rows="3" class="form-control" required></textarea>
-            </div>
-            <div class="col-md-12">
-              <label class="form-label">Product Image</label>
-              <input type="file" name="image" class="form-control" required>
-            </div>
-          </div>
-          <input type="hidden" name="category_id" value="<?= $categoryId ?>">
-          <button type="submit" class="btn mt-3" style="background-color: var(--peach-dark); color: white;">Add Product</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Product List Table -->
-    <div class="card">
-      <div class="card-header">All Products</div>
-      <div class="card-body">
-        <table class="table table-bordered table-hover text-center align-middle">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Brand</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th style="width: 160px;">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-              $query = "SELECT * FROM products WHERE category_id = $categoryId ORDER BY id DESC";
-              $result = mysqli_query($connection, $query);
-              if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                  echo "<tr>";
-                  echo "<td>{$row['id']}</td>";
-                  echo "<td><img src='../img/products/{$row['image']}' width='50'></td>";
-                  echo "<td>{$row['name']}</td>";
-                  echo "<td>{$row['brand']}</td>";
-                  echo "<td>" . ($row['category_id'] == 1 ? 'Cosmetics' : 'Jewelry') . "</td>";
-                  echo "<td>$" . number_format($row['price'], 2) . "</td>";
-                  echo "<td>
-                          <a href='edit-product.php?id={$row['id']}&category={$category}' class='btn btn-sm btn-warning'>Edit</a>
-                          <a href='delete-product.php?id={$row['id']}&category={$category}' class='btn btn-sm btn-danger' onclick=\"return confirm('Delete this product?')\">Delete</a>
-                        </td>";
-                  echo "</tr>";
-                }
-              } else {
-                echo "<tr><td colspan='7'>No products found.</td></tr>";
-              }
-            ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
+  <div class="text-end mb-3">
+    <a href="add-product.php?category=<?= $category ?>" class="btn btn-sm" style="background-color: var(--peach-dark); color: white;">
+      <i class="fas fa-plus-circle me-1"></i> Add New Product
+    </a>
   </div>
 
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle text-center">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($data as $item): ?>
+        <tr>
+          <td><?= $item['id'] ?></td>
+          <td><img src="<?= $item['image1'] ?>" width="60" /></td>
+          <td><?= $item['name'] ?></td>
+          <td><?= $item['brand'] ?></td>
+          <td><?= $item['category'] ?></td>
+          <td><?= $item['price'] ?></td>
+          <td>
+            <a href="edit-product.php?category=<?= $category ?>&id=<?= $item['id'] ?>" class="btn btn-edit"><i class="fas fa-edit"></i></a>
+            <a href="delete-product.php?category=<?= $category ?>&id=<?= $item['id'] ?>" class="btn btn-delete" onclick="return confirm('Delete this product?')"><i class="fas fa-trash"></i></a>
+          </td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 MakeHub Admin Panel</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

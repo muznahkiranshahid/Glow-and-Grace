@@ -23,7 +23,6 @@ CREATE TABLE products (
   price VARCHAR(50),
   image1 VARCHAR(255),
   image2 VARCHAR(255),
-  image3 VARCHAR(255),
   description TEXT
 );
 

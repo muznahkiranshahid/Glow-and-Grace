@@ -1,123 +1,124 @@
 [
-  {
-    "id": 1,
-    "name": "Sparkling Infinity Heart Collier Necklace Sterling silver",
-    "brand": "Pandora",
-    "category": "Necklace",
-    "price": "$95.00",
-    "image1": "images/jewels/pandora/p1.jpg",
-    "image2": "images/jewels/pandora/p1-1.jpg",
-    "desc": "Celebrate your love to infinity and beyond with the Sparkling Infinity Heart Collier Necklace. Featuring a fixed infinity symbol and heart pendant, this piece symbolizes the power of unbreakable bonds "
-  },
-  {
-    "id": 2,
-    "name": "Pandora Rose Gold Ring",
-    "brand": "Pandora",
-    "category": "Ring",
-    "price": "$120.00",
-    "image1": "images/jewels/pandora/p2.jpg",
-    "image2": "images/jewels/pandora/p2-2.jpg",
-    "desc": "Add a sophisticated touch to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in 14k rose gold unique metal blend, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 3,
-    "name": "Pandora Sterling Silver Earrings",
-    "brand": "Pandora",
-    "category": "Earrings",
-    "price": "$80.00",
-    "image1": "images/jewels/pandora/p3.jpg",
-    "image2": "images/jewels/pandora/p3-3.jpg",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Earrings. The earrings drawinspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo."
-  },
-  {
-    "id": 4,
-    "name": "Pandora Rose Gold Necklace",
-    "brand": "Pandora",
-    "category": "Necklace",
-    "price": "$150.00",
-    "image1": "images/jewels/pandora/p4.jpg",
-    "image2": "images/jewels/pandora/p4-4.jpg",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Necklace. The necklace draws inspiration from the classic Pandora Timeless collection. Hand-finished in 14k rose gold unique metal blend, this piece features a pink heart-shaped central, elevated stone. Clear cubiczirconia create the halo and decorate half of the necklace band, with the Pandora logo inside the shank. Stack this necklace with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 5,
-    "name": "Pandora Sterling Silver Ring",
-    "brand": "Pandora",
-    "category": "Ring",
-    "price": "$100.00",
-    "image1": "images/jewels/pandora/p5.jpg",
-    "image2": "images/jewels/pandora/p5-5.jpg",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 6,
-    "name": "Swarovski Tennis necklace",
-    "brand": "Swarovski",
-    "category": "Necklace",
-    "price": "$200.00",
-    "image1": "images/jewels/swarosvski/p1.jpg",
-    "image2": "images/jewels/swarosvski/p1-1.jpg",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Necklace. The necklace draws inspiration from the classic Pandora Timeless collection. Hand-finished in 14k ros gold unique metal blend, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the necklace band, with the Pandora logo inside the shank. Stack this necklace with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 7,
-    "name": "Swarovski Drop earrings Blue, Rhodium plated",
-    "brand": "Swarovski",
-    "category": "Earrings",
-    "price": "$120.00",
-    "image1": "images/jewels/swarosvski/p2.png",
-    "image2": "images/jewels/swarosvski/p2-2.png ",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Earrings . The earrings drawinspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver , this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo."
-  },
-  {
-    "id": 8,
-    "name": "Swarovski Gema ring Set (3), Mixed cuts, Multicolored, Gold-tone plated",
-    "brand": "Swarovski",
-    "category": "Ring",
-    "price": "$80.00",
-    "image1": "images/jewels/swarosvski/p3.png",
-    "image2": "images/jewels/swarosvski/p3-3.jpg ",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 9,
-    "name": "Swarovski Millenia Tennis bracelet Octagon cut, Pink, Gold-tone plated",
-    "brand": "Swarovski",
-    "category": "Bracelet",
-    "price": "$80.00",
-    "image1": "images/jewels/swarosvski/p4.jpg",
-    "image2": "images/jewels/swarosvski/p4-4.jpg",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 10,
-    "name": "SWAROVSKI matrix hoop earrings - pink",
-    "brand": "Swarovski",
-    "category": "Earrings",
-    "price": "$80.00",
-    "image1": "images/jewels/swarosvski/p5.jpg",
-    "image2": "images/jewels/swarosvski/p5-5.jpg",
-    "desc": "The Swarovski Matrix hoop earrings feature clear round stones and rhodium-plated metal."
-  },
-  {
-    "id": 11,
-    "name": "Matrix brooch Pear cut, White, Rhodium plated",
-    "brand": "Swarovski",
-    "category": "Brooches",
-    "price": "$189.00",
-    "image1": "images/jewels/swarosvski/p6.png",
-    "image2": "images/jewels/swarosvski/p6-6.png",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring . The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
-  },
-  {
-    "id": 12,
-    "name": "Dextera Bangle watch Swiss Made, Metal bracelet, Silver tone, Stainless steel",
-    "brand": "Swarovski",
-    "category": "Watches",
-    "price": "$120.00",
-    "image1": "images/jewels/swarosvski/p7.png",
-    "image2": "images/jewels/swarosvski/p7-7.png",
-    "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring . The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
+    {
+        "id": 1,
+        "name": "Sparkling Infinity Heart Collier Necklace Sterling silver",
+        "brand": "Pandora",
+        "category": "Necklace",
+        "price": "$100.00",
+        "image1": "images\/jewels\/pandora\/p1.jpg",
+        "image2": "images\/jewels\/pandora\/p1-1.jpg",
+        "desc": "Celebrate your love to infinity and beyond with the Sparkling Infinity Heart Collier Necklace. Featuring a fixed infinity symbol and heart pendant, this piece symbolizes the power of unbreakable bonds ",
+        "description": "<br \/>\r\n<b>Warning<\/b>:  Undefined array key \"description\" in <b>C:\\xampp\\htdocs\\cosmetics-website\\edit-product.php<\/b> on line <b>109<\/b><br \/>\r\n"
+    },
+    {
+        "id": 2,
+        "name": "Pandora Rose Gold Ring",
+        "brand": "Pandora",
+        "category": "Ring",
+        "price": "$120.00",
+        "image1": "images\/jewels\/pandora\/p2.jpg",
+        "image2": "images\/jewels\/pandora\/p2-2.jpg",
+        "desc": "Add a sophisticated touch to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in 14k rose gold unique metal blend, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 3,
+        "name": "Pandora Sterling Silver Earrings",
+        "brand": "Pandora",
+        "category": "Earrings",
+        "price": "$80.00",
+        "image1": "images\/jewels\/pandora\/p3.jpg",
+        "image2": "images\/jewels\/pandora\/p3-3.jpg",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Earrings. The earrings drawinspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo."
+    },
+    {
+        "id": 4,
+        "name": "Pandora Rose Gold Necklace",
+        "brand": "Pandora",
+        "category": "Necklace",
+        "price": "$150.00",
+        "image1": "images\/jewels\/pandora\/p4.jpg",
+        "image2": "images\/jewels\/pandora\/p4-4.jpg",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Necklace. The necklace draws inspiration from the classic Pandora Timeless collection. Hand-finished in 14k rose gold unique metal blend, this piece features a pink heart-shaped central, elevated stone. Clear cubiczirconia create the halo and decorate half of the necklace band, with the Pandora logo inside the shank. Stack this necklace with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 5,
+        "name": "Pandora Sterling Silver Ring",
+        "brand": "Pandora",
+        "category": "Ring",
+        "price": "$100.00",
+        "image1": "images\/jewels\/pandora\/p5.jpg",
+        "image2": "images\/jewels\/pandora\/p5-5.jpg",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 6,
+        "name": "Swarovski Tennis necklace",
+        "brand": "Swarovski",
+        "category": "Necklace",
+        "price": "$200.00",
+        "image1": "images\/jewels\/swarosvski\/p1.jpg",
+        "image2": "images\/jewels\/swarosvski\/p1-1.jpg",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Necklace. The necklace draws inspiration from the classic Pandora Timeless collection. Hand-finished in 14k ros gold unique metal blend, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the necklace band, with the Pandora logo inside the shank. Stack this necklace with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 7,
+        "name": "Swarovski Drop earrings Blue, Rhodium plated",
+        "brand": "Swarovski",
+        "category": "Earrings",
+        "price": "$120.00",
+        "image1": "images\/jewels\/swarosvski\/p2.png",
+        "image2": "images\/jewels\/swarosvski\/p2-2.png ",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Earrings . The earrings drawinspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver , this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo."
+    },
+    {
+        "id": 8,
+        "name": "Swarovski Gema ring Set (3), Mixed cuts, Multicolored, Gold-tone plated",
+        "brand": "Swarovski",
+        "category": "Ring",
+        "price": "$80.00",
+        "image1": "images\/jewels\/swarosvski\/p3.png",
+        "image2": "images\/jewels\/swarosvski\/p3-3.jpg ",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 9,
+        "name": "Swarovski Millenia Tennis bracelet Octagon cut, Pink, Gold-tone plated",
+        "brand": "Swarovski",
+        "category": "Bracelet",
+        "price": "$80.00",
+        "image1": "images\/jewels\/swarosvski\/p4.jpg",
+        "image2": "images\/jewels\/swarosvski\/p4-4.jpg",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring. The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 10,
+        "name": "SWAROVSKI matrix hoop earrings - pink",
+        "brand": "Swarovski",
+        "category": "Earrings",
+        "price": "$80.00",
+        "image1": "images\/jewels\/swarosvski\/p5.jpg",
+        "image2": "images\/jewels\/swarosvski\/p5-5.jpg",
+        "desc": "The Swarovski Matrix hoop earrings feature clear round stones and rhodium-plated metal."
+    },
+    {
+        "id": 11,
+        "name": "Matrix brooch Pear cut, White, Rhodium plated",
+        "brand": "Swarovski",
+        "category": "Brooches",
+        "price": "$189.00",
+        "image1": "images\/jewels\/swarosvski\/p6.png",
+        "image2": "images\/jewels\/swarosvski\/p6-6.png",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring . The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
+    },
+    {
+        "id": 12,
+        "name": "Dextera Bangle watch Swiss Made, Metal bracelet, Silver tone, Stainless steel",
+        "brand": "Swarovski",
+        "category": "Watches",
+        "price": "$120.00",
+        "image1": "images\/jewels\/swarosvski\/p7.png",
+        "image2": "images\/jewels\/swarosvski\/p7-7.png",
+        "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring . The ring draws inspiration from the classic Pandora Timeless collection. Hand-finished in sterling silver, this piece features a pink heart-shaped central, elevated stone. Clear cubic zirconia create the halo and decorate half of the ring band, with the Pandora logo inside the shank. Stack this ring with hand-finished styles in sterling silver for a statement mixed metal look."
     },
     {
         "id": 13,
@@ -125,8 +126,8 @@
         "brand": "Xuping",
         "category": "Necklaces",
         "price": "$50.00",
-        "image1": "images/jewels/xuping/p1.jpg",
-        "image2": "images/jewels/xuping/p1-1.jpg",
+        "image1": "images\/jewels\/xuping\/p1.jpg",
+        "image2": "images\/jewels\/xuping\/p1-1.jpg",
         "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring"
     },
     {
@@ -135,8 +136,8 @@
         "brand": "Xuping",
         "category": "Bracelets",
         "price": "$147.00",
-        "image1": "images/jewels/xuping/p2.jpg",
-        "image2": "images/jewels/xuping/p2-2.jpg",
+        "image1": "images\/jewels\/xuping\/p2.jpg",
+        "image2": "images\/jewels\/xuping\/p2-2.jpg",
         "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring"
     },
     {
@@ -145,8 +146,8 @@
         "brand": "Xuping",
         "category": "Rings",
         "price": "$120.00",
-        "image1": "images/jewels/xuping/p3.jpg",
-        "image2": "images/jewels/xuping/p3-3.jpg",
+        "image1": "images\/jewels\/xuping\/p3.jpg",
+        "image2": "images\/jewels\/xuping\/p3-3.jpg",
         "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring"
     },
     {
@@ -155,10 +156,8 @@
         "brand": "Xuping",
         "category": "Earrings",
         "price": "$50.00",
-        "image1": "images/jewels/xuping/p4.jpg",
-        "image2": "images/jewels/xuping/p4-4.jpg",
+        "image1": "images\/jewels\/xuping\/p4.jpg",
+        "image2": "images\/jewels\/xuping\/p4-4.jpg",
         "desc": "Add a touch of elegance to your look with the Sparkling Elevated Heart Ring"
     }
-    
-
 ]
