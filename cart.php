@@ -10,7 +10,16 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Handle Checkout
+// ✅ Step 1: Fetch username from users table
+$username = '';
+$stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($username);
+$stmt->fetch();
+$stmt->close();
+
+// ✅ Step 2: Handle Checkout
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
     if (!empty($_SESSION['cart'])) {
         foreach ($_SESSION['cart'] as $item) {
@@ -19,14 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
             $quantity = (int)$item['quantity'];
             $total = $price * $quantity;
 
-            $stmt = $conn->prepare("INSERT INTO purchases (user_id, product_name, product_price, quantity, total) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("isdid", $user_id, $name, $price, $quantity, $total);
+            // ✅ Insert with username
+            $stmt = $conn->prepare("INSERT INTO purchases (user_id, username, product_name, product_price, quantity, total) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("issdii", $user_id, $username, $name, $price, $quantity, $total);
             $stmt->execute();
         }
 
         // Clear cart after storing
         unset($_SESSION['cart']);
-        echo "<script>alert('Order placed successfully!'); window.location='cart.php';</script>";
+        echo "<script>alert('Order placed successfully!'); window.location='index.php';</script>";
         exit();
     }
 }
@@ -69,17 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="#">MakeHub</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="cosmetics.php">Cosmetics</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Navbar -->
+    <header id="header"></header>
+    <!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
 
   <div class="container cart-box">
     <h2>Your Cart</h2>
@@ -100,14 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
 
             echo "<tr>";
             echo "<td>" . htmlspecialchars($name) . "</td>";
-            echo "<td>₹" . number_format($price, 2) . "</td>";
+            echo "<td>Rs. " . number_format($price, 2) . "</td>";
             echo "<td>" . $quantity . "</td>";
-            echo "<td>₹" . number_format($subtotal, 2) . "</td>";
+            echo "<td>Rs. " . number_format($subtotal, 2) . "</td>";
             echo "</tr>";
         }
 
         echo "</tbody></table></div>";
-        echo "<h5 class='text-end'>Total: ₹" . number_format($total, 2) . "</h5>";
+        echo "<h5 class='text-end'>Total: Rs. " . number_format($total, 2) . "</h5>";
         ?>
         <form method="post">
           <button type="submit" name="checkout" class="btn btn-outline-dark mt-3">Place Order</button>
@@ -122,5 +125,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
   <footer>
     <p>&copy; <?php echo date("Y"); ?> MakeHub Cosmetics. All rights reserved.</p>
   </footer>
+
+
+      <script src="./json/repeat.js"></script>
+
 </body>
 </html>

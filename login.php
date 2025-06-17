@@ -23,19 +23,9 @@
 <body>
   <!-- Navbar -->
   <header id="header"></header>
-
-  <!-- Page Header Section -->
-  <section class="page-header-section">
-    <div class="page-header-content animate">
-      <h1 class="display-4">Login</h1>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Login</li>
-        </ol>
-      </nav>
-    </div>
-  </section>
+<!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
+  
 
   <!-- Login Form Section -->
   <section class="py-5">
@@ -45,41 +35,37 @@
         <p class="small-text">Welcome back! Please login to continue.</p>
 
         <?php
-        include 'conn.php';
+require_once 'conn.php'; // ✅ this ensures $conn is available
 
-        if (isset($_POST['btnlogin'])) {
-            $name = $_POST['name'];
-            $password = $_POST['password'];
+// Example usage:
+$user_id = $_SESSION['user_id'] ?? null;
 
-            if ($name === 'admin' && $password === 'admin') {
-                $_SESSION['myuser'] = $name;
-                header("Location: admin.php");
-                exit();
-            }
+if ($user_id) {
+    $stmt = $conn->prepare("SELECT * FROM cart_items WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-            $query = "SELECT * FROM users WHERE username = ?";
-            $stmt = $connection->prepare($query);
-            $stmt->bind_param("s", $name);
-            $stmt->execute();
-            $result = $stmt->get_result();
+    // ... handle cart items here
 
-            if ($result->num_rows === 1) {
-                $row = $result->fetch_assoc();
-                if (password_verify($password, $row['password'])) {
-                    $_SESSION['username'] = $name;
-                    $_SESSION['user_id'] = $row['id']; // Store user ID for future use
-                    header("Location: cart.php");
-                    exit();
-                } else {
-                    echo "<div class='alert alert-danger text-center'>❌ Invalid password.</div>";
-                }
-            } else {
-                echo "<div class='alert alert-danger text-center'>❌ Username not found.</div>";
-            }
-
-            $stmt->close();
+    $stmt->close();
+} else {
+    echo "<script>
+      Swal.fire({
+        icon: 'warning',
+        title: 'Login Required',
+        text: 'Please login to view your cart.',
+        confirmButtonText: 'Login',
+        showCancelButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = 'login.php';
         }
-        ?>
+      });
+    </script>";
+}
+?>
+
 
         <form method="POST" action="">
           <div class="mb-3">
@@ -129,6 +115,9 @@
   <!-- Footer -->
   <footer id="footer"></footer>
 
+    <script src="json/repeat.js"></script>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const animatedElements = document.querySelectorAll('.animate');
@@ -142,6 +131,5 @@
     animatedElements.forEach(el => observer.observe(el));
   </script>
 
-  <script src="json/repeat.js"></script>
 </body>
 </html>

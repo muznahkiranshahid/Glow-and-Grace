@@ -76,15 +76,18 @@ $data = json_decode(file_get_contents($filePath), true);
   </style>
 </head>
 <body>
-
+<!-- Navbar -->
+    <header id="header"></header>
+    <!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
 <!-- Sidebar -->
 <div class="sidebar d-flex flex-column">
   <h4 class="text-center mb-4">Admin Panel</h4>
   <a href="admin-dashboard.php?category=cosmetics">Cosmetics Dashboard</a>
   <a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>
   <a href="#">Manage Categories</a>
-  <a href="#">Manage Users</a>
-  <a href="#">Orders</a>
+  <a href="admin-users.php">Manage Users</a>
+  <a href="admin-purchases.php">Orders</a>
   <a href="#">Reports</a>
   <a href="#">Backup</a>
   <a href="#">Logout</a>
@@ -137,6 +140,9 @@ $data = json_decode(file_get_contents($filePath), true);
     </div>
   </div>
 </div>
+
+
+<script src="./json/repeat.js"></script>
 
 </body>
 </html>

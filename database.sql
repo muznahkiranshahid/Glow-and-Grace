@@ -28,6 +28,7 @@ CREATE TABLE products (
 CREATE TABLE purchases (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
+  username VARCHAR(100),
   product_name VARCHAR(255),
   product_price DECIMAL(10,2),
   quantity INT,

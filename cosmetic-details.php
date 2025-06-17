@@ -196,6 +196,7 @@ if (!$product) {
   <footer>
     <p>&copy; <?php echo date("Y"); ?> MakeHub Cosmetics. All rights reserved.</p>
   </footer>
+    <script src="./json/repeat.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -203,13 +204,28 @@ if (!$product) {
     AOS.init();
 
     function promptLogin() {
-      alert("Please login to add items to your cart.");
+  Swal.fire({
+    icon: 'info',
+    title: 'Login Required',
+    text: 'Please login to add items to your cart.',
+    showCancelButton: true,
+    confirmButtonText: 'Login Now',
+    cancelButtonText: 'Cancel',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Redirect to login page
+      window.location.href = 'login.php';
     }
-
+  });
+}
     function validateQuantity() {
       const qty = document.getElementById('quantity').value;
       return qty > 0;
     }
   </script>
+  <!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

@@ -72,7 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </style>
 </head>
 <body>
-
+<!-- Navbar -->
+    <header id="header"></header>
+    <!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
 <div class="container py-5">
   <div class="row g-5 align-items-start">
     <!-- Left Column (Form) -->
@@ -128,6 +131,8 @@ if (!empty($successMsg)) {
     </div>
   </div>
 </div>
+
+<script src="./json/repeat.js"></script>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

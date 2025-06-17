@@ -232,17 +232,10 @@
     const isLoggedIn = <?= $isLoggedIn ? 'true' : 'false' ?>;
   </script>
 
-  <header id="header"></header>
-
-  <section class="page-header-section">
-    <div class="page-header-content text-center py-4" data-aos="fade-down">
-      <h1 class="display-4">Cosmetics</h1>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Cosmetics</li>
-        </ol>
-      </nav>
+  <!-- Navbar -->
+    <header id="header"></header>
+    <!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
     </div>
   </section>
 
@@ -288,7 +281,7 @@
   </div>
 
   <footer id="footer"></footer>
-
+<script src="./json/repeat.js"></script>
  <!-- Scripts -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>

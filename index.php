@@ -330,47 +330,35 @@
           text-align: center;
         }
       }
+       /* Page Header */
+  .page-header-section {
+    background: linear-gradient(to right, var(--peach-base), var(--peach-dark));
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-light);
+  }
+  
+  .breadcrumb {
+    background: transparent;
+  }
+  
+  .breadcrumb a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .breadcrumb-item.active {
+    color: #fff;
+  }
     </style>
   </head>
 
   <body>
      <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="#" data-aos="fade-down">Glow & Grace</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="about.php" data-aos="fade-down" data-aos-delay="100">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="cosmetic-product.php" data-aos="fade-down" data-aos-delay="200">Cosmetics</a></li>
-            <li class="nav-item"><a class="nav-link" href="jewelery.php" data-aos="fade-down" data-aos-delay="250">Jewelery</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.php" data-aos="fade-down" data-aos-delay="300">Contact us</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <header id="header"></header>
     <!-- Breadcrumb and Icons Bar -->
-<div class="breadcrumb-bar">
-  <div class="container d-flex justify-content-between align-items-center flex-wrap">
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
-      </ol>
-    </nav>
-
-    <!-- Icons Nav -->
-    <div class="nav-icons d-flex align-items-center">
-      <a href="profile.php" aria-label="Profile"><i class="fas fa-user"></i></a>
-      <a href="cart.php" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
-      <a href="login.php" >Login</a>
-    </div>
-  </div>
-</div>
-
+<?php include 'breadcrumb.php'; ?>
+    
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
@@ -599,7 +587,8 @@
        });
      </script>
     
-    
+        <script src="./json/repeat.js"></script>
+
     </script>
   </body>
 </html>

@@ -1,6 +1,12 @@
 <?php
-$connection = mysqli_connect("localhost","root","","makehub");
-// if($connection){
-//     echo "Database connected";
-// }
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db = 'makehub';
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>

@@ -22,19 +22,8 @@
   <body>
     <!-- Navbar -->
     <header id="header"></header>
-
-    <!-- Page Header Section -->
-    <section class="page-header-section">
-      <div class="page-header-content animate">
-        <h1 class="display-4">Register</h1>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Register</li>
-          </ol>
-        </nav>
-      </div>
-    </section>
+    <!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
 
     <!-- Registration Form Section -->
     <section class="py-5">
@@ -150,6 +139,6 @@
       animatedElements.forEach(el => observer.observe(el));
     </script>
 
-    <script src="json/repeat.js"></script>
+    <script src="./json/repeat.js"></script>
   </body>
 </html>

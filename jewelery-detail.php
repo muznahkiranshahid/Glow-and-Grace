@@ -122,36 +122,11 @@
   </style>
 </head>
 <body>
-  <header id="header">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand" href="#">MakeHub</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="jewelery.php">Jewelery</a></li>
-            <li class="nav-item">
-              <a href="cart.php" class="btn btn-outline-dark">🛒</a>
+  <!-- Navbar -->
+    <header id="header"></header>
+    <!-- Breadcrumb and Icons Bar -->
+<?php include 'breadcrumb.php'; ?>
 
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <section class="page-header-section text-center py-4">
-    <div class="container">
-      <h1 class="display-4">Product Detail</h1>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="jewelery.php">Jewelery</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Detail</li>
-        </ol>
-      </nav>
-    </div>
-  </section>
 
   <div class="container py-5">
     <?php
@@ -215,6 +190,7 @@
       </div>
     </div>
   </div>
+    <script src="./json/repeat.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
