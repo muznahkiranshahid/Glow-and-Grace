@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +67,8 @@
                 $row = $result->fetch_assoc();
                 if (password_verify($password, $row['password'])) {
                     $_SESSION['username'] = $name;
-                    header("Location: index.php");
+                    $_SESSION['user_id'] = $row['id']; // Store user ID for future use
+                    header("Location: cart.php");
                     exit();
                 } else {
                     echo "<div class='alert alert-danger text-center'>❌ Invalid password.</div>";

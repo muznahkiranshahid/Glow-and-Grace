@@ -146,46 +146,55 @@
       .btn-cta:hover {
         background: #e3663f;
       }
-               
-      .hover-image-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-      }
-      .hover-image-container img {
-        width: 100%;
-        height: auto;
-        transition: opacity 0.4s ease;
-      }
-      .hover-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-      }
-      .hover-image-container:hover .hover-img {
-        opacity: 1;
-      }
-      .hover-image-container:hover .default-img {
-        opacity: 0;
-      }
-      .hover-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: #000;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        font-weight: bold;
-        background-color: rgba(255, 255, 255, 0.75);
-        padding: 5px 10px;
-        border-radius: 10px;
-      }
-      .hover-image-container:hover .hover-text {
-        opacity: 1;
-      }
+.hover-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  height: 350px; /* Fixed height for uniform image size */
+}
+
+.hover-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+.hover-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 20px;
+  text-align: center;
+}
+
+.hover-image-container:hover .hover-text {
+  opacity: 1;
+}
+
+.hover-text h4 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Unique fonts for headings */
+.hover-text h4.cosmetics-font {
+  font-family: 'Great Vibes', cursive;
+}
+
+.hover-text h4.jewelry-font {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
       .card {
         background-color: var(--peach-light);
         border: none;
@@ -357,6 +366,7 @@
     <div class="nav-icons d-flex align-items-center">
       <a href="profile.php" aria-label="Profile"><i class="fas fa-user"></i></a>
       <a href="cart.php" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
+      <a href="login.php" >Login</a>
     </div>
   </div>
 </div>
@@ -390,29 +400,31 @@
         <h1 data-aos="fade-up">Our Products</h1>
         <div class="row">
           <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
-            <a href="cosmetic-product.php">
-              <div class="hover-image-container">
-                <img src="./images/cosmetics/img1.png" class="default-img" alt="Cosmetics Image">
-                <img src="./images/cosmetics/img2.jpg" class="hover-img" alt="Cosmetics Hover">
-                <div class="hover-text">
-                  <h4>Cosmetics</h4>
-                  <p>Enhance your natural beauty with our finest picks.</p>
-                </div>
-              </div>
-            </a>
-          </div>
+  <a href="cosmetic-product.php">
+    <div class="hover-image-container">
+      <img src="./images/cosmetics/img3.jpg" class="default-img" alt="Cosmetics Image">
+      <img src="./images/cosmetics/img2.jpg" class="hover-img" alt="Cosmetics Hover">
+      <div class="hover-text">
+        <h4 class="cosmetics-font">Cosmetics</h4>
+        <p>Enhance your natural beauty with our finest picks.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
           <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
-            <a href="jewelery.php">
-              <div class="hover-image-container">
-                <img src="./images/jewels/img1.jpg" class="default-img" alt="Jewelry Image">
-                <img src="./images/jewels/img2.jpg" class="hover-img" alt="Jewelry Hover">
-                <div class="hover-text">
-                  <h4>Jewelry</h4>
-                  <p>Timeless pieces for every style.</p>
-                </div>
-              </div>
-            </a>
-          </div>
+  <a href="jewelery.php">
+    <div class="hover-image-container">
+      <img src="./images/jewels/img1.jpg" class="default-img" alt="Jewelry Image">
+      <img src="./images/jewels/img2.jpg" class="hover-img" alt="Jewelry Hover">
+      <div class="hover-text">
+        <h4 class="cosmetics-font">Jewelery</h4>
+        <p>Timeless pieces for every style.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
         </div>
       </div>
     </section>

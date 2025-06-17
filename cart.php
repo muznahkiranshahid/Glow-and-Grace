@@ -1,4 +1,36 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+require_once 'conn.php';
+
+// Redirect if user not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Handle Checkout
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
+    if (!empty($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $item) {
+            $name = $item['product_name'];
+            $price = (float)$item['product_price'];
+            $quantity = (int)$item['quantity'];
+            $total = $price * $quantity;
+
+            $stmt = $conn->prepare("INSERT INTO purchases (user_id, product_name, product_price, quantity, total) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("isdid", $user_id, $name, $price, $quantity, $total);
+            $stmt->execute();
+        }
+
+        // Clear cart after storing
+        unset($_SESSION['cart']);
+        echo "<script>alert('Order placed successfully!'); window.location='cart.php';</script>";
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,23 +85,36 @@
     <h2>Your Cart</h2>
     <hr>
     <?php
-    if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
-      echo "<ul class='list-group'>";
-      $total = 0;
-      foreach ($_SESSION['cart'] as $item) {
-        $price = preg_replace('/[^\d.]/', '', $item['price']); // Remove ₹ or other symbols
-        $price = floatval($price); // Convert to number safely
+    $total = 0;
 
-        echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
-        echo htmlspecialchars($item['name']) . "<span>₹" . number_format($price, 2) . "</span>";
-        echo "</li>";
+    if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+        echo "<div class='table-responsive'><table class='table'>";
+        echo "<thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th></tr></thead><tbody>";
 
-        $total += $price;
-      }
-      echo "</ul><hr>";
-      echo "<h5>Total: ₹" . number_format($total, 2) . "</h5>";
+        foreach ($_SESSION['cart'] as $item) {
+            $name = isset($item['product_name']) ? $item['product_name'] : 'Unknown';
+            $price = isset($item['product_price']) ? (float)$item['product_price'] : 0;
+            $quantity = isset($item['quantity']) ? (int)$item['quantity'] : 1;
+            $subtotal = $price * $quantity;
+            $total += $subtotal;
+
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($name) . "</td>";
+            echo "<td>₹" . number_format($price, 2) . "</td>";
+            echo "<td>" . $quantity . "</td>";
+            echo "<td>₹" . number_format($subtotal, 2) . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</tbody></table></div>";
+        echo "<h5 class='text-end'>Total: ₹" . number_format($total, 2) . "</h5>";
+        ?>
+        <form method="post">
+          <button type="submit" name="checkout" class="btn btn-outline-dark mt-3">Place Order</button>
+        </form>
+        <?php
     } else {
-      echo "<p>Your cart is empty.</p>";
+        echo "<p>Your cart is empty.</p>";
     }
     ?>
   </div>

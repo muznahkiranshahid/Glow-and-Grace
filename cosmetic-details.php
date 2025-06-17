@@ -1,5 +1,33 @@
-<?php session_start(); ?>
-<!DOCTYPE html> 
+<?php
+session_start();
+
+// Get product ID from query string
+if (!isset($_GET['id'])) {
+  echo "<h2 style='text-align:center;'>No product selected.</h2>";
+  exit;
+}
+
+$productId = intval($_GET['id']);
+$product = null;
+
+// Load and decode the cosmetics JSON file
+$jsonData = file_get_contents('json/cosmetics.json');
+$products = json_decode($jsonData, true);
+
+// Search for product by ID
+foreach ($products as $p) {
+  if ($p['id'] == $productId) {
+    $product = $p;
+    break;
+  }
+}
+
+if (!$product) {
+  echo "<h2 style='text-align:center;'>Product not found.</h2>";
+  exit;
+}
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +37,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="./style/style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-
   <style>
     :root {
       --peach: #ffe1d6;
@@ -42,10 +69,6 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
       padding: 2rem;
       border: 2px solid var(--black);
-    }
-
-    .product-detail h2 {
-      color: var(--black);
     }
 
     .btn-outline-dark {
@@ -95,15 +118,6 @@
       color: var(--black);
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: var(--black);
-      border-radius: 4px;
-    }
-
     @media (max-width: 768px) {
       .flex-gallery {
         flex-direction: column;
@@ -132,7 +146,6 @@
             <li class="nav-item"><a class="nav-link" href="cosmetics.php">Cosmetics</a></li>
             <li class="nav-item">
               <a href="cart.php" class="btn btn-outline-dark">🛒</a>
-
             </li>
           </ul>
         </div>
@@ -147,88 +160,55 @@
         <ol class="breadcrumb justify-content-center">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
           <li class="breadcrumb-item"><a href="cosmetics.php">Cosmetics</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Detail</li>
+          <li class="breadcrumb-item active" aria-current="page"><?php echo htmlspecialchars($product['name']); ?></li>
         </ol>
       </nav>
     </div>
   </section>
 
-  <div class="container py-5">
-    <?php
-      $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-      $jsonData = file_get_contents('json/cosmetics.json');
-      $products = json_decode($jsonData, true);
-      $found = false;
+  <div class="container-fluid py-5">
+    <div class="product-detail">
+      <div class="flex-gallery mb-4">
+        <div style="background-image: url('<?php echo htmlspecialchars($product['image1']); ?>');"></div>
+        <div style="background-image: url('<?php echo htmlspecialchars($product['image2']); ?>');"></div>
+      </div>
+      <h2><?php echo htmlspecialchars($product['name']); ?></h2>
+      <p><strong>Brand:</strong> <?php echo htmlspecialchars($product['brand']); ?></p>
+      <p><strong>Price:</strong> <?php echo htmlspecialchars($product['price']); ?></p>
+<p><?php echo htmlspecialchars($product['description'] ?? 'No description available.'); ?></p>
 
-      foreach ($products as $p) {
-        if ($p['id'] == $id) {
-          $found = true;
-          echo '
-          <div class="row product-detail" data-aos="fade-up">
-            <div class="col-md-6 mb-4">
-              <div class="flex-gallery">
-                <div style="background-image: url(\''.$p['image1'].'\');"></div>
-                <div style="background-image: url(\''.$p['image2'].'\');"></div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <h2>'.$p['name'].'</h2>
-              <p><strong>Brand:</strong> '.$p['brand'].'</p>
-              <p><strong>Category:</strong> '.$p['category'].'</p>
-              <p><strong>Price:</strong> ₹'.$p['price'].'</p>
-              <form action="add-to-cart.php" method="post">
-  <input type="hidden" name="product_name" value="'.$p['name'].'">
-  <input type="hidden" name="product_price" value="'.$p['price'].'">
-  <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-</form>
-
-            </div>
-          </div>';
-        }
-      }
-
-      if (!$found) {
-        echo '<div class="alert alert-warning text-center">Product not found.</div>';
-      }
-    ?>
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <form action="add-to-cart.php" method="post" onsubmit="return validateQuantity()">
+          <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
+          <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" min="1" value="1" required>
+          </div>
+          <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
+        </form>
+      <?php else: ?>
+        <button class="btn btn-outline-dark" onclick="promptLogin()">Add to Cart</button>
+      <?php endif; ?>
+    </div>
   </div>
 
   <footer>
     <p>&copy; <?php echo date("Y"); ?> MakeHub Cosmetics. All rights reserved.</p>
   </footer>
 
-  <!-- Cart Modal -->
-  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: #fffaf7; border: 2px solid var(--black);">
-        <div class="modal-header" style="background-color: var(--peach); border-bottom: 1px solid var(--black);">
-          <h5 class="modal-title" id="cartModalLabel">🛒 Your Cart</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p id="cartItem">No items added yet.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-dark">Checkout</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
 
-    function addToCart(productName, productPrice) {
-      const cartItem = document.getElementById("cartItem");
-      if (cartItem.innerHTML === "No items added yet.") {
-        cartItem.innerHTML = "";
-      }
-      cartItem.innerHTML += `You added <strong>${productName}</strong> (${productPrice}) to your cart.<br>`;
-      const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-      cartModal.show();
+    function promptLogin() {
+      alert("Please login to add items to your cart.");
+    }
+
+    function validateQuantity() {
+      const qty = document.getElementById('quantity').value;
+      return qty > 0;
     }
   </script>
 </body>

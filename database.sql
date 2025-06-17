@@ -25,5 +25,24 @@ CREATE TABLE products (
   image2 VARCHAR(255),
   description TEXT
 );
+CREATE TABLE purchases (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  product_name VARCHAR(255),
+  product_price DECIMAL(10,2),
+  quantity INT,
+  total DECIMAL(10,2),
+  purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE cart_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  product_name VARCHAR(255) NOT NULL,
+  product_price DECIMAL(10,2) NOT NULL,
+  added_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 
 

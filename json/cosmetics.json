@@ -5,8 +5,9 @@
         "brand": "Dior",
         "category": "Highlighter",
         "price": "Rs. 799",
-        "image1": "images\/cosmetics\/dior\/dior couleurs.webp",
-        "image2": "images\/cosmetics\/dior\/dior couleurs detail.jpg"
+        "image1": "images/cosmetics/dior/dior couleurs.webp",
+        "image2": "images/cosmetics/dior/dior couleurs detail.jpg",
+        "desc":"Dior Diorshow 5 Couleurs eyeshadow palettes offer a wardrobe of eyeshadows, inspired by iconic Dior fashion pieces, with a range of finishes from matte to shimmer, metallic, and glitter. These palettes feature a creamy, comfortable, and long-wearing formula, infused with cornflower extract, and designed to deliver intense color payoff. The case itself is designed with a modern aesthetic, featuring the Dior signature and a clasp with the initials CD. "
     },
     {
         "id": 2,
@@ -14,8 +15,9 @@
         "brand": "Dior",
         "category": "Foundation",
         "price": "Rs. 1199",
-        "image1": "images\/cosmetics\/dior\/Dior Backstage Face & Body Foundation.webp",
-        "image2": "images\/cosmetics\/dior\/Dior Backstage Face & Body Foundation details.jpg"
+        "image1": "images/cosmetics/dior/Dior Backstage Face & Body Foundation.webp",
+        "image2": "images/cosmetics/dior/Dior Backstage Face & Body Foundation details.jpg",
+        "desc":"Dior Backstage Face & Body Foundation is a lightweight, buildable foundation that provides a natural-looking finish. It is designed to be worn on its own or under makeup for a flawless, airbrushed finish. The formula is infused with hyaluronic acid and glycer in to help retain moisture and provide a smooth, even texture. The foundation is available in 40 shades to suit a range of skin tones."
     },
     {
         "id": 3,
@@ -23,8 +25,9 @@
         "brand": "Dior",
         "category": "Face Powder",
         "price": "Rs. 650",
-        "image1": "images\/cosmetics\/dior\/dior facepowder.jpg",
-        "image2": "images\/cosmetics\/dior\/dior facepowder detail.jpg"
+        "image1": "images/cosmetics/dior/dior facepowder.jpg",
+        "image2": "images/cosmetics/dior/dior facepowder detail.jpg",
+        "desc":"Dior Touch Face Powder is a lightweight, oil-absorbing powder that helps to set makeup and control shine. It is designed to be worn on its own or over foundation for a smooth, even finish. The formula is infused with kaolin clay and talc to help absorb excess oil and reduce the appearance of pores. The powder is available in a range of shades to suit a range of skin tones."
     },
     {
         "id": 4,
@@ -32,8 +35,9 @@
         "brand": "Dior",
         "category": "Lipstick",
         "price": "Rs. 450",
-        "image1": "images\/cosmetics\/dior\/rouge dior.webp",
-        "image2": "images\/cosmetics\/dior\/rouge dior detail.webp"
+        "image1": "images/cosmetics/dior/rouge dior.webp",
+        "image2": "images/cosmetics/dior/rouge dior detail.webp",
+        "desc":"Dior Rouge Dior Forever Transfer-Proof Lipstick is a long-lasting, transfer-proof lipstick that provides a comfortable, bare-lip feel. It is designed to be worn on its own or over lip liner for a smooth, even finish. The formula is infused with hyal uronic acid and glycerin to help retain moisture and provide a smooth, even texture. The lipstick is available in a range of shades to suit a range of skin tones."
     },
     {
         "id": 5,
@@ -41,8 +45,9 @@
         "brand": "Dior",
         "category": "Lipstick",
         "price": "Rs. 799",
-        "image1": "images\/cosmetics\/dior\/dior lip glow.webp",
-        "image2": "images\/cosmetics\/dior\/dior lip glow detail.jpg"
+        "image1": "images/cosmetics/dior/dior lip glow.webp",
+        "image2": "images/cosmetics/dior/dior lip glow detail.jpg",
+        "desc":"Dior Mega Lash Mascara is a volumizing and lengthening mascara that helps to create a full, luscious lash look. It is designed to be worn on its own or over individual lashes for a dramatic, eye-catching finish. The formula is infused with keratin and biotin to help strengthen and condition lashes, while the brush is designed to coat lashes evenly and prevent clumping."
     },
     {
         "id": 6,
@@ -50,17 +55,19 @@
         "brand": "Dior",
         "category": "Mascara",
         "price": "Rs. 599",
-        "image1": "images\/cosmetics\/dior\/dior mascara.jpg",
-        "image2": "images\/cosmetics\/dior\/dior mascara detail.jpg"
+        "image1": "images/cosmetics/dior/dior mascara.jpg",
+        "image2": "images/cosmetics/dior/dior mascara detail.jpg" ,
+        "desc":"Dior Rosy Blush is a soft, peachy blush that adds a touch of color to the cheeks. It is designed to be worn on its own or over foundation for a natural, effortless finish. The formula is infused with kaolin clay and talc to help absorb excess oil and reduce the appearance of pores, while the texture is designed to be smooth and even."
     },
     {
         "id": 7,
-        "name": "Shimmer Glow Highlighter",
+        "name": "Dior Eyeliner",
         "brand": "Dior",
         "category": "Eyeliner",
         "price": "Rs. 899",
-        "image1": "images\/cosmetics\/dior\/dior eyeliner.jpg",
-        "image2": "images\/cosmetics\/dior\/dior eyeliner detail.jpg"
+        "image1": "images/cosmetics/dior/dior eyeliner.jpg",
+        "image2": "images/cosmetics/dior/dior eyeliner detail.jpg",
+        "desc":"Dior eyeliners are designed to define and enhance the eyes with precision, offering a variety of formulas and finishes to suit different makeup styles. They come in liquid, pencil, and felt-tip options, including the waterproof Diorshow Stylo and Diorshow On Stage Liner, known for their long-lasting, intense color payoff and easy application. "
     },
     {
         "id": 8,
@@ -68,8 +75,10 @@
         "brand": "Dior",
         "category": "Highlighter",
         "price": "Rs. 899",
-        "image1": "images\/cosmetics\/dior\/dior blush.jpg",
-        "image2": "images\/cosmetics\/dior\/dior blush detail.jpg"
+        "image1": "images/cosmetics/dior/dior blush.jpg",
+        "image2": "images/cosmetics/dior/dior blush detail.jpg",
+        "desc":"Dior Shimmer Glow Highlighter is a radiant, shimmering highlighter that adds a touch of light and dimension to the skin. It is designed to be worn on its own or over foundation for a natural, effortless finish. The formula is infused with hyaluronic acid and glycerin to help retain moisture and provide a smooth, even texture."
+
     },
     {
         "id": 9,
@@ -77,19 +86,19 @@
         "brand": "Maybelline",
         "category": "Foundation",
         "price": "Rs. 899",
-        "image1": "images\/cosmetics\/maybelline\/maybelline-lumi-matte-foundation-128-upc.jpg",
-        "image2": "images\/cosmetics\/maybelline\/maybelline-lumi-matte-foundation-128-upc-t.jpg",
-        "description": "Light, medium, and tan skin tones. Golden undertones brighten and disguise under-eye darkness.\r\n"
+        "image1": "images/cosmetics/maybelline/maybelline-lumi-matte-foundation-128-upc.jpg",
+        "image2": "images/cosmetics/maybelline/maybelline-lumi-matte-foundation-128-upc-t.jpg",
+        "desc": "Light, medium, and tan skin tones. Golden undertones brighten and disguise under-eye darkness.rn"
     },
     {
         "id": 10,
-        "name": "Lifter Plump\u2122 Lip Plumping Gloss Makeup",
+        "name": "Lifter Plumpu2122 Lip Plumping Gloss Makeup",
         "brand": "Maybelline",
         "category": "Lipstick",
         "price": "Rs. 799",
-        "image1": "images\/cosmetics\/maybelline\/maybelline-lipstick.jpg",
-        "image2": "images\/cosmetics\/maybelline\/maybelline-lipstick detail.jpg",
-        "description": "\r\n"
+        "image1": "images/cosmetics/maybelline/maybelline-lipstick.jpg",
+        "image2": "images/cosmetics/maybelline/maybelline-lipstick detail.jpg",
+        "desc": "rn"
     },
     {
         "id": 11,
@@ -97,9 +106,9 @@
         "brand": "Maybelline",
         "category": "Highlighter",
         "price": "Rs. 899",
-        "image1": "images\/cosmetics\/maybelline\/highlighter.jpg",
-        "image2": "images\/cosmetics\/maybelline\/highlighter detail.jpg",
-        "description": "Light, medium, and tan skin tones. Golden undertones brighten and disguise under-eye darkness."
+        "image1": "images/cosmetics/maybelline/highlighter.jpg",
+        "image2": "images/cosmetics/maybelline/highlighter detail.jpg",
+        "desc": "Light, medium, and tan skin tones. Golden undertones brighten and disguise under-eye darkness."
     },
     {
         "id": 12,
@@ -107,9 +116,9 @@
         "brand": "Huda Beauty",
         "category": "Face Powder",
         "price": "Rs. 650",
-        "image1": "images\/cosmetics\/huda\/face powder.jpg",
-        "image2": "images\/cosmetics\/huda\/face powder detail.jpg",
-        "description": "Light, medium, and tan skin tones. Golden undertones brighten and disguise under-eye darkness."
+        "image1": "images/cosmetics/huda/face powder.jpg",
+        "image2": "images/cosmetics/huda/face powder detail.jpg",
+        "desc": "Light, medium, and tan skin tones. Golden undertones brighten and disguise under-eye darkness."
     },
     {
         "id": 13,
@@ -117,8 +126,8 @@
         "brand": "MAC Cosmetics",
         "category": "Lipstick",
         "price": "$80.00",
-        "description": "A lip gloss in a wide colour range that can create a glass-like finish or a subtle sheen.",
-        "image1": "images\/cosmetics\/img1.png",
-        "image2": "images\/cosmetics\/img1-1.png"
+        "desc": "A lip gloss in a wide colour range that can create a glass-like finish or a subtle sheen.",
+        "image1": "images/cosmetics/MAC/img1.png",
+        "image2": "images/cosmetics/MAC/img1-1.png"
     }
 ]

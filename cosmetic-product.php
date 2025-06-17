@@ -312,61 +312,38 @@
 
     const grid = document.getElementById('productGrid');
 
-    function renderProducts(products) {
-      grid.innerHTML = '';
-      products.forEach((p, index) => {
-        grid.innerHTML += `
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-            <div class="card">
-              <div class="image-container">
-                <img src="${p.image1}" alt="${p.name}" class="primary">
-                <img src="${p.image2}" alt="${p.name}" class="secondary">
-                <div class="overlay-text">${p.brand}</div>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">${p.name}</h5>
-                <p class="card-text"><strong>Brand:</strong> ${p.brand}<br><strong>Price:</strong> ${p.price}</p>
-                <button class="btn btn-cart" onclick="handleAddToCart(${p.id})">
-                  <i class="fas fa-cart-plus me-1"></i> Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-    }
-
     function filterProducts(category) {
       const filtered = category === 'all' ? productData : productData.filter(p => p.category === category);
       renderProducts(filtered);
     }
 
-    function handleAddToCart(productId) {
-      // Fake login check for demo (replace with real check like PHP session)
-      const isLoggedIn = false; // Assume user is not logged in
+    function renderProducts(products) {
+  grid.innerHTML = '';
+  products.forEach((p, index) => {
+    grid.innerHTML += `
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+        <div class="card">
+          <div class="image-container">
+            <img src="${p.image1}" alt="${p.name}" class="primary">
+            <img src="${p.image2}" alt="${p.name}" class="secondary">
+            <div class="overlay-text">${p.brand}</div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">${p.name}</h5>
+            <p class="card-text">
+              <strong>Brand:</strong> ${p.brand}<br>
+              <strong>Price:</strong> ${p.price}
+            </p>
+            <a href="cosmetic-details.php?id=${p.id}" class="btn btn-cart">
+              <i class="fas fa-cart-plus me-1"></i> View Details
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
 
-      if (!isLoggedIn) {
-        Swal.fire({
-          title: 'Please login to continue',
-          text: 'You need to login or register before adding to cart.',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Login',
-          cancelButtonText: 'Register',
-          confirmButtonColor: '#ff7c4d',
-          cancelButtonColor: '#ffd8b1'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href = 'login.php';
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            window.location.href = 'registeration.php';
-          }
-        });
-      } else {
-        // Proceed to cart logic here
-        console.log('Adding to cart: ', productId);
-      }
-    }
   </script>
 </body>
 </html>
