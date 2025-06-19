@@ -30,26 +30,6 @@
       --text-highlight: #5c4033;
     }
 
-    body {
-      background-color: var(--peach-light);
-      color: var(--text-dark);
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .navbar {
-      background-color: var(--peach);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .navbar-brand, .nav-link {
-      color: var(--black) !important;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: var(--text-highlight) !important;
-    }
 
     .hero {
       background: linear-gradient(135deg, var(--peach), #fff);
@@ -233,9 +213,8 @@
   </script>
 
   <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+    <!-- header and Icons Bar -->
+<?php include 'header.php'; ?>
     </div>
   </section>
 

@@ -53,16 +53,6 @@ if (!$product) {
       color: var(--text-dark);
     }
 
-    .navbar {
-      background-color: var(--peach);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .navbar-brand, .nav-link {
-      color: var(--black) !important;
-      font-weight: 600;
-    }
-
     .product-detail {
       background-color: #fffaf7;
       border-radius: 16px;
@@ -136,35 +126,9 @@ if (!$product) {
   </style>
 </head>
 <body>
-  <header id="header">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand" href="#">MakeHub</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="cosmetics.php">Cosmetics</a></li>
-            <li class="nav-item">
-              <a href="cart.php" class="btn btn-outline-dark">🛒</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+<!-- header and Icons Bar -->
+<?php include 'header.php'; ?>
 
-  <section class="page-header-section text-center py-4">
-    <div class="container">
-      <h1 class="display-4">Product Detail</h1>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="cosmetics.php">Cosmetics</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><?php echo htmlspecialchars($product['name']); ?></li>
-        </ol>
-      </nav>
-    </div>
-  </section>
 
   <div class="container-fluid py-5">
     <div class="product-detail">

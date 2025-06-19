@@ -73,9 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+    <!-- header and Icons Bar -->
+<?php include 'header.php'; ?>
+
+
 <div class="container py-5">
   <div class="row g-5 align-items-start">
     <!-- Left Column (Form) -->

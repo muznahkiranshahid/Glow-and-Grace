@@ -30,43 +30,7 @@
         background: var(--peach-light);
         color: var(--text-dark);
         scroll-behavior: smooth;
-      }
-
-      .navbar {
-        background: var(--peach-light);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      }
-      .navbar-brand {
-        font-family: 'Great Vibes', cursive;
-        font-size: 2.2rem;
-        color: black !important;
-      }
-      .navbar-nav .nav-link {
-        color: var(--text-dark) !important;
-        font-weight: 500;
-        position: relative;
-        margin: 0 8px;
-        transition: all 0.3s ease;
-      }
-      .navbar-nav .nav-link:hover,
-      .navbar-nav .nav-link.active {
-        color: var(--peach-dark) !important;
-      }
-      .navbar-nav .nav-link::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 2px;
-        background: var(--peach-dark);
-        margin-top: 4px;
-        border-radius: 1px;
-        transition: width 0.3s ease;
-      }
-      .navbar-nav .nav-link:hover::after,
-      .navbar-nav .nav-link.active::after {
-        width: 100%;
-      }
-
+      }  
       .hero-section {
         background: #f8d9c5;
         padding: 100px 20px;
@@ -330,34 +294,14 @@
           text-align: center;
         }
       }
-       /* Page Header */
-  .page-header-section {
-    background: linear-gradient(to right, var(--peach-base), var(--peach-dark));
-    padding: 60px 0;
-    text-align: center;
-    color: var(--text-light);
-  }
-  
-  .breadcrumb {
-    background: transparent;
-  }
-  
-  .breadcrumb a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .breadcrumb-item.active {
-    color: #fff;
-  }
+ 
     </style>
   </head>
 
   <body>
      <!-- Navbar -->
-    <header id="header"></header>
     <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+<?php include 'header.php'; ?>
     
 
     <!-- Hero Section -->

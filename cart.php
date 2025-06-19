@@ -79,10 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+  <!-- header and Icons Bar -->
+<?php include 'header.php'; ?>
 
   <div class="container cart-box">
     <h2>Your Cart</h2>

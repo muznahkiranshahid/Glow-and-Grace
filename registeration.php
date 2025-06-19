@@ -21,9 +21,8 @@
   </head>
   <body>
     <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+    <!-- header and Icons Bar -->
+<?php include 'header.php'; ?>
 
     <!-- Registration Form Section -->
     <section class="py-5">

@@ -30,39 +30,7 @@
       color: var(--text-dark);
       font-family: 'Segoe UI', sans-serif;
     }
-
-    .navbar {
-      background-color: var(--peach);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .navbar-brand, .nav-link {
-      color: var(--black) !important;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: var(--text-highlight) !important;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, var(--peach), #fff);
-      padding: 80px 20px;
-      text-align: center;
-      border-bottom: 2px solid var(--black);
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      color: var(--black);
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-highlight);
-    }
-
+    
     .card {
       background-color: #fffaf7;
       border: none;
@@ -237,9 +205,8 @@
 </head>
 <body>
   <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+    <!-- header and Icons Bar -->
+<?php include 'header.php'; ?>
 
   <section class="py-4 text-center">
     <div class="container" data-aos="zoom-in">
