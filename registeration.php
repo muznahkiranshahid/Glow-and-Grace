@@ -35,34 +35,37 @@
           error_reporting(E_ALL);
           ini_set('display_errors', 1);
           include 'conn.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
+    $first = $_POST['first_name'] ?? '';
+    $last = $_POST['last_name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $username = $_POST['username'] ?? '';
+    $password_raw = $_POST['password'] ?? '';
+    $confirmPassword = $_POST['confirmPassword'] ?? '';
 
-          if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
-              $first = $_POST['first_name'] ?? '';
-              $last = $_POST['last_name'] ?? '';
-              $email = $_POST['email'] ?? '';
-              $username = $_POST['username'] ?? '';
-              $password_raw = $_POST['password'] ?? '';
-              $confirmPassword = $_POST['confirmPassword'] ?? '';
+    if ($password_raw !== $confirmPassword) {
+        echo "<div class='alert alert-danger text-center'>❌ Password and Confirm Password do not match.</div>";
+    } else {
+        $password = $password_raw; // 👉 store as plain text (not secure)
 
-              if ($password_raw !== $confirmPassword) {
-                  echo "<div class='alert alert-danger text-center'>❌ Password and Confirm Password do not match.</div>";
-              } else {
-                  $password = password_hash($password_raw, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email, password) VALUES (?, ?, ?, ?, ?)");
+        if ($stmt) {
+            $stmt->bind_param("sssss", $first, $last, $username, $email, $password);
+            if ($stmt->execute()) {
+    echo "<script>
+      alert('Registration successful! Redirecting to login page...');
+      window.location.href = 'login.php';
+    </script>";
+    exit(); // Important!
+}
 
-                  $stmt = $connection->prepare("INSERT INTO users (first_name, last_name, username, email, password) VALUES (?, ?, ?, ?, ?)");
-                  if ($stmt) {
-                      $stmt->bind_param("sssss", $first, $last, $username, $email, $password);
-                      if ($stmt->execute()) {
-                          echo "<div class='alert alert-success text-center'>🎉 Registration successful! You can now <a href='login.php'>login</a>.</div>";
-                      } else {
-                          echo "<div class='alert alert-danger text-center'>❌ Execute failed: " . $stmt->error . "</div>";
-                      }
-                      $stmt->close();
-                  } else {
-                      echo "<div class='alert alert-danger text-center'>❌ Prepare failed: " . $connection->error . "</div>";
-                  }
-              }
-          }
+            $stmt->close();
+        } else {
+            echo "<div class='alert alert-danger text-center'>❌ Prepare failed: " . $conn->error . "</div>";
+        }
+    }
+}
+
           ?>
 
           <form method="POST" action="">
@@ -138,6 +141,5 @@
       animatedElements.forEach(el => observer.observe(el));
     </script>
 
-    <script src="./json/repeat.js"></script>
   </body>
 </html>

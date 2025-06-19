@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="images/img1.jpg" type="images/img1.jpg">
-  <title>Glow & Grace - Navbar</title>
+  <title>Glow & Grace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -70,7 +70,7 @@
     }
 
     .breadcrumb-bar {
-      background: linear-gradient(to right, var(--peach-base), var(--peach-dark));
+      background: linear-gradient(to right,var(--peach-dark) , var(--peach-base));
       color: var(--text-dark);
       padding: 20px 0;
       box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
@@ -90,7 +90,7 @@
     }
 
     .nav-icons a {
-      color: white;
+      color: var(--peach-dark);
       font-size: 1.2rem;
       margin-left: 20px;
       transition: color 0.3s ease;
@@ -169,9 +169,27 @@
         </ol>
     </nav>
     <div class="nav-icons d-flex align-items-center">
+
       <a href="profile.php" aria-label="Profile"><i class="fas fa-user"></i></a>
-      <a href="cart.php" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
-            <a href="login.php" aria-label="Login"><i class="fas fa-sign-in-alt"></i></a>
+      
+<?php
+$cart_count = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'quantity')) : 0;
+?>
+<a href="cart.php" aria-label="Cart" class="position-relative">
+  <i class="fas fa-shopping-cart"></i>
+  <?php if ($cart_count > 0): ?>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <?= $cart_count ?>
+    </span>
+  <?php endif; ?>
+</a>
+<?php
+if (isset($_SESSION['username'])) {
+    echo '<a href="logout.php" aria-label="Logout">Logout</a>';
+} else {
+    echo '<a href="login.php" aria-label="Login">Login</a>';
+}
+?>
 
     </div>
   </div>

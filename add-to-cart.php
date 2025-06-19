@@ -8,7 +8,14 @@ if (!isset($_SESSION['user_id'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_name = $_POST['product_name'] ?? '';
-    $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
+
+    if (isset($_POST['product_price'])) {
+        $cleaned_price = preg_replace('/[^\d.]/', '', $_POST['product_price']);
+        $product_price = floatval($cleaned_price);
+    } else {
+        $product_price = 0;
+    }
+
     $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
 
     if (!isset($_SESSION['cart'])) {
@@ -36,4 +43,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: cart.php");
     exit();
 }
+
 ?>

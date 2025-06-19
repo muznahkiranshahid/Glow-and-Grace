@@ -123,10 +123,7 @@
 </head>
 <body>
   <!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
-
+<?php include 'header.php'; ?>
 
   <div class="container py-5">
     <?php
@@ -154,6 +151,7 @@
               <form action="add-to-cart.php" method="post">
   <input type="hidden" name="product_name" value="'.$p['name'].'">
   <input type="hidden" name="product_price" value="'.$p['price'].'">
+  <input type="hidden" name="product_desc" value="'.$p['desc'].'">
   <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
 </form>
 

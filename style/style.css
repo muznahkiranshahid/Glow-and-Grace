@@ -1,115 +1,105 @@
-
-  /* LOGIN PAGE */
 :root {
-      --peach-light:rgb(252, 244, 241);
-      --peach-base:rgb(255, 254, 254);
+      --peach-light: rgb(252, 244, 241);
+      --peach-base: rgb(255, 254, 254);
       --peach-bold: #f2772f;
       --peach-dark: #ffd8b1;
       --text-dark: #2e2e2e;
       --text-light: #ffffff;
     }
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--peach-light);
-    color: var(--text-dark);
-    margin: 0;
-    scroll-behavior: smooth;
-  }
-  
-  h1, h2, h3, h4, h5 {
-    font-weight: 700;
-  }
-  
-  .section-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--peach-dark);
-  }  
-  /* Login Card */
-  .register-card {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 2.5rem;
-    background-color: #fff;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .register-card h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.3rem;
-    color: var(--peach-dark);
-  }
-  
-  .register-card .small-text {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .register-card input {
-    border-radius: 50px;
-    padding: 0.75rem 1.2rem;
-    border: 1px solid var(--peach-base);
-    box-shadow: none;
-  }
-  
-  .btn-register {
-    background-color: var(--peach-dark);
-    color: var(--text-light);
-    padding: 0.6rem 2rem;
-    border-radius: 50px;
-    border: none;
-    transition: background 0.3s ease;
-  }
-  
-  .btn-register:hover {
-    background-color: #e9652c;
-  }
-  
-  .login-link {
-    margin-top: 1rem;
-    font-size: 0.95rem;
-  }
-  
-  .login-link a {
-    color: var(--peach-dark);
-    text-decoration: underline;
-  }
-  
-  /* Features Section */
-  .why-register-feature {
-    background-color: #fff;
-    border: 1px solid #ffe3d6;
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(255, 195, 160, 0.2);
-    transition: transform 0.3s ease;
-  }
-  
-  .why-register-feature:hover {
-    transform: translateY(-5px);
-  }
-  
-  .why-register-feature .icon {
-    font-size: 2rem;
-    color: var(--peach-dark);
-    margin-bottom: 1rem;
-  }
-  
-  .why-register-feature h5 {
-    font-weight: 600;
-  }
-  /* Animation helper */
-  .animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-  }
-  .animate.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--peach-light);
+      color: var(--text-dark);
+    }
+    .peach-bold{
+      color: var(--peach-bold);
+;
+    }
+    .register-card {
+      background: var(--peach-base);
+      max-width: 450px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(242, 119, 47, 0.2);
+      text-align: center;
+    }
+
+    .register-card h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--peach-bold);
+    }
+
+    .small-text {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      border: 1px solid #f0c09c;
+      padding: 10px 15px;
+    }
+
+    .btn-register {
+      background-color: var(--peach-bold);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .btn-register:hover {
+      background-color: #d9641b;
+    }
+
+    .login-link {
+      margin-top: 15px;
+    }
+
+    .why-register-section {
+      background: white;
+      padding: 60px 0;
+    }
+
+    .why-register-feature {
+      background: var(--peach-light);
+      border-radius: 12px;
+      padding: 30px 20px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .why-register-feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .why-register-feature .icon {
+      font-size: 2rem;
+      color: var(--peach-bold);
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--peach-bold);
+      margin-bottom: 40px;
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }

@@ -70,12 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
       margin-top: 2rem;
       box-shadow: 0 6px 12px rgba(0,0,0,0.08);
     }
-    footer {
-      background-color: #ffcab3;
-      text-align: center;
-      padding: 2rem;
-      border-top: 2px solid #000;
-    }
+    .badge {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
   </style>
 </head>
 <body>
@@ -103,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
             echo "<td>" . htmlspecialchars($name) . "</td>";
             echo "<td>Rs. " . number_format($price, 2) . "</td>";
             echo "<td>" . $quantity . "</td>";
-            echo "<td>Rs. " . number_format($subtotal, 2) . "</td>";
+            echo "<td><span class='badge bg-light text-dark'>Rs. " . number_format($price, 2) . "</span></td>";
             echo "</tr>";
         }
 

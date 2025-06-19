@@ -1,8 +1,40 @@
 <?php session_start(); ?>
 <?php
+require_once 'conn.php';
+
 $category = $_GET['category'] ?? 'jewelery';
 $filePath = $category === 'cosmetics' ? './json/cosmetics.json' : './json/jewelery.json';
 $data = json_decode(file_get_contents($filePath), true);
+
+// 🔍 Get Top 10 Best-Selling Products
+$topSellers = [];
+$result1 = $conn->query("
+  SELECT product_name, SUM(quantity) AS total_sold 
+  FROM purchases 
+  GROUP BY product_name 
+  ORDER BY total_sold DESC 
+  LIMIT 10
+");
+if ($result1 && $result1->num_rows > 0) {
+    while ($row = $result1->fetch_assoc()) {
+        $topSellers[] = $row;
+    }
+}
+
+// 👤 Get Top 10 Customers
+$topUsers = [];
+$result2 = $conn->query("
+  SELECT username, SUM(total) AS total_spent 
+  FROM purchases 
+  GROUP BY username 
+  ORDER BY total_spent DESC 
+  LIMIT 10
+");
+if ($result2 && $result2->num_rows > 0) {
+    while ($row = $result2->fetch_assoc()) {
+        $topUsers[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,10 +108,9 @@ $data = json_decode(file_get_contents($filePath), true);
   </style>
 </head>
 <body>
-<!-- Navbar -->
-    <header id="header"></header>
-    <!-- Breadcrumb and Icons Bar -->
-<?php include 'breadcrumb.php'; ?>
+
+<?php include 'header.php'; ?>
+
 <!-- Sidebar -->
 <div class="sidebar d-flex flex-column">
   <h4 class="text-center mb-4">Admin Panel</h4>
@@ -88,9 +119,9 @@ $data = json_decode(file_get_contents($filePath), true);
   <a href="#">Manage Categories</a>
   <a href="admin-users.php">Manage Users</a>
   <a href="admin-purchases.php">Orders</a>
-  <a href="#">Reports</a>
-  <a href="#">Backup</a>
-  <a href="#">Logout</a>
+  <a href="#">Top Sellers</a>
+  <a href="#">Top Customers</a>
+  <a href="logout.php">Logout</a>
 </div>
 
 <!-- Main Content -->
@@ -125,7 +156,7 @@ $data = json_decode(file_get_contents($filePath), true);
               <td><?= $item['name'] ?></td>
               <td><?= $item['brand'] ?></td>
               <td><?= $item['category'] ?></td>
-              <td><?= $item['price'] ?></td>
+              <td>Rs. <?= $item['price'] ?></td>
               <td>
                 <a href="edit-product.php?category=<?= $category ?>&id=<?= $item['id'] ?>" class="btn btn-sm btn-edit"><i class="fas fa-edit"></i></a>
                 <a href="delete-product.php?category=<?= $category ?>&id=<?= $item['id'] ?>" class="btn btn-sm btn-delete" onclick="return confirm('Are you sure you want to delete this product?')"><i class="fas fa-trash"></i></a>
@@ -139,10 +170,66 @@ $data = json_decode(file_get_contents($filePath), true);
       </table>
     </div>
   </div>
+
+  <!-- 🔝 Top Sellers -->
+  <div class="card mt-5">
+    <div class="card-header">🏆 Top 10 Best-Selling Products</div>
+    <div class="card-body">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Total Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if (!empty($topSellers)): ?>
+            <?php foreach ($topSellers as $i => $item): ?>
+              <tr>
+                <td><?= $i + 1 ?></td>
+                <td><?= htmlspecialchars($item['product_name']) ?></td>
+                <td><?= $item['total_sold'] ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr><td colspan="3">No sales data available.</td></tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 👤 Top Users -->
+  <div class="card mt-5">
+    <div class="card-header">👤 Top 10 Customers by Purchase</div>
+    <div class="card-body">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Total Spent (Rs.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if (!empty($topUsers)): ?>
+            <?php foreach ($topUsers as $i => $user): ?>
+              <tr>
+                <td><?= $i + 1 ?></td>
+                <td><?= htmlspecialchars($user['username']) ?></td>
+                <td><?= number_format($user['total_spent'], 2) ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr><td colspan="3">No user data available.</td></tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-
 <script src="./json/repeat.js"></script>
-
 </body>
 </html>

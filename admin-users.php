@@ -27,6 +27,7 @@ $users = $conn->query("SELECT * FROM users");
               <th>ID</th>
               <th>Full Name</th>
               <th>Username</th>
+              <th>Password</th>
               <th>Email</th>
             </tr>
           </thead>
@@ -36,6 +37,7 @@ $users = $conn->query("SELECT * FROM users");
                 <td><?= $row['id'] ?></td>
                 <td><?= $row['first_name'] . ' ' . $row['last_name'] ?></td>
                 <td><?= $row['username'] ?></td>
+                <td><?= $row['password'] ?></td>
                 <td><?= $row['email'] ?></td>
               </tr>
             <?php endwhile; ?>
