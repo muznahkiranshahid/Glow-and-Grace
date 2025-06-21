@@ -196,54 +196,70 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- header and Icons Bar -->
 <?php include 'header.php'; ?>
 
-  <section class="py-4 text-center">
-    <div class="container" data-aos="zoom-in">
-      <h2 class="mb-3">Shop by Category</h2>
-      <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-3 justify-content-center">
-  <div class="category-card text-center btn" onclick="filterProducts('all')">
-    <img src="images/jewels/img3.jpg" alt="All">
-    <h5 class="mt-2 text-uppercase">All</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Necklace')">
-    <img src="images/jewels/img4.jpg" alt="Necklace">
-    <h5 class="mt-2 text-uppercase">Necklace</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Ring')">
-    <img src="images/jewels/img5.jpg" alt="Ring">
-    <h5 class="mt-2 text-uppercase">Ring</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Earrings')">
-    <img src="images/jewels/img6.jpg" alt="Earrings">
-    <h5 class="mt-2 text-uppercase">Earrings</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Watches')">
-    <img src="images/jewels/img7.jpg" alt="Watches">
-    <h5 class="mt-2 text-uppercase">Watches</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Bracelet')">
-    <img src="images/jewels/img8.jpg" alt="Bracelet">
-    <h5 class="mt-2 text-uppercase">Bracelet</h5>
-  </div>
-  <div class="category-card text-center btn" onclick="filterProducts('Brooches')">
-    <img src="images/jewels/img9.jpg" alt="Brooches">
-    <h5 class="mt-2 text-uppercase">Brooches</h5>
-  </div>
-</div>
-
-</div>
-
-<?php
-include 'conn.php';
-$cat_query = $conn->query("SELECT * FROM categories");
-while ($cat = $cat_query->fetch_assoc()) {
-?>
-<div class="category-card text-center btn" onclick="filterProducts('<?= $cat['name'] ?>')">
-  <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
-  <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
-</div>
-<?php } ?>
+<section class="py-4 text-center">
+  <div class="container" data-aos="zoom-in">
+    <h2 class="mb-3">Shop by Category</h2>
+    
+    <div class="row justify-content-center g-3">
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('all')">
+          <img src="images/jewels/img3.jpg" alt="All">
+          <h5 class="mt-2 text-uppercase">All</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('Necklace')">
+          <img src="images/jewels/img4.jpg" alt="Necklace">
+          <h5 class="mt-2 text-uppercase">Necklace</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('Ring')">
+          <img src="images/jewels/img5.jpg" alt="Ring">
+          <h5 class="mt-2 text-uppercase">Ring</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('Earrings')">
+          <img src="images/jewels/img6.jpg" alt="Earrings">
+          <h5 class="mt-2 text-uppercase">Earrings</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('Watches')">
+          <img src="images/jewels/img7.jpg" alt="Watches">
+          <h5 class="mt-2 text-uppercase">Watches</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('Bracelet')">
+          <img src="images/jewels/img8.jpg" alt="Bracelet">
+          <h5 class="mt-2 text-uppercase">Bracelet</h5>
+        </div>
+      </div>
     </div>
-  </section>
+
+   <!-- Dynamic Categories from DB -->
+<div class="row justify-content-center g-3 mt-4">
+  <?php
+  include 'conn.php';
+  $cat_query = $conn->query("SELECT * FROM categories");
+  while ($cat = $cat_query->fetch_assoc()) {
+  ?>
+    <div class="col-6 col-sm-4 col-md-2">
+      <div class="category-card text-center btn w-100" onclick="filterProducts('<?= $cat['name'] ?>')">
+        <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
+        <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
+      </div>
+    </div>
+  <?php } ?>
+</div>
+
+    </div>
+
+  </div>
+</section>
+
 
   <div class="container py-4">
     <div class="row" id="productGrid"></div>
