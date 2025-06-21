@@ -94,6 +94,18 @@ if ($view === 'top-customers') {
       color: white;
       font-weight: 600;
     }
+    .dropdown-toggle {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+.dropdown-menu {
+  background-color: var(--peach-base);
+}
+.dropdown-menu a:hover {
+  background-color: var(--peach-dark);
+  color: white;
+}
+
     table {
       background-color: white;
       border-radius: 10px;
@@ -120,8 +132,17 @@ if ($view === 'top-customers') {
 <div class="sidebar d-flex flex-column">
   <h4 class="text-center mb-4">Admin Panel</h4>
   <a href="admin-dashboard.php?category=cosmetics">Cosmetics Dashboard</a>
-  <a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>
-  <a href="admin-categories.php">Manage Categories</a>
+<a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>
+
+<!-- Manage Categories Dropdown -->
+<div class="dropdown px-3">
+  <a class="dropdown-toggle d-block py-2" data-bs-toggle="dropdown" href="#">Manage Categories</a>
+  <ul class="dropdown-menu shadow">
+    <li><a class="dropdown-item" href="admin-jewelry-categories.php">Jewelry Categories</a></li>
+    <li><a class="dropdown-item" href="admin-cosmetic-categories.php">Cosmetics Categories</a></li>
+  </ul>
+</div>
+
   <a href="admin-users.php">Manage Users</a>
   <a href="admin-purchases.php">Orders</a>
   <a href="admin-dashboard.php?view=top-sellers">Top Sellers</a>

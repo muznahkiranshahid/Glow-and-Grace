@@ -254,8 +254,19 @@ if (session_status() === PHP_SESSION_NONE) {
           <h5 class="mt-2 text-uppercase">Highlighter</h5>
         </div>
       </div>
+      <?php
+    include 'conn.php';
+    $cat_query = $conn->query("SELECT * FROM cosmetic_categories");
+    while ($cat = $cat_query->fetch_assoc()) {
+    ?>
+      <div class="category-card text-center btn" onclick="filterProducts('<?= $cat['name'] ?>')">
+        <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
+        <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
+      </div>
+    <?php } ?>
     </div>
   </section>
+
 
   <div class="container py-4">
     <div class="row" id="productGrid"></div>

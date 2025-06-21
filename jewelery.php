@@ -164,25 +164,6 @@ if (session_status() === PHP_SESSION_NONE) {
   border-color: var(--text-highlight);
   box-shadow: 0 6px 16px rgba(92, 64, 51, 0.3);
 }
-
-
-    footer {
-      background-color: var(--peach-dark);
-      color: var(--black);
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 2px solid var(--black);
-      margin-top: 2rem;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: var(--black);
-      border-radius: 4px;
-    }
     .category-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(255, 124, 77, 0.2);
@@ -251,18 +232,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
 </div>
 
-    </div>
-  </section>
-  <?php
+<?php
 include 'conn.php';
 $cat_query = $conn->query("SELECT * FROM categories");
 while ($cat = $cat_query->fetch_assoc()) {
 ?>
-  <div class="category-card text-center btn" onclick="filterProducts('<?= $cat['name'] ?>')">
-    <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
-    <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
-  </div>
+<div class="category-card text-center btn" onclick="filterProducts('<?= $cat['name'] ?>')">
+  <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
+  <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
+</div>
 <?php } ?>
+    </div>
+  </section>
 
   <div class="container py-4">
     <div class="row" id="productGrid"></div>

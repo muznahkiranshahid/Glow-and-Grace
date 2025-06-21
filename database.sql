@@ -1,4 +1,8 @@
--- CREATE database makehub;
+-- Create Database
+CREATE DATABASE IF NOT EXISTS makehub;
+USE makehub;
+
+-- Users Table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
@@ -8,6 +12,7 @@ CREATE TABLE users (
     password VARCHAR(255)
 );
 
+-- Purchases Table
 CREATE TABLE purchases (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
@@ -19,6 +24,7 @@ CREATE TABLE purchases (
   purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Cart Items Table
 CREATE TABLE cart_items (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
@@ -27,6 +33,8 @@ CREATE TABLE cart_items (
   added_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Contact Messages Table
 CREATE TABLE contact_messages (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
@@ -35,6 +43,8 @@ CREATE TABLE contact_messages (
   message TEXT,
   submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Products Table (Shared by both jewelry and cosmetics)
 CREATE TABLE products (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
@@ -45,11 +55,17 @@ CREATE TABLE products (
   image2 VARCHAR(255),
   description TEXT
 );
+
+-- Jewelry Categories Table
 CREATE TABLE categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL UNIQUE,
   image VARCHAR(255) NOT NULL
 );
 
-
-
+-- Cosmetics Categories Table (New)
+CREATE TABLE cosmetic_categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  image VARCHAR(255) NOT NULL
+);
