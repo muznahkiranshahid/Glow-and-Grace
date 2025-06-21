@@ -1,3 +1,9 @@
+<?php
+// index.php (or any main file)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>

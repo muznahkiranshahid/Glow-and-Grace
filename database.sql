@@ -45,5 +45,11 @@ CREATE TABLE products (
   image2 VARCHAR(255),
   description TEXT
 );
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  image VARCHAR(255) NOT NULL
+);
+
 
 

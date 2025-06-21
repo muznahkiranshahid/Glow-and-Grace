@@ -1,3 +1,62 @@
+          <?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+$conn = new mysqli('localhost', 'root', '', 'makehub');
+
+$response = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
+    $first = $_POST['first_name'] ?? '';
+    $last = $_POST['last_name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $confirmPassword = $_POST['confirmPassword'] ?? '';
+
+    if ($password !== $confirmPassword) {
+        $response = "Swal.fire('Password Mismatch', '❌ Password and Confirm Password do not match.', 'error');";
+    } else {
+        $check = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+        $check->bind_param("ss", $username, $email);
+        $check->execute();
+        $result = $check->get_result();
+
+        if ($result->num_rows > 0) {
+            $response = "Swal.fire('Already Exists', '⚠️ Username or Email already exists.', 'warning');";
+        } else {
+            $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email, password) VALUES (?, ?, ?, ?, ?)");
+            if ($stmt) {
+                // You asked to store password as-is, not hashed
+                $stmt->bind_param("sssss", $first, $last, $username, $email, $password);
+                if ($stmt->execute()) {
+                    $_SESSION['user_id'] = $conn->insert_id;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['first_name'] = $first;
+                    $_SESSION['last_name'] = $last;
+                    $_SESSION['email'] = $email;
+
+                    $response = "Swal.fire({
+                        title: 'Registration Successful!',
+                        text: 'Welcome, $username!',
+                        icon: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = 'index.php';
+                    });";
+                } else {
+                    $response = "Swal.fire('Error', '❌ Execute failed: {$stmt->error}', 'error');";
+                }
+                $stmt->close();
+            } else {
+                $response = "Swal.fire('Error', '❌ Prepare failed: {$conn->error}', 'error');";
+            }
+        }
+        $check->close();
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,42 +90,7 @@
           <h2>Register Form</h2>
           <p class="small-text">Create an account to enjoy full access.</p>
 
-          <?php
-          error_reporting(E_ALL);
-          ini_set('display_errors', 1);
-          include 'conn.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
-    $first = $_POST['first_name'] ?? '';
-    $last = $_POST['last_name'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $username = $_POST['username'] ?? '';
-    $password_raw = $_POST['password'] ?? '';
-    $confirmPassword = $_POST['confirmPassword'] ?? '';
 
-    if ($password_raw !== $confirmPassword) {
-        echo "<div class='alert alert-danger text-center'>❌ Password and Confirm Password do not match.</div>";
-    } else {
-        $password = $password_raw; // 👉 store as plain text (not secure)
-
-        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email, password) VALUES (?, ?, ?, ?, ?)");
-        if ($stmt) {
-            $stmt->bind_param("sssss", $first, $last, $username, $email, $password);
-            if ($stmt->execute()) {
-    echo "<script>
-      alert('Registration successful! Redirecting to login page...');
-      window.location.href = 'login.php';
-    </script>";
-    exit(); // Important!
-}
-
-            $stmt->close();
-        } else {
-            echo "<div class='alert alert-danger text-center'>❌ Prepare failed: " . $conn->error . "</div>";
-        }
-    }
-}
-
-          ?>
 
           <form method="POST" action="">
             <div class="mb-3">
@@ -140,6 +164,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
       }, { threshold: 0.1 });
       animatedElements.forEach(el => observer.observe(el));
     </script>
+    <!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  <?php if (!empty($response)) echo $response; ?>
+</script>
+
 
   </body>
 </html>

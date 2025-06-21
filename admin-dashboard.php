@@ -121,7 +121,7 @@ if ($view === 'top-customers') {
   <h4 class="text-center mb-4">Admin Panel</h4>
   <a href="admin-dashboard.php?category=cosmetics">Cosmetics Dashboard</a>
   <a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>
-  <a href="#">Manage Categories</a>
+  <a href="admin-categories.php">Manage Categories</a>
   <a href="admin-users.php">Manage Users</a>
   <a href="admin-purchases.php">Orders</a>
   <a href="admin-dashboard.php?view=top-sellers">Top Sellers</a>

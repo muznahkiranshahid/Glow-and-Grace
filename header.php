@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --peach-light:rgb(252, 244, 241);
-      --peach-base:rgb(255, 254, 254);
+      --peach-light: rgb(252, 244, 241);
+      --peach-base: rgb(255, 254, 254);
       --peach-bold: #f2772f;
       --peach-dark: #ffd8b1;
       --text-dark: #2e2e2e;
@@ -70,7 +70,7 @@
     }
 
     .breadcrumb-bar {
-      background: linear-gradient(to right,var(--peach-dark) , var(--peach-base));
+      background: linear-gradient(to right, var(--peach-dark), var(--peach-base));
       color: var(--text-dark);
       padding: 20px 0;
       box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
@@ -83,9 +83,6 @@
     }
 
     .breadcrumb-item.active {
-      color: #f2772f;
-    }
-    .breadcrumb:hover {
       color: #f2772f;
     }
 
@@ -118,7 +115,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Glow & Grace</a>
+    <a class="navbar-brand" href="index.php">Glow & Grace</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -139,11 +136,8 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-<?php
-        // Get current filename without extension
+        <?php
         $currentPage = basename($_SERVER['PHP_SELF'], ".php");
-
-        // Optional: page name mapping
         $pageNames = [
           'about' => 'About Us',
           'contact' => 'Contact Us',
@@ -157,44 +151,43 @@
           'cosmetic-details' => 'Cosmetic Details',
           'jewelry-detail' => 'Jewelry Details'
         ];
-
-        // Display if not home
         if ($currentPage !== 'index') {
-          $displayName = isset($pageNames[$currentPage])
-            ? $pageNames[$currentPage]
-            : ucwords(str_replace("-", " ", $currentPage));
+          $displayName = $pageNames[$currentPage] ?? ucwords(str_replace("-", " ", $currentPage));
           echo '<li class="breadcrumb-item active" aria-current="page">' . htmlspecialchars($displayName) . '</li>';
         }
         ?>
-        </ol>
+      </ol>
     </nav>
+
+    <!-- Nav Icons -->
     <div class="nav-icons d-flex align-items-center">
+      <?php if (isset($_SESSION['username'])): ?>
+        <!-- Profile Icon -->
+        <a href="profile.php" aria-label="Profile"><i class="fas fa-user"></i></a>
 
-      <a href="profile.php" aria-label="Profile"><i class="fas fa-user"></i></a>
-      
-<?php
-$cart_count = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'quantity')) : 0;
-?>
-<a href="cart.php" aria-label="Cart" class="position-relative">
-  <i class="fas fa-shopping-cart"></i>
-  <?php if ($cart_count > 0): ?>
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-      <?= $cart_count ?>
-    </span>
-  <?php endif; ?>
-</a>
-<?php
-if (isset($_SESSION['username'])) {
-    echo '<a href="logout.php" aria-label="Logout">Logout</a>';
-} else {
-    echo '<a href="login.php" aria-label="Login">Login</a>';
-}
-?>
+        <!-- Cart Icon with count -->
+        <?php
+        $cart_count = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'quantity')) : 0;
+        ?>
+        <a href="cart.php" aria-label="Cart" class="position-relative">
+          <i class="fas fa-shopping-cart"></i>
+          <?php if ($cart_count > 0): ?>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <?= $cart_count ?>
+            </span>
+          <?php endif; ?>
+        </a>
 
+        <!-- Logout -->
+        <a href="logout.php" aria-label="Logout">Logout</a>
+      <?php else: ?>
+        <!-- Login -->
+        <a href="login.php" aria-label="Login">Login</a>
+      <?php endif; ?>
     </div>
   </div>
-</div>   
-      
+</div>
+
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

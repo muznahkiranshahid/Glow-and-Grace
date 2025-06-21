@@ -1,9 +1,16 @@
+<?php
+// index.php (or any main file)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MakeHub Jewelery</title>
+  <title>MakeHub</title>
 
 
   <!-- Bootstrap -->
@@ -246,6 +253,16 @@
 
     </div>
   </section>
+  <?php
+include 'conn.php';
+$cat_query = $conn->query("SELECT * FROM categories");
+while ($cat = $cat_query->fetch_assoc()) {
+?>
+  <div class="category-card text-center btn" onclick="filterProducts('<?= $cat['name'] ?>')">
+    <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
+    <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
+  </div>
+<?php } ?>
 
   <div class="container py-4">
     <div class="row" id="productGrid"></div>

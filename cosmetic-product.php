@@ -1,6 +1,8 @@
 <?php
-  session_start();
-  $isLoggedIn = isset($_SESSION['user']);
+// index.php (or any main file)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
