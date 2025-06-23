@@ -18,7 +18,7 @@
     }
     .register-card {
       background: var(--peach-base);
-      max-width: 450px;
+      max-width: 600px;
       margin: auto;
       padding: 30px;
       border-radius: 20px;
@@ -34,7 +34,7 @@
 
     .small-text {
       color: #666;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .form-control {

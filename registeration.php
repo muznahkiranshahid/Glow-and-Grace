@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
 
     <!-- Registration Form Section -->
     <section class="py-5">
-      <div class="container-fluid">
+      <div class="container-">
         <div class="register-card wider-card animate">
           <h2>Register Form</h2>
           <p class="small-text">Create an account to enjoy full access.</p>

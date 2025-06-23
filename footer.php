@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Glow & Grace - Navbar</title>
+  <title>Glow & Grace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <body>
-    
-  <div class="container-fluid footer py-5">
+    <div class="container-fluid footer py-5">
       <div class="container py-5">
         <div class="row g-5">
           <div class="col-md-6 col-lg-6 col-xl-3">
@@ -25,14 +24,13 @@
           </div>
           <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="footer-item d-flex flex-column">
-              <h4 class="mb-4 text-white">Our Services</h4>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Facials</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Waxing</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Massage</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Mineral Baths</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Body Treatments</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Aroma Therapy</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Stone Spa</a>
+              <h4 class="mb-4 text-white">Cosmetic Products</h4>
+              <a href="#"><i class="fas fa-angle-right me-2"></i>Facepowder</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i>Lipstick</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i>Mascara</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i>Eyeliner</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i>Foundation</a>
+              <a href="#"><i class="fas fa-angle-right me-2"></i>Highlighter</a>
             </div>
           </div>
           <div class="col-md-6 col-lg-6 col-xl-3">
@@ -58,7 +56,9 @@
           </div>
         </div>
       </div>
-    </div>   
+
+    </div>
+
       
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
