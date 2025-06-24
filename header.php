@@ -16,14 +16,13 @@
       --primary: #7A1CAC;
       --text-dark: rgb(17, 17, 17);
       --text-light: #f8f8f8;
-      --card-bg: rgb(255, 255, 255);
+      --card-bg:rgb(177, 84, 228);
       --hover-bg: #292929;
       --shadow: 0 6px 20px rgba(235, 211, 248, 0.2);
     }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--bg-light);
     }
     .top-bar {
       background-color: var(--primary-light);

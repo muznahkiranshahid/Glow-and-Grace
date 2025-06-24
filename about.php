@@ -1,4 +1,4 @@
-<?php  
+<?php   
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -33,7 +33,9 @@ if (session_status() === PHP_SESSION_NONE) {
       color: var(--text-dark);
       line-height: 1.7;
     }
-
+    .dark-text{
+      color:  #7A1CAC;
+    }
     .about-hero {
       background: linear-gradient(to right, var(--primary-light), #e3bdfc);
       padding: 100px 20px;
@@ -140,21 +142,21 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .accordion-button {
-      background-color: var(--bg-light)!important;
+      background-color: var(--bg-light) !important;
       color: var(--primary);
       font-weight: 600;
       font-size: 1rem;
-      transition: background-color 0.3s, var(--bg-light) 0.3s!important;
+      transition: background-color 0.3s ease;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: var(--primary-light) !important;
+      color: var(--text-light) !important;
+      box-shadow: none;
     }
 
     .accordion-button:hover {
       background-color: rgba(177, 84, 228, 0.15);
-    }
-
-    .accordion-button:not(.collapsed) {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      box-shadow: none;
     }
 
     .accordion-body {
@@ -196,7 +198,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
     <div class="row align-items-center">
       <div class="col-lg-6" data-aos="fade-right">
-        <img src="images/about-owner.jpg" alt="Founder" class="img-fluid rounded-3 shadow">
+        <img src="images/img2.jpg" alt="Founder" class="img-fluid rounded-3 shadow">
       </div>
       <div class="col-lg-6" data-aos="fade-left">
         <h3 class="mb-3">Meet the Founder</h3>
@@ -240,10 +242,10 @@ if (session_status() === PHP_SESSION_NONE) {
   </div>
 </section>
 
-<section class="py-5" data-aos="fade-up">
+<section class="py-5 bg-light" data-aos="fade-up">
   <div class="container">
     <div class="text-center mb-5">
-      <h2 class="fw-bold ">Frequently Asked Questions</h2>
+      <h2 class="fw-bold">Frequently Asked Questions</h2>
       <p class="text-muted">Find answers to common questions about our products and services.</p>
     </div>
     <div class="accordion" id="faqAccordion">
@@ -294,7 +296,7 @@ if (session_status() === PHP_SESSION_NONE) {
         </h2>
         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
           <div class="accordion-body">
-            We want you to love what you receive. If you're not satisfied, you can request a return or exchange within 7 days of delivery. Please visit our <a href="contact.php" class="text-decoration-underline text-warning">Contact Us</a> page for assistance.
+            We want you to love what you receive. If you're not satisfied, you can request a return or exchange within 7 days of delivery. Please visit our <a href="contact.php" class="text-decoration-underline dark-text">Contact Us</a> page for assistance.
           </div>
         </div>
       </div>
