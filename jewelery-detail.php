@@ -1,4 +1,4 @@
-<?php session_start(); ?>  
+<?php session_start(); ?>   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -187,12 +187,13 @@
             <h2>'.$p['name'].'</h2>
             <p><strong>Brand:</strong> '.$p['brand'].'</p>
             <p><strong>Category:</strong> '.$p['category'].'</p>
-            <p><strong>Price:</strong> ₹'.$p['price'].'</p>
+            <p><strong>Price:</strong> Rs. '.(int)$p['price'].'</p>
             <p><strong>Description:</strong> '.$p['desc'].'</p>
             <form action="add-to-cart.php" method="post">
               <input type="hidden" name="product_name" value="'.$p['name'].'">
               <input type="hidden" name="product_price" value="'.$p['price'].'">
               <input type="hidden" name="product_desc" value="'.$p['desc'].'">
+              <input type="hidden" name="product_image" value="images/jewels/'.$p['image1'].'">
               <label for="quantity"><strong>Quantity:</strong></label>
               <div class="quantity-wrapper">
                 <button type="button" onclick="changeQty(-1)">-</button>
@@ -212,9 +213,7 @@
   ?>
 </div>
 
-<footer>
-  <p>&copy; <?php echo date("Y"); ?> MakeHub Cosmetics. All rights reserved.</p>
-</footer>
+<?php include 'footer.php'; ?>
 
 <script src="./json/repeat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -59,7 +59,7 @@
     </div>
 
     <div class="text-center mt-4 pt-3 border-top border-secondary-subtle">
-      <p class="mb-0 small text">&copy; 2025 Glow & Grace. All rights reserved.</p>
+      <p class="mb-0 small text">&copy;<?= date("Y") ?> Glow & Grace. All rights reserved.</p>
     </div>
   </div>
 </div>

@@ -48,79 +48,93 @@ if ($view === 'top-customers') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root {
-      --peach-light: #fff5f0;
-      --peach-base: #ffd8b1;
-      --peach-dark: #ff7c4d;
-      --text-dark: #2e2e2e;
+      --primary: #7A1CAC;
+      --primary-light: rgb(177, 84, 228);
+      --bg-dark: #0e0e0e;
+      --text-light: #fff;
+      --shadow: 0 6px 20px rgba(235, 211, 248, 0.2);
     }
     body {
+      margin: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--peach-light);
-      color: var(--text-dark);
     }
     .brand {
-      font-family: 'Great Vibes', cursive!important;
-      font-size: 2.5rem;
-      color: black;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      color: #fff;
+      text-align: center;
     }
     .sidebar {
-      background-color: var(--peach-base);
-      height: 100vh;
       position: fixed;
       top: 0;
       left: 0;
-      width: 250px;
-      padding-top: 2rem;
+      width: 240px;
+      height: 100vh;
+      background-color: var(--primary);
+      box-shadow: var(--shadow);
+      padding-top: 20px;
+      z-index: 1000;
     }
     .sidebar a {
-      color: var(--text-dark);
+      color: #fff;
       text-decoration: none;
       display: block;
-      padding: 15px 20px;
-      font-weight: 500;
+      padding: 12px 20px;
+      font-size: 16px;
+      transition: background 0.3s;
     }
     .sidebar a:hover {
-      background-color: var(--peach-dark);
-      color: white;
+      background-color: var(--primary-light);
+    }
+    .sidebar a i {
+      margin-right: 10px;
+    }
+    .dropdown-toggle {
+      width: 100%;
+      text-align: left;
+    }
+    .dropdown-menu {
+      background-color: var(--primary-light);
+    }
+    .dropdown-menu a {
+      color: #fff;
+    }
+    .dropdown-menu a:hover {
+      background-color: #fff;
+      color: var(--primary);
     }
     .main-content {
-      margin-left: 250px;
+      margin-left: 240px;
       padding: 2rem;
     }
     .card {
+      background-color: #fff;
+      color: #000;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow);
     }
     .card-header {
-      background-color: var(--peach-dark);
+      background-color: var(--primary);
       color: white;
       font-weight: 600;
     }
-    .dropdown-toggle {
-  color: var(--text-dark);
-  font-weight: 500;
-}
-.dropdown-menu {
-  background-color: var(--peach-base);
-}
-.dropdown-menu a:hover {
-  background-color: var(--peach-dark);
-  color: white;
-}
-
     table {
       background-color: white;
       border-radius: 10px;
       overflow: hidden;
     }
     th {
-      background-color: var(--peach-base);
+      background-color: var(--primary-light);
+      color: #fff;
     }
     .btn-edit {
-      background-color: var(--peach-dark);
+      background-color: var(--primary);
       color: white;
     }
     .btn-delete {
@@ -132,26 +146,23 @@ if ($view === 'top-customers') {
 <body>
 
 <!-- Sidebar -->
-<div class="sidebar d-flex flex-column">
-  <h4 class="text-center mb-4 brand">Glow and Grace</h4>
-  <h4 class="text-center mb-4">Admin Panel</h4>
-  <a href="admin-dashboard.php?category=cosmetics">Cosmetics Dashboard</a>
-<a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>
-
-<!-- Manage Categories Dropdown -->
-<div class="dropdown px-3">
-  <a class="dropdown-toggle d-block py-2" data-bs-toggle="dropdown" href="#">Manage Categories</a>
-  <ul class="dropdown-menu shadow">
-    <li><a class="dropdown-item" href="admin-jewelry-categories.php">Jewelry Categories</a></li>
-    <li><a class="dropdown-item" href="admin-cosmetic-categories.php">Cosmetics Categories</a></li>
-  </ul>
-</div>
-
-  <a href="admin-users.php">Manage Users</a>
-  <a href="admin-purchases.php">Orders</a>
-  <a href="admin-dashboard.php?view=top-sellers">Top Sellers</a>
-  <a href="admin-dashboard.php?view=top-customers">Top Customers</a>
-  <a href="logout.php">Logout</a>
+<div class="sidebar">
+  <div class="brand mb-3">Glow & Grace</div>
+  <div class="text-center text-white mb-3">Admin Panel</div>
+  <a href="admin-dashboard.php?category=cosmetics"><i class="fas fa-palette"></i> Cosmetics Dashboard</a>
+  <a href="admin-dashboard.php?category=jewelery"><i class="fas fa-gem"></i> Jewelry Dashboard</a>
+  <div class="dropdown px-3">
+    <a class="dropdown-toggle text-white py-2" data-bs-toggle="dropdown" href="#"><i class="fas fa-list"></i> Manage Categories</a>
+    <ul class="dropdown-menu shadow">
+      <li><a class="dropdown-item" href="admin-jewelry-categories.php">Jewelry Categories</a></li>
+      <li><a class="dropdown-item" href="admin-cosmetic-categories.php">Cosmetics Categories</a></li>
+    </ul>
+  </div>
+  <a href="admin-users.php"><i class="fas fa-users"></i> Manage Users</a>
+  <a href="admin-purchases.php"><i class="fas fa-shopping-cart"></i> Orders</a>
+  <a href="admin-dashboard.php?view=top-sellers"><i class="fas fa-star"></i> Top Sellers</a>
+  <a href="admin-dashboard.php?view=top-customers"><i class="fas fa-user-tie"></i> Top Customers</a>
+  <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>
 
 <!-- Main Content -->
@@ -171,11 +182,11 @@ if ($view === 'top-customers') {
       </div>
     </div>
   <?php else: ?>
-    <h2 class="mb-4"><?= ucfirst($category) ?> Products Overview</h2>
+    <h2 class="mb-4 text-white"><?= ucfirst($category) ?> Products Overview</h2>
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         <span>Product List</span>
-        <a href="add-product.php?category=<?= $category ?>" class="btn btn-sm" style="background-color: var(--peach-dark); color: white;">
+        <a href="add-product.php?category=<?= $category ?>" class="btn btn-sm btn-light">
           <i class="fas fa-plus me-1"></i> Add Product
         </a>
       </div>
@@ -227,7 +238,7 @@ new Chart(ctx, {
     datasets: [{
       label: "<?= $view === 'top-sellers' ? 'Units Sold' : 'Total Spent (Rs.)' ?>",
       data: <?= json_encode($view === 'top-sellers' ? array_column($topSellers, 'total_sold') : array_column($topUsers, 'total_spent')) ?>,
-      backgroundColor: "<?= $view === 'top-sellers' ? '#ff7c4d' : '#ffd8b1' ?>"
+      backgroundColor: "<?= $view === 'top-sellers' ? '#7A1CAC' : 'rgb(177, 84, 228)' ?>"
     }]
   },
   options: {
@@ -241,5 +252,6 @@ new Chart(ctx, {
 });
 </script>
 <?php endif; ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

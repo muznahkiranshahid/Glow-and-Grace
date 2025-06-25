@@ -25,14 +25,16 @@ CREATE TABLE purchases (
 );
 
 -- Cart Items Table
-CREATE TABLE cart_items (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  product_name VARCHAR(255) NOT NULL,
-  product_price DECIMAL(10,2) NOT NULL,
-  added_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+CREATE TABLE user_cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_name VARCHAR(255),
+    product_price FLOAT,
+    quantity INT,
+    image_path VARCHAR(255),
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- Contact Messages Table
 CREATE TABLE contact_messages (
