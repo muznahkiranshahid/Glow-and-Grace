@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-light:rgb(233, 203, 250);
+      --bg-light:rgb(239, 217, 252);
       --primary-light: rgb(177, 84, 228);
       --primary: #7A1CAC;
       --text-dark: rgb(17, 17, 17);
@@ -40,11 +40,11 @@
       min-height: 70px;
       box-shadow: var(--shadow);
     }
-    .brand {
+   .brand {
       font-family: 'Great Vibes', cursive;
       font-size: 2.5rem;
       color: black;
-    }
+    } 
 
     .brand-icons {
       font-size: 1.2rem;
@@ -67,9 +67,9 @@
     }
 
     .glass-navbar {
-      background: rgba(255, 245, 240, 0.8);
+      background: var( --bg-light);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #ffd8b18a;
+      border-bottom: 1px solid var(--primary);
       box-shadow: var(--shadow);
     }
 
@@ -83,8 +83,13 @@
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link.active {
       color: var(--primary);
+      font-weight: 800;
     }
-
+.fixed-top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+    }
     .form-control:focus {
       box-shadow: 0 0 0 0.2rem rgba(122, 28, 172, 0.25);
       border-color: var(--primary);
@@ -127,11 +132,7 @@
 .glow-btn:hover::after {
   transform: scaleX(1);
 }
-    .fixed-top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1030;
-    }
+    
 
     /* AOS animation shadow match */
     [data-aos] {
@@ -145,12 +146,20 @@
       }
 
       .navbar-collapse {
-        background-color: var(--primary-light);
+        background-color: var(--bg-light);
         padding: 1rem;
+          outline: 2px solid var(--primary);
         border-radius: 0.5rem;
         margin-top: 0.5rem;
       }
-
+.navbar-collapse li .nav-item:active{
+        background-color: var(--primary-light);
+        padding: 1rem;
+        outline: 2px solid var(--primary);
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        color: var(--text-light);
+      }
       .search-form {
         margin-top: 1rem;
         width: 100%;
@@ -247,7 +256,7 @@
   </div>
 
   <!-- Icons -->
-  <div class="col-lg-4 col-md-3 col-sm-12 text-end d-flex justify-content-end align-items-center gap-3 icons-container">
+  <div class="col-lg-4 col-md-3 col-sm-12 text-center d-flex justify-content-center align-items-center gap-3 icons-container ">
     <?php if (isset($_SESSION['username'])): ?>
       <a href="profile.php" class="text-dark"><i class="fas fa-user"></i></a>
       <?php $cart_count = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'quantity')) : 0; ?>
@@ -259,10 +268,10 @@
           </span>
         <?php endif; ?>
       </a>
-      <a href="logout.php" class="text-dark fw-semibold d-none d-sm-inline me-4">Logout</a>
+      <a href="logout.php" class="btn glow-btn fw-bold d-none d-sm-inline me-4">Logout</a>
       <a href="logout.php" class="text-dark d-inline d-sm-none"><i class="fas fa-sign-out-alt"></i></a>
     <?php else: ?>
-      <a href="login.php" class="btn glow-btn  fw-semibold d-none d-sm-inline me-4">Get Access</a>
+      <a href="login.php" class="btn glow-btn  fw-bold d-none d-sm-inline m-2">Get Access</a>
       <a href="login.php" class="text-dark d-inline d-sm-none"><i class="fas fa-sign-in-alt"></i></a>
     <?php endif; ?>
   </div>

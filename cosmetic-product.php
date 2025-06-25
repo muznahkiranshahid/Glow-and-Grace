@@ -1,4 +1,4 @@
-<?php
+<?php 
 // index.php (or any main file)
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -24,311 +24,244 @@ if (session_status() === PHP_SESSION_NONE) {
 
   <style>
     :root {
-      --peach: #ffe1d6;
-      --peach-light: #fff5f0;
-      --peach-dark: #ffc2aa;
-      --black: #000;
+      --primary: #7A1CAC;
+      --primary-light: rgb(177, 84, 228);
+      --bg-light: rgb(233, 203, 250);
+      --shadow: 0 6px 20px rgba(235, 211, 248, 0.2);
       --text-dark: #1f1f1f;
-      --text-highlight: #5c4033;
     }
 
-
-    .hero {
-      background: linear-gradient(135deg, var(--peach), #fff);
-      padding: 80px 20px;
-      text-align: center;
-      border-bottom: 2px solid var(--black);
+    body {
+      background-color: var(--bg-light);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark);
     }
+.hero {
+  background: linear-gradient(135deg, var(--primary-light), var(--bg-light));
+  padding: 80px 20px;
+  text-align: center;
+  border-bottom: 2px solid var(--primary);
+}
 
-    .hero h1 {
-      font-size: 3rem;
-      color: var(--black);
-    }
+.hero h1 {
+  font-size: 3rem;
+  color: var(--primary);
+}
 
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-highlight);
-    }
+.hero p {
+  font-size: 1.25rem;
+  color: #4c296b;
+}
 
     .card {
-      background-color: #fffaf7;
+      background-color: white;
       border: none;
-      border-radius: 20px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
       overflow: hidden;
-      position: relative;
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
     .image-container {
       position: relative;
-      height: 300px;
-      background-color: var(--peach);
+      height: 280px;
     }
 
-    .image-container img.primary,
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
     .image-container img.secondary {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 10px;
-      transition: transform 0.4s ease;
-    }
-
-    .image-container img.secondary {
       opacity: 0;
-      z-index: 2;
-      transition: opacity 0.4s ease;
     }
 
-    .card:hover .image-container img.secondary {
+    .card:hover .secondary {
       opacity: 1;
     }
 
-    .card:hover .image-container img.primary {
+    .card:hover .primary {
       opacity: 0;
+    }
+
+    .view-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(122, 28, 172, 0.85);
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      font-weight: 600;
+      font-size: 1rem;
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .card:hover .view-text {
+      opacity: 1;
     }
 
     .overlay-text {
       position: absolute;
       top: 0;
       right: 0;
-      background-color: var(--peach-dark);
+      background-color: var(--primary);
+      color: white;
       padding: 6px 12px;
+      border-bottom-left-radius: 10px;
       font-size: 0.85rem;
-      font-weight: bold;
-      color: var(--black);
-      border-bottom-left-radius: 12px;
-      z-index: 3;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      text-transform: uppercase;
+      font-weight: 600;
     }
 
     .card-body {
-      padding: 1.25rem;
-      background-color: #fffdfc;
       text-align: center;
+      background-color: white;
+      padding: 0.75rem;
     }
 
     .card-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 0.4rem;
-      text-transform: capitalize;
-    }
-
-    .card-text {
       font-size: 1rem;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      font-weight: 600;
+      color: var(--primary);
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.4;
-      min-height: 2.8rem;
-    }
-
-    .card-text strong {
-      color: var(--text-highlight);
-      font-weight: 600;
-    }
-
-    .btn-cart {
-      border-radius: 50px;
-      padding: 0.5rem 1.5rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      background-color: var(--peach-dark);
-      color: var(--black);
-      border: 2px solid var(--peach-dark);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(255, 124, 77, 0.2);
-    }
-
-    .btn-cart:hover {
-      background-color: var(--text-highlight);
-      color: #fff;
-      border-color: var(--text-highlight);
-      box-shadow: 0 6px 16px rgba(92, 64, 51, 0.3);
-    }
-
-    footer {
-      background-color: var(--peach-dark);
-      color: var(--black);
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 2px solid var(--black);
-      margin-top: 2rem;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: var(--black);
-      border-radius: 4px;
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(255, 124, 77, 0.2);
     }
 
     .category-card {
-      min-width: 140px;
       background-color: white;
-      border-radius: 20px;
-      padding: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 16px;
+      padding: 10px;
+      transition: 0.3s;
+      text-align: center;
       cursor: pointer;
-      flex-shrink: 0;
+    }
+
+    .category-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
     }
 
     .category-card img {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
       object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+      margin-bottom: 10px;
     }
 
-    .category-card h5 {
-      color: var(--text-dark);
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-  <script>
-    const isLoggedIn = <?= $isLoggedIn ? 'true' : 'false' ?>;
-  </script>
+<script>
+  const isLoggedIn = <?= $isLoggedIn ? 'true' : 'false' ?>;
+</script>
 
-  <!-- Navbar -->
-    <!-- header and Icons Bar -->
 <?php include 'header.php'; ?>
-    </div>
-  </section>
-
-  <section class="py-4 text-center">
-    <div class="container" data-aos="zoom-in">
-      <h2 class="mb-4">Shop by Category</h2>
-      <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-3" style="scrollbar-width: none;">
-        <!-- Category Cards -->
-        <div class="category-card text-center btn" onclick="filterProducts('all')">
-          <img src="images/cosmetics/img3.jpg" alt="All">
-          <h5 class="mt-2 text-uppercase">All</h5>
-        </div>
-        <div class="category-card text-center btn" onclick="filterProducts('Lipstick')">
-          <img src="images/cosmetics/img6.jpg" alt="Lipstick">
-          <h5 class="mt-2 text-uppercase">Lipstick</h5>
-        </div>
-        <div class="category-card text-center btn" onclick="filterProducts('Foundation')">
-          <img src="images/cosmetics/img5.jpg" alt="Foundation">
-          <h5 class="mt-2 text-uppercase">Foundation</h5>
-        </div>
-        <div class="category-card text-center btn" onclick="filterProducts('Face Powder')">
-          <img src="images/cosmetics/img4.jpg" alt="Face Powder">
-          <h5 class="mt-2 text-uppercase">Face Powder</h5>
-        </div>
-        <div class="category-card text-center btn" onclick="filterProducts('Eyeliner')">
-          <img src="images/cosmetics/img7.jpg" alt="Eyeliner">
-          <h5 class="mt-2 text-uppercase">Eyeliner</h5>
-        </div>
-        <div class="category-card text-center btn" onclick="filterProducts('Mascara')">
-          <img src="images/cosmetics/img8.jpg" alt="Mascara">
-          <h5 class="mt-2 text-uppercase">Mascara</h5>
-        </div>
-        <div class="category-card text-center btn" onclick="filterProducts('Highlighter')">
-          <img src="images/cosmetics/img9.jpg" alt="Highlighter">
-          <h5 class="mt-2 text-uppercase">Highlighter</h5>
-        </div>
-      </div>
-      <?php
-    include 'conn.php';
-    $cat_query = $conn->query("SELECT * FROM cosmetic_categories");
-    while ($cat = $cat_query->fetch_assoc()) {
-    ?>
-      <div class="category-card text-center btn" onclick="filterProducts('<?= $cat['name'] ?>')">
-        <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
-        <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
-      </div>
-    <?php } ?>
-    </div>
-  </section>
 
 
-  <div class="container py-4">
-    <div class="row" id="productGrid"></div>
+<section class="hero">
+  <div class="container">
+    <h1>Explore Our Beauty Collection</h1>
+    <p>Discover lipsticks, foundations, eyeliners and more</p>
   </div>
+</section>
 
-  <footer id="footer"></footer>
+<section class="py-4 text-center">
+  <div class="container" data-aos="zoom-in">
+    <h2 class="mb-4" style="color: var(--primary)">Shop by Category</h2>
+    <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-3">
+      <!-- Static Categories -->
+      <div class="category-card btn" onclick="filterProducts('all')">
+        <img src="images/cosmetics/img3.jpg" alt="All">
+        <h5 class="text-uppercase">All</h5>
+      </div>
+      
+      <?php
+        include 'conn.php';
+        $cat_query = $conn->query("SELECT * FROM cosmetic_categories");
+        while ($cat = $cat_query->fetch_assoc()) {
+      ?>
+      <div class="category-card btn" onclick="filterProducts('<?= $cat['name'] ?>')">
+        <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>">
+        <h5 class="text-uppercase"><?= $cat['name'] ?></h5>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+</section>
+
+<div class="container py-4">
+  <div class="row" id="productGrid"></div>
+</div>
+
+  <!-- Footer -->
+   <?php include 'footer.php'; ?>
+
+
 <script src="./json/repeat.js"></script>
- <!-- Scripts -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
 
-    let productData = [];
+  let productData = [];
 
-    fetch('json/cosmetics.json')
-      .then(res => {
-        if (!res.ok) throw new Error("JSON not found");
-        return res.json();
-      })
-      .then(data => {
-        productData = data;
-        renderProducts(productData);
-      })
-      .catch(err => {
-        console.error("Error loading JSON:", err);
-      });
+  fetch('json/cosmetics.json')
+    .then(res => res.json())
+    .then(data => {
+      productData = data;
+      renderProducts(productData);
+    })
+    .catch(err => console.error("Error loading JSON:", err));
 
-    const grid = document.getElementById('productGrid');
+  function filterProducts(category) {
+    const filtered = category === 'all' ? productData : productData.filter(p => p.category === category);
+    renderProducts(filtered);
+  }
 
-    function filterProducts(category) {
-      const filtered = category === 'all' ? productData : productData.filter(p => p.category === category);
-      renderProducts(filtered);
-    }
-
-    function renderProducts(products) {
+function renderProducts(products) {
+  const grid = document.getElementById('productGrid');
   grid.innerHTML = '';
   products.forEach((p, index) => {
     grid.innerHTML += `
       <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
         <div class="card">
-          <div class="image-container">
-            <img src="${p.image1}" alt="${p.name}" class="primary">
-            <img src="${p.image2}" alt="${p.name}" class="secondary">
-            <div class="overlay-text">${p.brand}</div>
-          </div>
+          <a href="cosmetic-details.php?id=${p.id}" class="text-decoration-none text-dark">
+            <div class="image-container">
+              <img src="${p.image1}" class="primary" alt="${p.name}">
+              <img src="${p.image2}" class="secondary" alt="${p.name}">
+              <div class="overlay-text">${p.brand}</div>
+              <div class="view-text">View Details</div>
+            </div>
+          </a>
           <div class="card-body">
             <h5 class="card-title">${p.name}</h5>
-            <p class="card-text">
-              <strong>Brand:</strong> ${p.brand}<br>
-              <strong>Price:</strong> ${p.price}
-            </p>
-            <a href="cosmetic-details.php?id=${p.id}" class="btn btn-cart">
-              <i class="fas fa-cart-plus me-1"></i> View Details
-            </a>
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
   });
 }
 
-  </script>
+</script>
 </body>
 </html>

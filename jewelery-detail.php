@@ -1,5 +1,5 @@
-<?php session_start(); ?>
-<!DOCTYPE html> 
+<?php session_start(); ?>  
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -12,50 +12,85 @@
 
   <style>
     :root {
-      --peach: #ffe1d6;
-      --peach-light: #fff5f0;
-      --peach-dark: #ffcab3;
-      --black: #000000;
-      --text-dark: #2e2e2e;
-      --text-highlight: #5c4033;
+      --primary: #7A1CAC;
+      --primary-light: rgb(177, 84, 228);
+      --bg-light: rgb(233, 203, 250);
+      --shadow: 0 6px 20px rgba(235, 211, 248, 0.2);
+      --text-dark: #1f1f1f;
     }
 
     body {
-      background-color: var(--peach-light);
-      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      font-family: 'Montserrat', sans-serif;
       color: var(--text-dark);
     }
 
-    .navbar {
-      background-color: var(--peach);
-      border-bottom: 2px solid var(--black);
+    .hero {
+      background: linear-gradient(135deg, var(--primary-light), var(--bg-light));
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
     }
 
-    .navbar-brand, .nav-link {
-      color: var(--black) !important;
-      font-weight: 600;
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #4c296b;
     }
 
     .product-detail {
-      background-color: #fffaf7;
+      background-color: white;
       border-radius: 16px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow);
       padding: 2rem;
-      border: 2px solid var(--black);
+      border: 2px solid var(--primary);
     }
 
     .product-detail h2 {
-      color: var(--black);
+      color: var(--primary);
     }
 
-    .btn-outline-dark {
-      border-color: #ffb199;
-      color: #7a4e2f;
+    .glow-btn {
+      width: 150px;
+      height: 40px;
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      position: relative;
+      outline: 2px solid var(--primary);
+      border-radius: 4px;
+      color: var(--primary);
+      font-size: 16px;
+      transition: 0.3s;
+      z-index: 1;
+      overflow: hidden;
     }
 
-    .btn-outline-dark:hover {
-      background-color: #ffb199;
-      color: #fff;
+    .glow-btn::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-light);
+      z-index: -1;
+      transition: 0.3s;
+      transform: scaleX(0);
+      transform-origin: left;
+      border-radius: 4px;
+    }
+
+    .glow-btn:hover {
+      color: white;
+    }
+
+    .glow-btn:hover::after {
+      transform: scaleX(1);
     }
 
     .flex-gallery {
@@ -70,7 +105,7 @@
       border-radius: 12px;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: auto 100%;
+      background-size: cover;
       transition: all 0.8s cubic-bezier(0.25, 0.4, 0.45, 1.4);
       cursor: pointer;
     }
@@ -79,28 +114,28 @@
       flex: 4;
     }
 
-    footer {
-      background-color: var(--peach-dark);
+    .quantity-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quantity-wrapper button {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background-color: var(--primary-light);
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .quantity-wrapper input[type="number"] {
+      width: 60px;
       text-align: center;
-      padding: 2rem;
-      border-top: 2px solid var(--black);
-    }
-
-    .breadcrumb-item a {
-      text-decoration: none;
-      color: var(--text-highlight);
-    }
-
-    .breadcrumb-item.active {
-      color: var(--black);
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: var(--black);
+      border: 1px solid var(--primary);
       border-radius: 4px;
     }
 
@@ -112,7 +147,6 @@
 
       .flex-gallery > div {
         height: 200px;
-        background-size: cover;
       }
 
       .flex-gallery > div:hover {
@@ -122,88 +156,79 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
 <?php include 'header.php'; ?>
 
-  <div class="container py-5">
-    <?php
-      $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-      $jsonData = file_get_contents('json/jewelery.json');
-      $products = json_decode($jsonData, true);
-      $found = false;
+<section class="hero">
+  <div class="container">
+    <h1>Explore Our Beauty Collection</h1>
+    <p>Discover lipsticks, foundations, eyeliners and more</p>
+  </div>
+</section>
 
-      foreach ($products as $p) {
-        if ($p['id'] == $id) {
-          $found = true;
-          echo '
-          <div class="row product-detail" data-aos="fade-up">
-            <div class="col-md-6 mb-4">
-              <div class="flex-gallery">
-                <div style="background-image: url(\''.$p['image1'].'\');"></div>
-                <div style="background-image: url(\''.$p['image2'].'\');"></div>
+<div class="container py-5">
+  <?php
+    $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+    $jsonData = file_get_contents('json/jewelery.json');
+    $products = json_decode($jsonData, true);
+    $found = false;
+
+    foreach ($products as $p) {
+      if ($p['id'] == $id) {
+        $found = true;
+        echo '
+        <div class="row product-detail" data-aos="fade-up">
+          <div class="col-md-6 mb-4">
+            <div class="flex-gallery">
+              <div class="border" style="background-image: url('.$p['image1'].');"></div>
+              <div class="border" style="background-image: url('.$p['image2'].');"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>'.$p['name'].'</h2>
+            <p><strong>Brand:</strong> '.$p['brand'].'</p>
+            <p><strong>Category:</strong> '.$p['category'].'</p>
+            <p><strong>Price:</strong> ₹'.$p['price'].'</p>
+            <p><strong>Description:</strong> '.$p['desc'].'</p>
+            <form action="add-to-cart.php" method="post">
+              <input type="hidden" name="product_name" value="'.$p['name'].'">
+              <input type="hidden" name="product_price" value="'.$p['price'].'">
+              <input type="hidden" name="product_desc" value="'.$p['desc'].'">
+              <label for="quantity"><strong>Quantity:</strong></label>
+              <div class="quantity-wrapper">
+                <button type="button" onclick="changeQty(-1)">-</button>
+                <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+                <button type="button" onclick="changeQty(1)">+</button>
               </div>
-            </div>
-            <div class="col-md-6">
-              <h2>'.$p['name'].'</h2>
-              <p><strong>Brand:</strong> '.$p['brand'].'</p>
-              <p><strong>Category:</strong> '.$p['category'].'</p>
-              <p><strong>Price:</strong> ₹'.$p['price'].'</p>
-              <form action="add-to-cart.php" method="post">
-  <input type="hidden" name="product_name" value="'.$p['name'].'">
-  <input type="hidden" name="product_price" value="'.$p['price'].'">
-  <input type="hidden" name="product_desc" value="'.$p['desc'].'">
-  <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-</form>
-
-            </div>
-          </div>';
-        }
+              <button type="submit" class="btn glow-btn mt-3">Add to Cart</button>
+            </form>
+          </div>
+        </div>';
       }
-
-      if (!$found) {
-        echo '<div class="alert alert-warning text-center">Product not found.</div>';
-      }
-    ?>
-  </div>
-
-  <footer>
-    <p>&copy; <?php echo date("Y"); ?> MakeHub jewelery. All rights reserved.</p>
-  </footer>
-
-  <!-- Cart Modal -->
-  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: #fffaf7; border: 2px solid var(--black);">
-        <div class="modal-header" style="background-color: var(--peach); border-bottom: 1px solid var(--black);">
-          <h5 class="modal-title" id="cartModalLabel">🛒 Your Cart</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p id="cartItem">No items added yet.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-dark">Checkout</button>
-        </div>
-      </div>
-    </div>
-  </div>
-    <script src="./json/repeat.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    function addToCart(productName, productPrice) {
-      const cartItem = document.getElementById("cartItem");
-      if (cartItem.innerHTML === "No items added yet.") {
-        cartItem.innerHTML = "";
-      }
-      cartItem.innerHTML += `You added <strong>${productName}</strong> (${productPrice}) to your cart.<br>`;
-      const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-      cartModal.show();
     }
-  </script>
+
+    if (!$found) {
+      echo '<div class="alert alert-warning text-center">Product not found.</div>';
+    }
+  ?>
+</div>
+
+<footer>
+  <p>&copy; <?php echo date("Y"); ?> MakeHub Cosmetics. All rights reserved.</p>
+</footer>
+
+<script src="./json/repeat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  function changeQty(change) {
+    const qtyInput = document.getElementById("quantity");
+    let value = parseInt(qtyInput.value);
+    value = isNaN(value) ? 1 : value + change;
+    if (value < 1) value = 1;
+    qtyInput.value = value;
+  }
+</script>
 </body>
 </html>

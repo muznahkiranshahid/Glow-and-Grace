@@ -41,7 +41,7 @@
     },
     {
         "id": 5,
-        "name": "Mega Lash Mascara",
+        "name": "Dior lipglow",
         "brand": "Dior",
         "category": "Lipstick",
         "price": "Rs. 799",
@@ -51,13 +51,13 @@
     },
     {
         "id": 6,
-        "name": "Rosy Blush",
+        "name": "Mega Lash Mascara",
         "brand": "Dior",
         "category": "Mascara",
         "price": "Rs. 599",
         "image1": "images/cosmetics/dior/dior mascara.jpg",
         "image2": "images/cosmetics/dior/dior mascara detail.jpg" ,
-        "desc":"Dior Rosy Blush is a soft, peachy blush that adds a touch of color to the cheeks. It is designed to be worn on its own or over foundation for a natural, effortless finish. The formula is infused with kaolin clay and talc to help absorb excess oil and reduce the appearance of pores, while the texture is designed to be smooth and even."
+        "desc":"Dior Mega Lash Mascara is a volumizing and lengthening mascara that helps to create a full, luscious lash look. It is designed to be worn on its own or over individual lashes for a dramatic, eye-catching finish. The formula is infused with keratin and biotin to help strengthen and condition lashes, while the brush is designed to coat lashes evenly and prevent clumping."
     },
     {
         "id": 7,

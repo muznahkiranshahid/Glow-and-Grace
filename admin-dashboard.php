@@ -61,6 +61,11 @@ if ($view === 'top-customers') {
       background-color: var(--peach-light);
       color: var(--text-dark);
     }
+    .brand {
+      font-family: 'Great Vibes', cursive!important;
+      font-size: 2.5rem;
+      color: black;
+    }
     .sidebar {
       background-color: var(--peach-base);
       height: 100vh;
@@ -126,10 +131,9 @@ if ($view === 'top-customers') {
 </head>
 <body>
 
-<?php include 'header.php'; ?>
-
 <!-- Sidebar -->
 <div class="sidebar d-flex flex-column">
+  <h4 class="text-center mb-4 brand">Glow and Grace</h4>
   <h4 class="text-center mb-4">Admin Panel</h4>
   <a href="admin-dashboard.php?category=cosmetics">Cosmetics Dashboard</a>
 <a href="admin-dashboard.php?category=jewelery">Jewelry Dashboard</a>

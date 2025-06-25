@@ -24,282 +24,154 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <style>
       :root {
-        --peach-light: #fff5f0;
-        --peach-base: #ffd8b1;
-        --peach-dark:rgb(248, 156, 123);
-        --text-dark: #2e2e2e;
+        --primary: #7A1CAC;
+        --primary-light: rgb(177, 84, 228);
+        --bg-light: rgb(233, 203, 250);
+        --text-dark: rgb(17, 17, 17);
+        --text-light: #f8f8f8;
+        --shadow: 0 6px 20px rgba(235, 211, 248, 0.2);
       }
 
       body {
         font-family: 'Montserrat', sans-serif;
-        background: var(--peach-light);
+        background: var(--bg-light);
         color: var(--text-dark);
         scroll-behavior: smooth;
-      }  
+      }
+      .brand {
+      font-family: 'Great Vibes';
+      font-size: 300px;
+      color: black;
+    }
       .hero-section {
-        background: #f8d9c5;
+        background: var(--primary-light);
         padding: 100px 20px;
-        font-family: 'Segoe UI', sans-serif;
-        color: #111;
+        color: var(--text-light);
       }
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: auto;
-      }
-      .hero-content {
-        flex: 1 1 500px;
-      }
+
       .hero-content h1 {
         font-size: 3rem;
         font-weight: 700;
         margin-bottom: 20px;
-        line-height: 1.2;
       }
+
       .hero-content p {
         font-size: 1.1rem;
-        color: #555;
-        margin-bottom: 30px;
+        color: #eee;
       }
-      .countdown {
-        display: flex;
-        gap: 30px;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 30px;
+
+      .countdown div small {
+        color: #ddd;
       }
-      .countdown div {
-        text-align: center;
-      }
-      .countdown small {
-        display: block;
-        font-size: 0.9rem;
-        color: #888;
-        font-weight: normal;
-        margin-top: 5px;
-      }
+
       .cta-btn {
-        background: #e6916a;
+        background: var(--primary);
         color: white;
         padding: 15px 25px;
         border-radius: 30px;
-        text-decoration: none;
         font-size: 1.1rem;
         font-weight: bold;
-        transition: background 0.3s ease;
+        text-decoration: none;
       }
+
       .cta-btn:hover {
-        background: #d37954;
+        background: #631696;
       }
-      .hero-image {
-        flex: 1 1 500px;
+
+      .hover-image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        height: 350px;
+      }
+
+      .hover-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.4s ease;
+      }
+
+      .hover-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        padding: 20px;
         text-align: center;
       }
-      .hero-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
+
+      .hover-image-container:hover .hover-text {
+        opacity: 1;
       }
-      
-      .btn-cta {
-        background: var(--peach-dark);
-        color: #fff;
-        padding: 12px 28px;
-        border-radius: 30px;
-        font-weight: 600;
-        transition: background 0.3s;
+
+      .hover-text h4 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
       }
-      .btn-cta:hover {
-        background: #e3663f;
+
+      .hover-text h4.cosmetics-font {
+        font-family: 'Great Vibes', cursive;
       }
-.hover-image-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  height: 350px; /* Fixed height for uniform image size */
-}
 
-.hover-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s ease;
-}
-
-.hover-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  padding: 20px;
-  text-align: center;
-}
-
-.hover-image-container:hover .hover-text {
-  opacity: 1;
-}
-
-.hover-text h4 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Unique fonts for headings */
-.hover-text h4.cosmetics-font {
-  font-family: 'Great Vibes', cursive;
-}
-
-.hover-text h4.jewelry-font {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+      .hover-text h4.jewelry-font {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+      }
 
       .card {
-        background-color: var(--peach-light);
+        background-color: #fdf6ff;
         border: none;
         border-radius: 16px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
       }
+
       .card:hover {
         transform: translateY(-6px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
       }
-      .card-title {
-        font-size: 1.2rem;
-        color: var(--text-dark);
-      }
-      .card-text {
-        color: var(--text-dark);
-      }
-      /* Testimonials Section */
+
       .testimonials-section {
-        background: rgba(255, 216, 177, 0.3);
+        background: rgba(177, 84, 228, 0.1);
         padding: 80px 0;
       }
+
       .testimonial-card {
-        background: white;
+        background: #fff;
         border-radius: 16px;
         padding: 30px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-        margin: 15px;
+        box-shadow: var(--shadow);
       }
+
       .testimonial-text {
         font-style: italic;
-        margin-bottom: 20px;
       }
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-      }
-      .testimonial-author img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 15px;
-      }
-      .author-info h5 {
-        margin-bottom: 0;
-      }
+
       .author-info p {
-        color: var(--peach-dark);
-        margin-bottom: 0;
-        font-size: 0.9rem;
-      }
-
-      section.text-center h2 {
-        color: var(--text-dark);
-      }
-      section.text-center p {
-        color: var(--text-dark);
-        max-width: 800px;
-        margin: auto;
-      }
-
-      /* Transparent Footer */
-      #footer {
-        background: rgba(255, 216, 177, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 3rem 0;
-        color: var(--text-dark);
-      }
-      
-      .footer-item h4 {
-        position: relative;
-        padding-bottom: 15px;
-        margin-bottom: 20px;
-        color: var(--peach-dark);
-      }
-      
-      .footer-item h4::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background: var(--peach-dark);
-      }
-      
-      .footer-item a {
-        color: var(--text-dark);
-        text-decoration: none;
-        margin-bottom: 0.8rem;
-        display: block;
-        transition: all 0.3s ease;
-      }
-      
-      .footer-item a:hover {
-        color: var(--peach-dark);
-        padding-left: 8px;
-      }
-      
-      .footer-item i {
-        color: var(--peach-dark);
-        width: 20px;
-      }
-      
-      .footer-input {
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 124, 77, 0.3);
-      }
-      
-      .footer-btn {
-        background: var(--peach-dark);
-        color: white;
-        border: none;
-      }
-      
-      .footer-btn:hover {
-        background: #e3663f;
+        color: var(--primary);
       }
 
       ::-webkit-scrollbar {
         width: 8px;
       }
       ::-webkit-scrollbar-thumb {
-        background-color: var(--peach-dark);
+        background-color: var(--primary);
         border-radius: 4px;
       }
+
       @media (max-width: 768px) {
         .container {
           flex-direction: column;
           text-align: center;
         }
       }
- 
     </style>
   </head>
 
@@ -309,32 +181,10 @@ if (session_status() === PHP_SESSION_NONE) {
 <?php include 'header.php'; ?>
     
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-      <div class="container">
-        <div class="hero-content" data-aos="fade-right" data-aos-duration="800">
-          <h1>Discover Beauty Cosmetics<br>That Your Skin Loves</h1>
-          <p>Tristique Nostra Mauris Elementum Eget Ante Nec, Consectetur Viverra Leo. Curabitur Sit Amet Dignissim Erat. Aenean Fringilla Pretium Elit, Et Eleifend Orci Cursus.</p>
-          
-          <div class="countdown">
-            <div><span id="days">124</span><small>Days</small></div>
-            <div><span id="hours">18</span><small>Hrs</small></div>
-            <div><span id="minutes">53</span><small>Mins</small></div>
-            <div><span id="seconds">8</span><small>Secs</small></div>
-          </div>
-          
-          <a href="#" class="cta-btn">★ Grab This Offer ★</a>
-        </div>
-        <div class="hero-image" data-aos="fade-left" data-aos-duration="800">
-          <img src="images/img1.jpg" alt="Cosmetic Product">
-        </div>
-      </div>
-    </section>
-
     <!-- Hover Products -->
     <section id="products">
       <div class="container mt-5">
-        <h1 data-aos="fade-up">Our Products</h1>
+        <h1 class="brand" data-aos="fade-up">Our Products</h1>
         <div class="row">
           <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
   <a href="cosmetic-product.php">
@@ -462,69 +312,8 @@ if (session_status() === PHP_SESSION_NONE) {
     </section>
 
     <!-- Footer -->
-    <footer id="footer">
-  <div class="container-fluid py-5">
-    <div class="container py-4">
-      <div class="row g-5">
-        <!-- Newsletter -->
-        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up">
-          <div class="footer-item">
-            <h4 class="mb-4">Newsletter</h4>
-            <p>Be the first to hear about new arrivals, exclusive deals, and beauty tips!</p>
-            <div class="position-relative">
-            <a href="login.php">
-              <button type="button" class="btn footer-btn rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">Sign Up</button></a>
-            </div>
-          </div>
-        </div>
+   <?php include 'footer.php'; ?>
 
-        <!-- Services -->
-        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="footer-item d-flex flex-column">
-            <h4 class="mb-4">Shop Categories</h4>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Skincare Products</a>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Makeup Kits</a>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Hair Care</a>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Necklaces</a>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Earrings</a>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Rings</a>
-            <a href="#"><i class="fas fa-angle-right me-2"></i> Bridal Collection</a>
-          </div>
-        </div>
-
-        <!-- Hours & Address -->
-        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="footer-item d-flex flex-column">
-            <h4 class="mb-4">Store Hours</h4>
-            <p class="mb-2">Monday - Friday: <span>10:00 am – 08:00 pm</span></p>
-            <p class="mb-2">Saturday: <span>10:00 am – 06:00 pm</span></p>
-            <p class="mb-3">Sunday: <span>Closed</span></p>
-            <h4 class="my-3">Location</h4>
-            <p><i class="fas fa-map-marker-alt me-2"></i> Glow & Grace, Main Street, Lahore, Pakistan</p>
-          </div>
-        </div>
-
-        <!-- Social & Contact -->
-        <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="footer-item d-flex flex-column">
-            <h4 class="mb-4">Connect with Us</h4>
-            <a href="#"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
-            <a href="#"><i class="fab fa-instagram me-2"></i> Instagram</a>
-            <a href="#"><i class="fab fa-pinterest me-2"></i> Pinterest</a>
-            <h4 class="my-3">Contact Us</h4>
-            <p><i class="fas fa-envelope me-2"></i> support@glowandgrace.com</p>
-            <p><i class="fas fa-phone me-2"></i> (+92) 300 123 4567</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="text-center mt-5 pt-3" data-aos="fade-up">
-        <p class="mb-0">&copy; 2025 Glow & Grace. All rights reserved. Crafted with ❤️ for beauty lovers.</p>
-      </div>
-    </div>
-  </div>
-</footer>
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -535,9 +324,5 @@ if (session_status() === PHP_SESSION_NONE) {
          once: false // Ensures animations trigger every time you scroll back
        });
      </script>
-    
-        <script src="./json/repeat.js"></script>
-
-    </script>
-  </body>
+      </body>
 </html>

@@ -1,5 +1,19 @@
 <?php include 'header.php'; ?>
-
+<style>
+    :root {
+      --bg-light:rgb(239, 217, 252);
+      --primary-light: rgb(177, 84, 228);
+      --primary: #7A1CAC;
+      --text-dark: rgb(17, 17, 17);
+      --text-light: #f8f8f8;
+      --card-bg:rgb(177, 84, 228);
+      --hover-bg: #292929;
+      --shadow: 0 6px 20px rgba(235, 211, 248, 0.2);
+    }
+    .text{
+        color: var(--pirmary);
+    }
+</style>
 <div class="container my-5">
   <?php
   $query = strtolower(trim($_GET['query'] ?? ''));
@@ -28,7 +42,7 @@
     $jewelry = searchProducts('jewelry.json', $query);
     $total = count($cosmetics) + count($jewelry);
 
-    echo "<h3 class='mb-4 text-center'>Search Results for <span class='text-warning'>\"$query\"</span> ($total found)</h3>";
+    echo "<h3 class='mb-4 text-center'>Search Results for <span class='text'>\"$query\"</span> ($total found)</h3>";
 
     echo "<div class='row g-4'>";
     foreach (array_merge($cosmetics, $jewelry) as $product) {

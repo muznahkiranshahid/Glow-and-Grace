@@ -1,66 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Glow & Grace</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <body>
-    <div class="container-fluid footer py-5">
-      <div class="container py-5">
-        <div class="row g-5">
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="footer-item">
-              <h4 class="mb-4 text-white">Newsletter</h4>
-              <p class="text-white">Stay updated on offers, trends, and beauty tips. Join our newsletter now!</p>
-              <div class="position-relative mx-auto rounded-pill">
-                <input class="form-control rounded-pill border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
-                <button type="button" class="btn footer-btn rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="footer-item d-flex flex-column">
-              <h4 class="mb-4 text-white">Cosmetic Products</h4>
-              <a href="#"><i class="fas fa-angle-right me-2"></i>Facepowder</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i>Lipstick</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i>Mascara</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i>Eyeliner</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i>Foundation</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i>Highlighter</a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="footer-item d-flex flex-column">
-              <h4 class="mb-4 text-white">Schedule</h4>
-              <p class="text-muted mb-0">Monday: <span class="text-white">09:00 am – 10:00 pm</span></p>
-              <p class="text-muted mb-0">Saturday: <span class="text-white">09:00 am – 08:00 pm</span></p>
-              <p class="text-muted mb-0">Sunday: <span class="text-white">09:00 am – 05:00 pm</span></p>
-              <h4 class="my-4 text-white">Address</h4>
-              <p><i class="fas fa-map-marker-alt text-secondary me-2"></i> 123 Ranking Street, New York, USA</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="footer-item d-flex flex-column">
-              <h4 class="mb-4 text-white">Follow Us</h4>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Facebook</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Instagram</a>
-              <a href="#"><i class="fas fa-angle-right me-2"></i> Twitter</a>
-              <h4 class="my-4 text-white">Contact Us</h4>
-              <p><i class="fas fa-envelope text-secondary me-2"></i> info@example.com</p>
-              <p><i class="fas fa-phone text-secondary me-2"></i> (+012) 3456 7890 123</p>
-            </div>
-          </div>
+<?php include 'conn.php'; ?>
+
+<!-- Footer with Parallax Background -->
+<div class="parallax-footer position-relative text pt-5 pb-4">
+  <div class="parallax-overlay position-absolute top-0 start-0 w-100 h-100" ></div>
+
+  <div class="container position-relative" style="z-index: 2;">
+    <div class="row gy-4">
+
+      <!-- Brand Info -->
+      <div class="col-lg-4 col-md-6">
+        <h4 class="fw-bolder fs-1 mb-3 brand" >Glow & Grace</h4>
+        <p class="text">Glow & Grace celebrates timeless beauty and elegance with our handpicked cosmetics and artisan jewelry. Crafted for confidence, curated with care.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text fs-5"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text fs-5"><i class="fab fa-twitter"></i></a>
         </div>
+      </div>
+
+      <!-- Makeup -->
+      <div class="col-lg-2 col-md-6">
+        <h5 class="fw-bolder fs-3 mb-3 text">Makeup</h5>
+        <ul class="list-unstyled">
+          <?php
+          $makeupSQL = $conn->query("SELECT name FROM cosmetic_categories");
+          while ($row = $makeupSQL->fetch_assoc()) {
+              echo '<li><a href="cosmetic-product.php?category=' . urlencode($row['name']) . '" class="text text-decoration-none d-block py-1">' . htmlspecialchars($row['name']) . '</a></li>';
+          }
+          ?>
+        </ul>
+      </div>
+
+      <!-- Jewelry -->
+      <div class="col-lg-2 col-md-6">
+        <h5 class="fw-bolder fs-3 mb-3 text">Jewelry</h5>
+        <ul class="list-unstyled">
+          <?php
+          $jewelrySQL = $conn->query("SELECT name FROM categories");
+          while ($row = $jewelrySQL->fetch_assoc()) {
+              echo '<li><a href="jewelery.php?category=' . urlencode($row['name']) . '" class="text text-decoration-none d-block py-1">' . htmlspecialchars($row['name']) . '</a></li>';
+          }
+          ?>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="fw-bolder fs-3 mb-3 text">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.php" class="text text-decoration-none d-block py-1">Home</a></li>
+          <li><a href="about.php" class="text text-decoration-none d-block py-1">About Us</a></li>
+          <li><a href="cosmetic-product.php" class="text text-decoration-none d-block py-1">Cosmetics</a></li>
+          <li><a href="jewelery.php" class="text text-decoration-none d-block py-1">Jewelry</a></li>
+          <li><a href="contact.php" class="text text-decoration-none d-block py-1">Contact</a></li>
+        </ul>
       </div>
 
     </div>
 
-      
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <div class="text-center mt-4 pt-3 border-top border-secondary-subtle">
+      <p class="mb-0 small text">&copy; 2025 Glow & Grace. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Parallax Footer Background Style -->
+<style>
+  .parallax-footer {
+    background-image: url('images/img3.jpg'); /* 👈 Change to your desired image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+
+  }
+.parallax-overlay {
+  backdrop-filter: blur(5px);
+  background:	rgba(227, 190, 248, 0.5); /* 👈 Adjust transparency here */
+  z-index: 1;
+}
+    .brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: black;
+    }
+    .text{
+      color: black;
+    }
+
+  @media (max-width: 767.98px) {
+    .parallax-footer {
+      background-attachment: scroll; /* fallback for mobile */
+    }
+  }
+</style>
