@@ -188,12 +188,15 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <section class="py-4 text-center">
   <div class="container" data-aos="zoom-in">
-    <h2 class="mb-4" style="color: var(--primary)">Shop by Category</h2>
-    <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-3">
-      <!-- Static Categories -->
-      <div class="category-card btn" onclick="filterProducts('all')">
-        <img src="images/cosmetics/img3.jpg" alt="All">
-        <h5 class="text-uppercase">All</h5>
+    <h2 class="mb-3">Shop by Category</h2>
+    
+    <div class="row justify-content-center g-3">
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="category-card text-center btn w-100" onclick="filterProducts('all')">
+          <img src="images/jewels/img3.jpg" alt="All">
+          <h5 class="mt-2 text-uppercase">All</h5>
+        </div>
+        
       </div>
       
       <?php
@@ -201,10 +204,12 @@ if (session_status() === PHP_SESSION_NONE) {
         $cat_query = $conn->query("SELECT * FROM cosmetic_categories");
         while ($cat = $cat_query->fetch_assoc()) {
       ?>
-      <div class="category-card btn" onclick="filterProducts('<?= $cat['name'] ?>')">
-        <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>">
-        <h5 class="text-uppercase"><?= $cat['name'] ?></h5>
-      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+         <div class="category-card text-center btn w-100" onclick="filterProducts('<?= $cat['name'] ?>')">
+           <img src="<?= $cat['image'] ?>" alt="<?= $cat['name'] ?>" />
+           <h5 class="mt-2 text-uppercase"><?= $cat['name'] ?></h5>
+         </div>
+       </div>
       <?php } ?>
     </div>
   </div>

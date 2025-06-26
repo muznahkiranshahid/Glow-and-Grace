@@ -205,7 +205,7 @@ require_once 'conn.php';
           <div class="hover-image-container">
             <img src="./images/cosmetics/img3.jpg" alt="Cosmetics Image">
             <div class="hover-text">
-              <h4>Cosmetics</h4>
+              <h4 class="brand">Cosmetics</h4>
               <p>Enhance your natural beauty with our finest picks.</p>
             </div>
           </div>
@@ -216,7 +216,7 @@ require_once 'conn.php';
           <div class="hover-image-container">
             <img src="./images/jewels/img1.jpg" alt="Jewelry Image">
             <div class="hover-text">
-              <h4>Jewelry</h4>
+              <h4 class="brand">Jewelry</h4>
               <p>Timeless pieces for every style.</p>
             </div>
           </div>
