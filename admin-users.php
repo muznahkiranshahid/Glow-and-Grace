@@ -156,20 +156,28 @@ $users = $conn->query("SELECT * FROM users");
         <thead>
           <tr>
             <th>ID</th>
-            <th>Full Name</th>
-            <th>Username</th>
-            <th>Password</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Work Phone</th>
+            <th>Cell No</th>
+            <th>Date of Birth</th>
+            <th>Category</th>
             <th>Email</th>
+            <th>Password</th>
           </tr>
         </thead>
         <tbody>
           <?php while ($row = $users->fetch_assoc()): ?>
             <tr>
               <td><?= $row['id'] ?></td>
-              <td><?= $row['first_name'] . ' ' . $row['last_name'] ?></td>
-              <td><?= $row['username'] ?></td>
-              <td><?= $row['password'] ?></td> <!-- Consider masking or omitting passwords -->
-              <td><?= $row['email'] ?></td>
+              <td><?= htmlspecialchars($row['name']) ?></td>
+              <td><?= nl2br(htmlspecialchars($row['address'])) ?></td>
+              <td><?= htmlspecialchars($row['work_phone']) ?></td>
+              <td><?= htmlspecialchars($row['cell_no']) ?></td>
+              <td><?= htmlspecialchars($row['dob']) ?></td>
+              <td><?= htmlspecialchars($row['category']) ?></td>
+              <td><?= htmlspecialchars($row['email']) ?></td>
+              <td><?= htmlspecialchars($row['password']) ?></td> <!-- Mask or hash in real use -->
             </tr>
           <?php endwhile; ?>
         </tbody>

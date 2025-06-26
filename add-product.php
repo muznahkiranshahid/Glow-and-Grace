@@ -1,7 +1,5 @@
 <?php
-// add-product.php
 session_start();
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $category = $_POST['category'] ?? 'cosmetics';
   $name = $_POST['name'];
@@ -13,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $imageDir = $category === 'jewelery' ? 'images/jewelery/' : 'images/cosmetics/';
 
   $data = file_exists($filePath) ? json_decode(file_get_contents($filePath), true) : [];
-
   $id = count($data) > 0 ? end($data)['id'] + 1 : 1;
 
   $img1Name = basename($_FILES['image1']['name']);
@@ -34,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   ];
 
   $data[] = $newProduct;
-
   file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT));
 
   header("Location: admin-dashboard.php?category=$category");
@@ -46,48 +42,148 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Add Product - Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Product - MakeHub Admin</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     :root {
-      --peach-light: #fff5f0;
-      --peach-base: #ffd8b1;
-      --peach-dark: #ff7c4d;
-      --text-dark: #2e2e2e;
+      --primary: #7A1CAC;
+      --primary-light: rgb(177, 84, 228);
+      --bg-dark: #0e0e0e;
+      --text-light: #fff;
     }
+
     body {
-      background: var(--peach-light);
-      font-family: 'Segoe UI', sans-serif;
-      padding: 2rem;
-      color: var(--text-dark);
+      margin: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
     }
-    h2 {
-      color: var(--peach-dark);
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background-color: var(--primary);
+      padding-top: 20px;
+      z-index: 1000;
     }
-    .btn-peach {
-      background-color: var(--peach-dark);
-      border: none;
+
+    .sidebar a {
       color: #fff;
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
+      display: block;
+      padding: 12px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--primary-light);
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+    }
+
+    .main-content {
+      margin-left: 240px;
+      padding: 2rem;
+    }
+
+    .form-container {
+      background-color: #fff;
+      color: #000;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: var(--primary);
       font-weight: bold;
-      text-transform: uppercase;
     }
-    .btn-peach:hover {
-      background-color: #e8663f;
+
+    .btn-submit {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 30px;
+      font-weight: bold;
+      transition: background 0.3s;
     }
-    .form-label {
-      font-weight: 600;
+
+    .btn-submit:hover {
+      background-color: var(--primary-light);
+    }
+
+    /* Responsive Sidebar */
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: 0.3s;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 1rem;
+      }
+
+      .sidebar-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background: var(--primary);
+        color: white;
+        padding: 8px 10px;
+        border: none;
+        z-index: 1100;
+      }
+    }
+
+    .sidebar-toggle {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2 class="mb-4">Add New Product</h2>
-    <form action="" method="post" enctype="multipart/form-data" class="p-4 border rounded bg-white shadow">
+
+<!-- Sidebar Toggle -->
+<button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="text-center text-white fs-4 fw-bold mb-3">Glow & Grace</div>
+  <div class="text-center text-white mb-3">Admin Panel</div>
+  <a href="admin-dashboard.php?category=cosmetics"><i class="fas fa-palette"></i> Cosmetics Dashboard</a>
+  <a href="admin-dashboard.php?category=jewelery"><i class="fas fa-gem"></i> Jewelry Dashboard</a>
+  <a href="admin-users.php"><i class="fas fa-users"></i> Manage Users</a>
+  <a href="admin-purchases.php"><i class="fas fa-shopping-cart"></i> Orders</a>
+  <a href="admin-dashboard.php?view=top-sellers"><i class="fas fa-star"></i> Top Sellers</a>
+  <a href="admin-dashboard.php?view=top-customers"><i class="fas fa-user-tie"></i> Top Customers</a>
+  <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <h2 class="mb-4">Add New Product</h2>
+  <div class="form-container">
+    <form action="" method="post" enctype="multipart/form-data">
       <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
+        <label class="form-label">Category</label>
         <select name="category" class="form-select" required>
           <option value="cosmetics">Cosmetics</option>
           <option value="jewelery">Jewelery</option>
@@ -117,8 +213,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <label class="form-label">Secondary Image</label>
         <input type="file" name="image2" class="form-control" accept="image/*" required />
       </div>
-      <button type="submit" class="btn btn-peach">Add Product</button>
+      <div class="text-end">
+        <button type="submit" class="btn btn-submit">Add Product</button>
+      </div>
     </form>
   </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

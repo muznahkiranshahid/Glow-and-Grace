@@ -7,6 +7,19 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Include DB connection
+require_once 'conn.php';
+
+// Fetch user info
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT name FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$username = $user['name']; // You can use this for display if needed
+
+// Handle cart operations
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_name = $_POST['product_name'] ?? '';
     $product_image = $_POST['product_image'] ?? '';
@@ -25,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['cart'] = [];
     }
 
-    // Handle deletion
+    // Delete item
     if ($action === 'delete') {
         foreach ($_SESSION['cart'] as $key => $item) {
             if ($item['product_name'] === $product_name) {
@@ -38,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Handle update
+    // Update quantity
     if ($action === 'update') {
         foreach ($_SESSION['cart'] as &$item) {
             if ($item['product_name'] === $product_name) {
@@ -51,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Handle new addition
+    // Add to cart
     $found = false;
     foreach ($_SESSION['cart'] as &$item) {
         if ($item['product_name'] === $product_name) {

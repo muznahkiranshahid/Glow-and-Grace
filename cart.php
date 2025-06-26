@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 require_once 'conn.php';
 
@@ -8,17 +8,17 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Fetch username
+// Fetch user name (instead of 'username')
 $user_id = $_SESSION['user_id'];
-$username = '';
-$stmt = $conn->prepare("SELECT username FROM users WHERE id = ?");
+$user_name = '';
+$stmt = $conn->prepare("SELECT name FROM users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$stmt->bind_result($username);
+$stmt->bind_result($user_name);
 $stmt->fetch();
 $stmt->close();
 
-// Checkout logic
+// Handle checkout
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
     if (!empty($_SESSION['cart'])) {
         foreach ($_SESSION['cart'] as $item) {
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
             $quantity = (int)$item['quantity'];
             $total = $price * $quantity;
             $stmt = $conn->prepare("INSERT INTO purchases (user_id, username, product_name, product_price, quantity, total) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("issdii", $user_id, $username, $name, $price, $quantity, $total);
+            $stmt->bind_param("issdii", $user_id, $user_name, $name, $price, $quantity, $total);
             $stmt->execute();
         }
         unset($_SESSION['cart']);
@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

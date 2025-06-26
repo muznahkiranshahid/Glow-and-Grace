@@ -28,7 +28,6 @@
     foreach ($products as $product) {
       if (
         stripos($product['name'], $query) !== false ||
-        stripos($product['desc'], $query) !== false ||
         stripos($product['category'], $query) !== false
       ) {
         $results[] = $product;

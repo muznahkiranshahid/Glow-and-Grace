@@ -1,8 +1,6 @@
-<?php
+<?php 
 session_start();
-require_once 'conn.php';
-
-$alert = "";
+require_once 'conn.php'; // ✅ Database connection
 
 if (isset($_POST['btnlogin'])) {
   $name = trim($_POST['name']);
@@ -16,16 +14,19 @@ if (isset($_POST['btnlogin'])) {
   }
 
   // User login
-  $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+  $stmt = $conn->prepare("SELECT * FROM users WHERE name = ? OR email = ?");
   $stmt->bind_param("ss", $name, $name);
   $stmt->execute();
   $result = $stmt->get_result();
 
   if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
+    
     if ($password === $user['password']) {
       $_SESSION['user_id'] = $user['id'];
-      $_SESSION['username'] = $user['username'];
+      $_SESSION['name'] = $user['name'];
+      $_SESSION['email'] = $user['email'];
+      $_SESSION['category'] = $user['category'];
       echo "<script>window.location.href = 'index.php';</script>";
       exit();
     } else {
@@ -36,6 +37,7 @@ if (isset($_POST['btnlogin'])) {
   }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -288,7 +290,7 @@ if (isset($_POST['btnlogin'])) {
   }
 </script>
 
-<?php if ($alert == "user_not_found"): ?>
+<?php if (isset($alert) && $alert == "user_not_found"): ?>
 <script>
 Swal.fire({
   title: 'Oops!',
@@ -302,7 +304,7 @@ Swal.fire({
   window.location.href = 'registeration.php';
 });
 </script>
-<?php elseif ($alert == "password_incorrect"): ?>
+<?php elseif (isset($alert) && $alert == "password_incorrect"): ?>
 <script>
 Swal.fire({
   icon: 'error',

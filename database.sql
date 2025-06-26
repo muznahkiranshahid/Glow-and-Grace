@@ -5,12 +5,16 @@ USE makehub;
 -- Users Table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(100),
-    last_name VARCHAR(100),
-    username VARCHAR(100) UNIQUE,
+    name VARCHAR(100),
+    address TEXT,
+    work_phone VARCHAR(20),
+    cell_no VARCHAR(20),
+    dob DATE,
+    category VARCHAR(50),
     email VARCHAR(150) UNIQUE,
     password VARCHAR(255)
 );
+
 
 -- Purchases Table
 CREATE TABLE purchases (
@@ -25,16 +29,14 @@ CREATE TABLE purchases (
 );
 
 -- Cart Items Table
-CREATE TABLE user_cart (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    product_name VARCHAR(255),
-    product_price FLOAT,
-    quantity INT,
-    image_path VARCHAR(255),
-    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE cart_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  product_name VARCHAR(255) NOT NULL,
+  product_price DECIMAL(10,2) NOT NULL,
+  added_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
 
 -- Contact Messages Table
 CREATE TABLE contact_messages (

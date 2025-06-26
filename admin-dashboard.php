@@ -11,32 +11,26 @@ $topSellers = [];
 $topUsers = [];
 
 if ($view === 'top-sellers') {
-  $result1 = $conn->query("
-    SELECT product_name, SUM(quantity) AS total_sold 
-    FROM purchases 
-    GROUP BY product_name 
-    ORDER BY total_sold DESC 
-    LIMIT 10
-  ");
+  $result1 = $conn->query("SELECT product_name, SUM(quantity) AS total_sold FROM purchases GROUP BY product_name ORDER BY total_sold DESC LIMIT 10");
   if ($result1 && $result1->num_rows > 0) {
-      while ($row = $result1->fetch_assoc()) {
+    while ($row = $result1->fetch_assoc()) {
+      foreach ($data as $item) {
+        if (trim(strtolower($item['name'])) === trim(strtolower($row['product_name']))) {
+          $row['image1'] = $item['image1'];
           $topSellers[] = $row;
+          break;
+        }
       }
+    }
   }
 }
 
 if ($view === 'top-customers') {
-  $result2 = $conn->query("
-    SELECT username, SUM(total) AS total_spent 
-    FROM purchases 
-    GROUP BY username 
-    ORDER BY total_spent DESC 
-    LIMIT 10
-  ");
+  $result2 = $conn->query("SELECT username, SUM(total) AS total_spent FROM purchases GROUP BY username ORDER BY total_spent DESC LIMIT 10");
   if ($result2 && $result2->num_rows > 0) {
-      while ($row = $result2->fetch_assoc()) {
-          $topUsers[] = $row;
-      }
+    while ($row = $result2->fetch_assoc()) {
+      $topUsers[] = $row;
+    }
   }
 }
 ?>
