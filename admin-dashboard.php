@@ -9,6 +9,7 @@ $data = json_decode(file_get_contents($filePath), true);
 
 $topSellers = [];
 $topUsers = [];
+$contactMessages = [];
 
 if ($view === 'top-sellers') {
   $result1 = $conn->query("SELECT product_name, SUM(quantity) AS total_sold FROM purchases GROUP BY product_name ORDER BY total_sold DESC LIMIT 10");
@@ -30,6 +31,15 @@ if ($view === 'top-customers') {
   if ($result2 && $result2->num_rows > 0) {
     while ($row = $result2->fetch_assoc()) {
       $topUsers[] = $row;
+    }
+  }
+}
+
+if ($view === 'messages') {
+  $result3 = $conn->query("SELECT * FROM contact_messages ORDER BY submitted_at DESC");
+  if ($result3 && $result3->num_rows > 0) {
+    while ($row = $result3->fetch_assoc()) {
+      $contactMessages[] = $row;
     }
   }
 }
@@ -156,6 +166,7 @@ if ($view === 'top-customers') {
   <a href="admin-purchases.php"><i class="fas fa-shopping-cart"></i> Orders</a>
   <a href="admin-dashboard.php?view=top-sellers"><i class="fas fa-star"></i> Top Sellers</a>
   <a href="admin-dashboard.php?view=top-customers"><i class="fas fa-user-tie"></i> Top Customers</a>
+  <a href="admin-dashboard.php?view=messages"><i class="fas fa-envelope"></i> Contact Messages</a>
   <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>
 
@@ -173,6 +184,42 @@ if ($view === 'top-customers') {
     <div class="card mb-5">
       <div class="card-body">
         <canvas id="topUsersChart"></canvas>
+      </div>
+    </div>
+  <?php elseif ($view === 'messages'): ?>
+    <h2 class="mb-4 text-white">Contact Messages</h2>
+    <div class="card">
+      <div class="card-header">
+        Contact Form Submissions
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-hover text-center align-middle">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>Message</th>
+              <th>Submitted At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($contactMessages as $msg): ?>
+              <tr>
+                <td><?= $msg['id'] ?></td>
+                <td><?= htmlspecialchars($msg['name']) ?></td>
+                <td><?= htmlspecialchars($msg['email']) ?></td>
+                <td><?= htmlspecialchars($msg['subject']) ?></td>
+                <td><?= nl2br(htmlspecialchars($msg['message'])) ?></td>
+                <td><?= $msg['submitted_at'] ?></td>
+              </tr>
+            <?php endforeach; ?>
+            <?php if (empty($contactMessages)): ?>
+              <tr><td colspan="6">No messages found.</td></tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
       </div>
     </div>
   <?php else: ?>
