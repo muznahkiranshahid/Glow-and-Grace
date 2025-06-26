@@ -199,8 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
   <?php endif; ?>
 </div>
 
-<footer class="text-center py-4">
-  <p>&copy; <?= date("Y") ?> MakeHub. All rights reserved.</p>
-</footer>
+<?php include 'footer.php'; ?>
+
 </body>
 </html>
