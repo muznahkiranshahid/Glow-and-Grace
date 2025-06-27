@@ -5,7 +5,7 @@ require_once 'conn.php';
 $category = $_GET['category'] ?? 'jewelery';
 $view = $_GET['view'] ?? 'dashboard';
 $filePath = $category === 'cosmetics' ? './json/cosmetics.json' : './json/jewelery.json';
-$data = json_decode(file_get_contents($filePath), true);
+$data = array_reverse(json_decode(file_get_contents($filePath), true));
 
 $topSellers = [];
 $topUsers = [];

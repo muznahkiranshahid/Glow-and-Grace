@@ -105,18 +105,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
       border-color: var(--primary-light);
       box-shadow: 0 0 0 0.1rem rgba(122, 28, 172, 0.15);
     }
-    .btn-register {
-      background: var(--primary);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 10px;
-      border: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-    .btn-register:hover {
-      background: var(--primary-light) !important;
-    }
+      .glow-btn {
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  outline: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--primary-light);
+  z-index: -1;
+  transition: 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 4px;
+        color: white;
+
+}
+
+.glow-btn:hover {
+      color: white!important;
+}
+
+.glow-btn:hover::after {
+  transform: scaleX(1);
+}
     .toggle-password {
       position: absolute;
       right: 15px;
@@ -166,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
           </select>
         </div>
 
-        <div class="mb-3"><input type="email" name="email" id="email" class="form-control" placeholder="Email *" required></div>
+        <div class="mb-3"><input type="email" name="email" id="email" class="form-control" placeholder="Email *(ali@gmail.com)"  required></div>
         <span id="emailError"></span>
 
         <div class="mb-3 password-wrapper">
@@ -179,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
           <i class="fas fa-eye toggle-password" onclick="togglePassword(this, 'confirmPassword')"></i>
         </div>
 
-        <button type="submit" name="btnregister" class="btn btn-register">Register</button>
+        <button type="submit" name="btnregister " class="btn glow-btn justify-content-center btn-register">Register</button>
       </form>
       <div class="login-link mt-3">Already have an account? <a href="login.php">Login</a></div>
     </div>
@@ -231,5 +259,37 @@ function validation() {
 <script>
 <?php if (!empty($response)) echo $response; ?>
 </script>
+
+
+<script>
+  let formSubmitted = false;
+
+  document.querySelector("form").addEventListener("submit", function () {
+    formSubmitted = true;
+  });
+
+  history.pushState(null, null, location.href);
+
+  window.addEventListener("popstate", function () {
+    if (!formSubmitted) {
+      history.pushState(null, null, location.href); 
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Your registration is not complete. Do you want to quit?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, quit",
+        cancelButtonText: "Continue Registration"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "index.php";
+        }
+      });
+    }
+  });
+</script>
+
+
 </body>
 </html>

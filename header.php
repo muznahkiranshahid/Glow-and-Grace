@@ -84,38 +84,46 @@ if (session_status() === PHP_SESSION_NONE) {
     .nav-link:hover::after, .nav-link.active::after {
       width: 100%;
     }
-    .glow-btn {
-      width: 150px;
-      height: 40px;
-      border: none;
-      cursor: pointer;
-      background-color: transparent;
-      outline: 2px solid var(--primary);
-      border-radius: 4px;
-      color: var(--primary);
-      font-size: 16px;
-      transition: 0.3s;
-      font-weight: 600;
-      position: relative;
-      overflow: hidden;
-    }
-    .glow-btn::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: var(--primary-light);
-      z-index: -1;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: 0.3s;
-    }
-    .glow-btn:hover {
-      color: var(--text-light);
-    }
-    .glow-btn:hover::after {
-      transform: scaleX(1);
-    }
+      .glow-btn {
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  outline: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--primary-light);
+  z-index: -1;
+  transition: 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 4px;
+        color: white;
+
+}
+
+.glow-btn:hover {
+      color: white!important;
+}
+
+.glow-btn:hover::after {
+  transform: scaleX(1);
+}
     @media (max-width: 575px) {
       .brand {
         font-size: 1.8rem;

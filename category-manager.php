@@ -1,7 +1,5 @@
 <?php
-// category-manager.php
 
-// Ensure required globals are set
 if (!isset($conn)) {
     require_once 'conn.php';
 }
@@ -9,7 +7,6 @@ if (!isset($catagories) || !isset($imageFolder)) {
     die('<div class="alert alert-danger">Error: $catagories or $imageFolder not set. Define them before including this file.</div>');
 }
 
-// ADD category
 if (isset($_POST['add_category'])) {
     $name = $_POST['name'];
     $imgName = time() . '_' . basename($_FILES['image']['name']); // unique filename
@@ -22,7 +19,6 @@ if (isset($_POST['add_category'])) {
     }
 }
 
-// UPDATE category
 if (isset($_POST['update_category'])) {
     $id = $_POST['id'];
     $name = $_POST['name'];
@@ -39,17 +35,17 @@ if (isset($_POST['update_category'])) {
     $stmt->execute();
 }
 
-// DELETE category
+//for DELETE category
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $conn->query("DELETE FROM $catagories WHERE id=$id");
 }
 
-// FETCH categories
+//to FETCH categories
 $categories = $conn->query("SELECT * FROM $catagories");
 ?>
 
-<!-- Category Manager UI -->
+<!-- Category Manager html section -->
 <div class="card p-3 mb-4 shadow-sm">
   <form method="POST" enctype="multipart/form-data">
     <div class="row">

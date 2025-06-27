@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once 'conn.php'; // ✅ Database connection
+require_once 'conn.php';
 
 if (isset($_POST['btnlogin'])) {
   $name = trim($_POST['name']);
@@ -117,43 +117,46 @@ if (isset($_POST['btnlogin'])) {
       position: relative;
     }
 
-    .btn-register.glow-btn {
-      background-color: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      width: 150px;
-      height: 45px;
-      font-weight: 600;
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-      transition: 0.3s;
-      z-index: 1;
-    }
+      .glow-btn {
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  outline: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  overflow: hidden;
+}
 
-    .glow-btn::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--primary-light);
-      z-index: -1;
-      transition: 0.3s;
-      transform: scaleX(0);
-      transform-origin: left;
-      border-radius: 8px;
-    }
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--primary-light);
+  z-index: -1;
+  transition: 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 4px;
+        color: white;
 
-    .glow-btn:hover {
-      color: white;
-    }
+}
 
-    .glow-btn:hover::after {
-      transform: scaleX(1);
-    }
+.glow-btn:hover {
+      color: white!important;
+}
 
+.glow-btn:hover::after {
+  transform: scaleX(1);
+}
     .login-link {
       margin-top: 15px;
       font-size: 0.95rem;

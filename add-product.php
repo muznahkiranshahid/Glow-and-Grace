@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $name = $_POST['name'];
   $brand = $_POST['brand'];
   $price = $_POST['price'];
-  $description = $_POST['description'];
+  $description = $_POST['desc'];
 
   $filePath = $category === 'jewelery' ? './json/jewelery.json' : './json/cosmetics.json';
   $imageDir = $category === 'jewelery' ? 'images/jewelery/' : 'images/cosmetics/';
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     'brand' => $brand,
     'category' => $category,
     'price' => $price,
-    'description' => $description,
+    'desc' => $description,
     'image1' => $imageDir . $img1Name,
     'image2' => $imageDir . $img2Name
   ];
@@ -34,7 +34,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT));
 
   header("Location: admin-dashboard.php?category=$category");
-  exit;
+$allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+$image1Type = mime_content_type($_FILES['image1']['tmp_name']);
+$image2Type = mime_content_type($_FILES['image2']['tmp_name']);
+
+if (!in_array($image1Type, $allowedTypes) || !in_array($image2Type, $allowedTypes)) {
+    echo "<script>
+        alert('❌ Only image files are allowed (JPG, PNG, GIF, WEBP)');
+        window.history.back();
+    </script>";
+    exit;
+}
 }
 ?>
 
@@ -109,20 +120,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       font-weight: bold;
     }
 
-    .btn-submit {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 10px 30px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+      .glow-btn {
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  outline: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  overflow: hidden;
+}
 
-    .btn-submit:hover {
-      background-color: var(--primary-light);
-    }
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--primary-light);
+  z-index: -1;
+  transition: 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 4px;
+}
 
+.glow-btn:hover {
+      color: var(--text-light);
+}
+
+.glow-btn:hover::after {
+  transform: scaleX(1);
+}
     /* Responsive Sidebar */
     @media (max-width: 992px) {
       .sidebar {
@@ -214,11 +249,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="file" name="image2" class="form-control" accept="image/*" required />
       </div>
       <div class="text-end">
-        <button type="submit" class="btn btn-submit">Add Product</button>
+        <button type="submit" class="btn glow-btn btn-submit">Add Product</button>
       </div>
     </form>
   </div>
 </div>
+<script>
+document.querySelector("form").addEventListener("submit", function (e) {
+  const image1 = document.querySelector('input[name="image1"]').files[0];
+  const image2 = document.querySelector('input[name="image2"]').files[0];
+  const validTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+
+  if (!image1 || !image2) return; // Required already handles empty
+
+  if (!validTypes.includes(image1.type) || !validTypes.includes(image2.type)) {
+    e.preventDefault();
+    alert("❌ Please upload valid image files (JPG, PNG, GIF, WEBP only)");
+  }
+});
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

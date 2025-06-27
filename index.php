@@ -42,21 +42,44 @@ require_once 'conn.php';
         color: var(--primary);
       }
       .glow-btn {
-        background: var(--primary);
-        color: white;
-        padding: 8px 10px;
-        border: none;
-        border-radius: 50px;
-        font-weight: bold;
-        transition: 0.3s;
-        width: auto;
-        display: inline-block;
-        white-space: nowrap;
-      }
-      .glow-btn:hover {
-        background: #631696;
-        box-shadow: 0 0 10px var(--primary-light);
-      }
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  outline: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--primary-light);
+  z-index: -1;
+  transition: 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 4px;
+}
+
+.glow-btn:hover {
+      color: var(--text-light);
+}
+
+.glow-btn:hover::after {
+  transform: scaleX(1);
+}
+    
       .top-card img,
       .collection-preview img,
       .insta-grid img {
@@ -172,7 +195,7 @@ require_once 'conn.php';
         <div class="carousel-caption d-flex flex-column justify-content-center align-items-start h-100 p-5">
           <h1 class="display-4 fw-bold" style="font-family: 'Great Vibes'; color: var(--primary-light);">Welcome to Glow & Grace</h1>
           <p class="lead text-light">Luxury Cosmetics & Jewelry, Curated for You</p>
-          <a href="#categories" class="btn glow-btn mt-3 px-4 py-2">Shop Now</a>
+          <a href="jewelery.php" class="btn glow-btn mt-3 px-4 py-2">Shop Now</a>
         </div>
       </div>
       <div class="carousel-item h-100">
@@ -180,7 +203,7 @@ require_once 'conn.php';
         <div class="carousel-caption d-flex flex-column justify-content-center align-items-start h-100 p-5">
           <h1 class="display-4 fw-bold" style="font-family: 'Great Vibes'; color: var(--primary-light);">Elegant Beauty Essentials</h1>
           <p class="lead text-light"> </p>
-          <a href="#products" class="btn glow-btn mt-3 px-4 py-2">Explore More</a>
+          <a href="cosmetic-product.php" class="btn glow-btn mt-3 px-4 py-2">Explore</a>
         </div>
       </div>
       <div class="carousel-item h-100">
@@ -188,7 +211,7 @@ require_once 'conn.php';
         <div class="carousel-caption d-flex flex-column justify-content-center align-items-start h-100 p-5">
           <h1 class="display-4 fw-bold" style="font-family: 'Great Vibes'; color: var(--primary-light);">Glow With Grace</h1>
           <p class="lead text-light">Where style meets sophistication</p>
-          <a href="#top-selling" class="btn glow-btn mt-3 px-4 py-2">Top Sellers</a>
+          <a href="index.php?top-selling" class="btn glow-btn mt-3 px-4 py-2">Top Sellers</a>
         </div>
       </div>
     </div>
