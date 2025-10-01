@@ -207,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnregister'])) {
           <i class="fas fa-eye toggle-password" onclick="togglePassword(this, 'confirmPassword')"></i>
         </div>
 
-        <button type="submit" name="btnregister " class="btn glow-btn justify-content-center btn-register">Register</button>
+<button type="submit" name="btnregister" class="btn glow-btn justify-content-center btn-register">Register</button>
       </form>
       <div class="login-link mt-3">Already have an account? <a href="login.php">Login</a></div>
     </div>
